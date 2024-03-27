@@ -1,4 +1,4 @@
-# 🍎 Android A
+# Android A
 SSUMC 6기 Android 스터디 A조
 
 ## 💻 Member
