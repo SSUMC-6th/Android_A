@@ -21,9 +21,6 @@ SSUMC 6기 Android 스터디 A조
 | 9주차 | `Network 통신 & API` |  `강의에서 보여준 기능들 전부 구현` |
 | 10주차 | `Social Login & Paging`|  `카카오 공식 문서를 토대로 소셜 로그인 직접 구현해보기` |
 
-## 🌳 Issue 규칙
-1. 이슈를 등록할 때는 맨 앞에 닉네임 쓰기 (예: `[jinchang] Platform & Layout`)
-
 ## 🌳 branch 규칙
 ```bash
 ├─main
