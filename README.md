@@ -10,16 +10,16 @@ SSUMC 6기 Android 스터디 A조
 ## 📖 Workbook
 | 주차 | 내용 |  미션  | 
 | --- | --- | --- |
-| 1주차 | `Platform & Layout` |  `Flo 앱 fragment_home 구현하기` |
-| 2주차 | `Activity와 Fragment` |  `Activity와 frament 전환 구현하기` |
-| 3주차 | `Useful Widget` |  `Viewpager와 Indicator 구현하기` |
-| 4주차 | `Thread` | `SongActivity Timer Seekbar 구현하기` |
-| 5주차 | `LifeCycle`|  `생명주기를 활용하여 메모장 앱 만들어보기` `[Song]화면 한곡재생 버튼 클릭 시 스레드 재시작 구현하기` |
-| 6주차 | `ListView & RecyclerView` |  `리사이클러뷰를 사용해서 화면 만들기` |
-| 7주차 | `Database` |  `강의에서 보여준 기능들 전부 구현하기` |
-| 8주차 | `Token` |  `SignUp, Login Activity 및 AlbumFragment 구현하기` |
-| 9주차 | `Network 통신 & API` |  `강의에서 보여준 기능들 전부 구현` |
-| 10주차 | `Social Login & Paging`|  `카카오 공식 문서를 토대로 소셜 로그인 직접 구현해보기` |
+|  1주차  | `Platform & Layout` |  `Flo 앱 fragment_home 구현하기` |
+|  2주차  | `Activity와 Fragment` |  `Activity와 frament 전환 구현하기` |
+|  3주차  | `Useful Widget` |  `Viewpager와 Indicator 구현하기` |
+|  4주차  | `Thread` | `SongActivity Timer Seekbar 구현하기` |
+|  5주차  | `LifeCycle`|  `생명주기를 활용하여 메모장 앱 만들어보기` `[Song]화면 한곡재생 버튼 클릭 시 스레드 재시작 구현하기` |
+|  6주차  | `ListView & RecyclerView` |  `리사이클러뷰를 사용해서 화면 만들기` |
+|  7주차  | `Database` |  `강의에서 보여준 기능들 전부 구현하기` |
+|  8주차  | `Token` |  `SignUp, Login Activity 및 AlbumFragment 구현하기` |
+|  9주차  | `Network 통신 & API` |  `강의에서 보여준 기능들 전부 구현` |
+|  10주차  | `Social Login & Paging`|  `카카오 공식 문서를 토대로 소셜 로그인 직접 구현해보기` |
 
 ## 🌳 branch 규칙
 ```bash
