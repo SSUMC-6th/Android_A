@@ -15,4 +15,11 @@ dependencyResolutionManagement {
 
 rootProject.name = "UMC_6th"
 include(":app")
- 
+include(":lib")
+include(":lib")
+include(":lib")
+include(":lib")
+include(":lib")
+include(":myapplication")
+include(":myapplication")
+include(":myapplication")
