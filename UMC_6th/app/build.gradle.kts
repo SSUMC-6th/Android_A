@@ -31,6 +31,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
+        task("testClasses")
         jvmTarget = "1.8"
     }
 }

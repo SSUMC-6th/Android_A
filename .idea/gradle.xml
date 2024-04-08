@@ -1,16 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-<<<<<<< Updated upstream
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
         <option name="externalProjectPath" value="$PROJECT_DIR$/UMC_6th" />
         <option name="gradleJvm" value="#JAVA_HOME" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/UMC_6th" />
+            <option value="$PROJECT_DIR$/UMC_6th/app" />
+            <option value="$PROJECT_DIR$/UMC_6th/lib" />
+            <option value="$PROJECT_DIR$/UMC_6th/myapplication" />
+          </set>
+        </option>
         <option name="resolveExternalAnnotations" value="false" />
       </GradleProjectSettings>
     </option>
   </component>
-=======
-  <component name="GradleMigrationSettings" migrationVersion="1" />
->>>>>>> Stashed changes
 </project>
