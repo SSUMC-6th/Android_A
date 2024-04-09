@@ -34,6 +34,9 @@ android {
         task("testClasses")
         jvmTarget = "1.8"
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
