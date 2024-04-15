@@ -10,7 +10,47 @@
           <theme>@style/Theme.UMC_6th</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/activity_song.xml">
+        <config>
+          <theme>@style/Theme.UMC_6th</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_album.xml">
+        <config>
+          <theme>@style/Theme.UMC_6th</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_home.xml">
+        <config>
+          <theme>@style/Theme.UMC_6th</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_locker.xml">
+        <config>
+          <theme>@style/Theme.UMC_6th</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_look.xml">
+        <config>
+          <theme>@style/Theme.UMC_6th</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_search.xml">
+        <config>
+          <theme>@style/Theme.UMC_6th</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_song.xml">
+        <config>
+          <theme>@style/Theme.UMC_6th</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/item_album.xml">
+        <config>
+          <theme>@style/Theme.UMC_6th</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/UMC_6th/app/src/main/res/menu/bottom_nav_menu.xml">
         <config>
           <theme>@style/Theme.UMC_6th</theme>
         </config>
@@ -21,10 +61,47 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a0892f6-22ae-44d0-9c68-5f47b708a220" name="Changes" comment="[maro/#3] feat : udemy 1주차 구현 - fragment_home.xml">
+    <list default="true" id="2a0892f6-22ae-44d0-9c68-5f47b708a220" name="Changes" comment="[maro/#3] feat : fragment_home.xml 구현">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/HomeFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/btn_main_arrow_more.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/btn_main_mike.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/btn_main_setting.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/btn_main_ticket.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/btn_miniplay_pause.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/btn_miniplayer_go_list.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/btn_miniplayer_next.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/btn_miniplayer_play.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/btn_miniplayer_previous.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/btn_panel_play_large.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/discovery_banner_aos.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/ic_bottom_home_no_select.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/ic_bottom_home_select.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/ic_bottom_locker_no_select.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/ic_bottom_locker_select.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/ic_bottom_look_no_select.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/ic_bottom_look_select.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/ic_bottom_search_no_select.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/ic_bottom_search_select.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/ic_launcher_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/ic_launcher_foreground.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/ic_main_facebook.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/ic_main_instagram.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/ic_main_twitter.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/ic_main_youtube.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/img_album_exp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/img_first_album_default.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/img_home_viewpager_exp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/img_home_viewpager_exp2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/img_potcast_exp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/img_video_exp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/drawable/widget_black_play.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/activity_main.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/values/colors.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/res/values/colors.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +111,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\이수민\.android\avd\Pixel_3a_API_34_extension_level_7_x86_64.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\ì´ìë¯¼\.android\avd\Pixel_3a_API_34_extension_level_7_x86_64.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -61,7 +138,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="resourceFile" />
+        <option value="layoutResourceFile" />
         <option value="Kotlin Class" />
+        <option value="Kotlin Data Class" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -112,7 +193,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -125,30 +206,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "maro/#3",
-    "last_opened_file_path": "C:/android/MARO_HW1/UMC_6th/app/src/main/res/layout",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "configurable.group.appearance"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;maro/#3&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/android/MARO_HW1/UMC_6th/app/src/main/res/drawable&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;
   },
-  "keyToStringList": {
-    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
-      "HgIgnore",
-      "GitIgnore"
+  &quot;keyToStringList&quot;: {
+    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
+      &quot;HgIgnore&quot;,
+      &quot;GitIgnore&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\android\MARO_HW1\UMC_6th\app\src\main\res\drawable" />
       <recent name="C:\android\MARO_HW1\UMC_6th\app\src\main\res\layout" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -525,7 +607,15 @@
       <option name="project" value="LOCAL" />
       <updated>1712454146077</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="[maro/#3] feat : fragment_home.xml 구현">
+      <option name="closed" value="true" />
+      <created>1712455290253</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1712455290253</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -554,6 +644,7 @@
     <MESSAGE value="[maro/#1] mission #1{프로젝트 세팅}" />
     <MESSAGE value="[maro/#3] feat : udemy 1주차 구현 -" />
     <MESSAGE value="[maro/#3] feat : udemy 1주차 구현 - fragment_home.xml" />
-    <option name="LAST_COMMIT_MESSAGE" value="[maro/#3] feat : udemy 1주차 구현 - fragment_home.xml" />
+    <MESSAGE value="[maro/#3] feat : fragment_home.xml 구현" />
+    <option name="LAST_COMMIT_MESSAGE" value="[maro/#3] feat : fragment_home.xml 구현" />
   </component>
 </project>
