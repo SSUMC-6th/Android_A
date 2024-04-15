@@ -14,7 +14,7 @@ class LookFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // 여기에서 Fragment의 레이아웃을 인플레이트합니다.
-        return inflater.inflate(R.layout.fragment_home, container, false)
+        return inflater.inflate(R.layout.fragment_look, container, false)
     }
 
     // 필요한 경우 다른 Fragment 생명주기 메소드를 오버라이드합니다.

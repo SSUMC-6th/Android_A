@@ -5,24 +5,24 @@
         android:id="@+id/fragment_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:icon="@drawable/ic_bottom_home_select"
+        android:icon="@drawable/main_btm_home_selector"
         android:title="홈"/>
     <item
         android:id="@+id/fragment_look"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:icon="@drawable/ic_bottom_look_no_select"
+        android:icon="@drawable/main_btm_look_selector"
         android:title="둘러보기"/>
     <item
         android:id="@+id/fragment_search"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:icon="@drawable/ic_bottom_search_no_select"
+        android:icon="@drawable/main_btm_search_selector"
         android:title="검색"/>
     <item
         android:id="@+id/fragment_locker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:icon="@drawable/ic_bottom_locker_no_select"
+        android:icon="@drawable/main_btm_locker_selector"
         android:title="보관함"/>
 </menu>

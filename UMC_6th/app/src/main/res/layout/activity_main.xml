@@ -4,26 +4,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="#ffffff">
 
     <FrameLayout
         android:id="@+id/main_container"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/main_bottom_navigation"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/main_bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="70dp"
+        app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_bottom_nav"
-        app:theme="@style/BottomNavigationViewStyle"
-        app:labelVisibilityMode="labeled"
-        app:itemTextColor="@color/black" />
+        app:itemIconTint="@drawable/main_btm_color_selector"
+        app:itemTextColor="@drawable/main_btm_color_selector"
+        app:itemTextAppearanceActive="@style/BottomNavigationView.Active"
+        app:itemTextAppearanceInactive="@style/BottomNavigationView"
+        app:itemIconSize="15dp"
+        app:itemPadding="0dp"
+        android:background="#FFFFFF"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
