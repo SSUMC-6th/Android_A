@@ -7,6 +7,11 @@ android {
     namespace = "com.example.myfirstapp"
     compileSdk = 34
 
+
+    buildFeatures {
+        viewBinding = true
+    }
+    
     defaultConfig {
         applicationId = "com.example.myfirstapp"
         minSdk = 24
@@ -33,9 +38,6 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
-    buildFeatures {
-        viewBinding = true
-    }
 }
 
 dependencies {
@@ -45,6 +47,7 @@ dependencies {
     implementation(libs.material)
     implementation(libs.androidx.activity)
     implementation(libs.androidx.constraintlayout)
+    implementation ("androidx.fragment:fragment-ktx:1.6.2")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
