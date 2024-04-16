@@ -11,7 +11,7 @@ import com.example.umc_6th.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
 
-    lateinit var binding : ActivityMainBinding
+    lateinit var binding: ActivityMainBinding
     lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -21,34 +21,38 @@ class MainActivity : AppCompatActivity() {
 
         initBottomNavigation()
 
-        val song = Song(binding.mainMiniplayerTitleTv.text.toString(), binding.mainMiniplayerSingerTv.text.toString())
+        val song = Song(
+            binding.mainMiniplayerTitleTv.text.toString(),
+            binding.mainMiniplayerSingerTv.text.toString()
+        )
 
-        activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-            if (result.resultCode == RESULT_OK) {
-                val data = result.data
-                if (data != null) {
-                    val message = data.getStringExtra("message")
-                    Log.d("message", message!!)
-                    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        activityResultLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if (result.resultCode == RESULT_OK) {
+                    val data = result.data
+                    if (data != null) {
+                        val message = data.getStringExtra("message")
+                        Log.d("message", message!!)
+                        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                    }
                 }
             }
-        }
 
         binding.mainPlayerCl.setOnClickListener {
             val intent = Intent(this, SongActivity::class.java)
             intent.putExtra("title", song.title)
-            intent.putExtra("singer",song.singer)
+            intent.putExtra("singer", song.singer)
             activityResultLauncher.launch(intent)
         }
     }
 
-    private fun initBottomNavigation(){
+    private fun initBottomNavigation() {
 
         supportFragmentManager.beginTransaction()
             .replace(R.id.main_frm, HomeFragment())
             .commitAllowingStateLoss()
 
-        binding.mainBnv.setOnItemSelectedListener{ item ->
+        binding.mainBnv.setOnItemSelectedListener { item ->
             when (item.itemId) {
 
                 R.id.homeFragment -> {
@@ -64,12 +68,14 @@ class MainActivity : AppCompatActivity() {
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
                 }
+
                 R.id.searchFragment -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.main_frm, SearchFragment())
                         .commitAllowingStateLoss()
                     return@setOnItemSelectedListener true
                 }
+
                 R.id.lockerFragment -> {
                     supportFragmentManager.beginTransaction()
                         .replace(R.id.main_frm, LockerFragment())
@@ -80,3 +86,4 @@ class MainActivity : AppCompatActivity() {
             false
         }
     }
+}
