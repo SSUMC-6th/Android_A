@@ -1,4 +1,4 @@
-package com.example.umc_6th
+package com.example.myfirstapp
 
 import org.junit.Test
 
