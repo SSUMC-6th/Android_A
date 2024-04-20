@@ -21,6 +21,18 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"/>
 
+        <me.relex.circleindicator.CircleIndicator3
+            android:id="@+id/home_pannel_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            app:ci_drawable_unselected="@drawable/gray_radius"
+            app:ci_drawable="@drawable/blue_radius"
+            app:ci_animator="@animator/scale_with_alpha"
+            app:layout_constraintTop_toBottomOf="@id/home_pannel_background_vp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
         <ImageView
             android:id="@+id/home_pannel_btn_nugu_iv"
             android:layout_width="35dp"
@@ -351,6 +363,17 @@
             app:layout_constraintEnd_toEndOf="@+id/home_pannel_btn_setting_iv"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/home_today_music_oversea_hs"/>
+
+        <me.relex.circleindicator.CircleIndicator3
+            android:id="@+id/home_banner_indicator"
+            android:layout_width="match_parent"
+            android:layout_height="32dp"
+            app:ci_drawable_unselected="@drawable/gray_radius"
+            app:ci_drawable="@drawable/blue_radius"
+            app:ci_animator="@animator/scale_with_alpha"
+            app:layout_constraintTop_toBottomOf="@id/home_banner_vp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
 <!--        <ImageView-->
 <!--            android:id="@+id/home_banner_vp"-->
