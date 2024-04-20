@@ -40,6 +40,12 @@ class HomeFragment : Fragment() {
         binding.homeBannerVp.adapter = bannerAdapter
         binding.homeBannerVp.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
+        val pannelAdpater = PannelVpAdapter(this)
+        pannelAdpater.addFragment(PannelFragment(R.drawable.img_first_album_default))
+        pannelAdpater.addFragment(PannelFragment(R.drawable.img_first_album_default))
+        binding.homePannelBackgroundVp.adapter = pannelAdpater
+        binding.homePannelBackgroundVp.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+
         return binding.root
     }
 }
