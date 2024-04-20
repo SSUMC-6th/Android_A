@@ -1,0 +1,129 @@
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".AlbumFragment">
+
+    <ImageView
+        android:id="@+id/album_more_iv"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/btn_player_more"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <ImageView
+        android:id="@+id/album_like_iv"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/ic_my_like_off"
+        app:layout_constraintBottom_toBottomOf="@+id/album_more_iv"
+        app:layout_constraintEnd_toStartOf="@+id/album_more_iv"
+        app:layout_constraintTop_toTopOf="@+id/album_more_iv" />
+
+    <ImageView
+        android:id="@+id/album_back_iv"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginStart="15dp"
+        android:src="@drawable/btn_arrow_black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/album_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="13dp"
+        android:text="IU 5th Album 'LILAC'"
+        android:textColor="@color/black"
+        android:textSize="23sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/album_back_iv" />
+
+
+    <TextView
+        android:id="@+id/album_singer_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="가수"
+        android:textSize="14sp"
+        android:textColor="@color/gray_color"
+        app:layout_constraintEnd_toEndOf="@+id/album_title_tv"
+        app:layout_constraintStart_toStartOf="@+id/album_title_tv"
+        app:layout_constraintTop_toBottomOf="@+id/album_title_tv" />
+
+    <TextView
+        android:id="@+id/album_music_info_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="2021.03.25 | 정규 | 댄스 팝"
+        android:textSize="14sp"
+        android:textColor="@color/gray_color"
+        app:layout_constraintEnd_toEndOf="@+id/album_singer_tv"
+        app:layout_constraintStart_toStartOf="@+id/album_singer_tv"
+        app:layout_constraintTop_toBottomOf="@+id/album_singer_tv" />
+
+    <ImageView
+        android:id="@+id/album_album_iv"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/img_album_exp2"
+        android:layout_marginTop="10dp"
+        app:layout_constraintTop_toBottomOf="@id/album_music_info_tv"
+        app:layout_constraintStart_toStartOf="@id/album_music_info_tv"
+        app:layout_constraintEnd_toEndOf="@id/album_music_info_tv"/>
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/widget_black_play"
+        app:layout_constraintBottom_toBottomOf="@+id/album_album_iv"
+        app:layout_constraintEnd_toEndOf="@+id/album_album_iv"/>
+
+    <ImageView
+        android:id="@+id/album_lp_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="180dp"
+        android:layout_marginStart="155dp"
+        android:src="@drawable/img_album_lp"
+        app:layout_constraintBottom_toBottomOf="@+id/album_album_iv"
+        app:layout_constraintStart_toStartOf="@+id/album_album_iv"
+        app:layout_constraintTop_toTopOf="@+id/album_album_iv" />
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/album_content_tb"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabIndicatorFullWidth="false"
+        app:tabSelectedTextColor="#3f3fff"
+        app:tabIndicatorColor="#3f3fff"
+        app:tabRippleColor="#00ff0000"
+        app:layout_constraintEnd_toEndOf="@id/album_album_iv"
+        app:layout_constraintStart_toStartOf="@id/album_album_iv"
+        app:layout_constraintTop_toBottomOf="@id/album_album_iv"/>
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/album_content_vp"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/album_content_tb"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
