@@ -214,7 +214,7 @@
             android:id="@+id/song_miniplayer_next_iv"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:src="@drawable/btn_miniplayer_next"/>
+            android:src="@drawable/btn_miniplayer_next" />
 
         <ImageView
             android:id="@+id/song_random_iv"
@@ -224,6 +224,12 @@
             android:src="@drawable/nugu_btn_random_inactive" />
 
     </LinearLayout>
+
+
+
+
+
+
 
     <LinearLayout
         android:id="@+id/song_bottom_ll"
