@@ -50,6 +50,16 @@
           <theme>@style/Theme.UMC_6th</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_saved_album.xml">
+        <config>
+          <theme>@style/Theme.UMC_6th</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_saved_song.xml">
+        <config>
+          <theme>@style/Theme.UMC_6th</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_search.xml">
         <config>
           <theme>@style/Theme.UMC_6th</theme>
@@ -81,7 +91,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a0892f6-22ae-44d0-9c68-5f47b708a220" name="Changes" comment="">
+    <list default="true" id="2a0892f6-22ae-44d0-9c68-5f47b708a220" name="Changes" comment="[maro/#13] feat : 3주차 완성">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -636,7 +646,15 @@
       <option name="project" value="LOCAL" />
       <updated>1713613569184</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="[maro/#13] feat : 3주차 완성">
+      <option name="closed" value="true" />
+      <created>1713618105022</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1713618105022</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -671,6 +689,7 @@
     <MESSAGE value="[maro/#13] feat : ViewPager Banner" />
     <MESSAGE value="[maro/#13] feat : ViewPager Background" />
     <MESSAGE value="[maro/#13] feat : ViewPager Indicator, CircleIndicator, Auto Slide" />
-    <option name="LAST_COMMIT_MESSAGE" value="[maro/#13] feat : ViewPager Indicator, CircleIndicator, Auto Slide" />
+    <MESSAGE value="[maro/#13] feat : 3주차 완성" />
+    <option name="LAST_COMMIT_MESSAGE" value="[maro/#13] feat : 3주차 완성" />
   </component>
 </project>
