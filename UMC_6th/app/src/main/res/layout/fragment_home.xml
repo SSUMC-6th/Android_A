@@ -735,7 +735,7 @@
             </LinearLayout>
 
         </HorizontalScrollView>
-
+        
         <ImageView
             android:id="@+id/home_banner_iv"
             android:layout_width="match_parent"
