@@ -11,15 +11,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/home_pannel_background_iv"
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/home_pannel_background_vp"
             android:layout_width="match_parent"
             android:layout_height="430dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/img_first_album_default"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <ImageView
             android:id="@+id/home_pannel_btn_nugu_iv"
@@ -126,7 +126,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginBottom="30dp"
             android:src="@drawable/img_album_exp3"
-            app:layout_constraintBottom_toBottomOf="@id/home_pannel_background_iv"
+            app:layout_constraintBottom_toBottomOf="@id/home_pannel_background_vp"
             app:layout_constraintStart_toStartOf="parent"/>
 
         <TextView
@@ -165,7 +165,7 @@
             android:textStyle="bold"
             android:textSize="18sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/home_pannel_background_iv"/>
+            app:layout_constraintTop_toBottomOf="@id/home_pannel_background_vp"/>
 
         <ImageView
             android:id="@+id/home_today_music_title_btn_iv"
@@ -188,7 +188,7 @@
             android:textColor="#3F3FFF"
             android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@id/home_today_domestic_tv"
-            app:layout_constraintTop_toBottomOf="@id/home_pannel_background_iv"/>
+            app:layout_constraintTop_toBottomOf="@id/home_pannel_background_vp"/>
 
         <TextView
             android:id="@+id/home_today_domestic_tv"
@@ -199,7 +199,7 @@
             android:text="국내"
             android:textSize="16sp"
             app:layout_constraintEnd_toStartOf="@id/home_today_music_oversea_tv"
-            app:layout_constraintTop_toBottomOf="@id/home_pannel_background_iv"/>
+            app:layout_constraintTop_toBottomOf="@id/home_pannel_background_vp"/>
 
         <TextView
             android:id="@+id/home_today_music_oversea_tv"
@@ -210,7 +210,7 @@
             android:text="해외"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/home_pannel_background_iv"/>
+            app:layout_constraintTop_toBottomOf="@id/home_pannel_background_vp"/>
 
         <HorizontalScrollView
             android:id="@+id/home_today_music_oversea_hs"
@@ -343,16 +343,25 @@
             </LinearLayout>
         </HorizontalScrollView>
 
-        <ImageView
+        <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/home_banner_vp"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:adjustViewBounds="true"
-            android:src="@drawable/img_home_viewpager_exp"
+            android:layout_height="100dp"
             android:layout_marginTop="15dp"
+            app:layout_constraintEnd_toEndOf="@+id/home_pannel_btn_setting_iv"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/home_today_music_oversea_hs"/>
+
+<!--        <ImageView-->
+<!--            android:id="@+id/home_banner_vp"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:adjustViewBounds="true"-->
+<!--            android:src="@drawable/img_home_viewpager_exp"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            app:layout_constraintStart_toStartOf="parent"-->
+<!--            app:layout_constraintEnd_toEndOf="parent"-->
+<!--            app:layout_constraintTop_toBottomOf="@id/home_today_music_oversea_hs"/>-->
 
         <!--        <androidx.recyclerview.widget.RecyclerView-->
         <!--            android:id="@+id/home_today_music_album_rv"-->
