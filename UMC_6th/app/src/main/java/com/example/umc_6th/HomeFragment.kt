@@ -6,11 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.fragment.app.Fragment
-import com.example.umc_6th.databinding.ActivityMainBinding
 import com.example.umc_6th.databinding.FragmentHomeBinding
+
 
 class HomeFragment : Fragment() {
     // 여기에 Fragment의 구현 내용을 작성합니다.
+    private var _binding: FragmentHomeBinding? = null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,

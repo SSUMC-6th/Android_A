@@ -1,193 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/white"
-    android:fillViewport="true"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+
+    <ImageView
+        android:id="@+id/album_like_iv"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginEnd="15dp"
+        android:src="@drawable/ic_my_like_off"
+        app:layout_constraintBottom_toBottomOf="@+id/album_more_iv"
+        app:layout_constraintEnd_toStartOf="@+id/album_more_iv"
+        app:layout_constraintTop_toTopOf="@+id/album_more_iv" />
+
+    <ImageView
+        android:id="@+id/album_more_iv"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="15dp"
+        android:background="@color/white"
+        android:scaleType="fitXY"
+        android:src="@drawable/btn_player_more"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/album_lp_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="180dp"
+        android:layout_marginStart="155dp"
+        android:src="@drawable/img_album_lp"
+        app:layout_constraintBottom_toBottomOf="@+id/album_album_iv"
+        app:layout_constraintStart_toStartOf="@+id/album_album_iv"
+        app:layout_constraintTop_toTopOf="@+id/album_album_iv" />
+
+    <ImageView
+        android:id="@+id/album_back_iv"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="40dp"
+        android:background="@color/white"
+        android:scaleType="fitXY"
+        android:src="@drawable/btn_arrow_black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/album_music_title_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="IU 5th Album 'LILAC'"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/album_back_iv" />
+
+
+    <TextView
+        android:id="@+id/album_singer_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:text="IU"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/album_music_title_tv"
+        app:layout_constraintStart_toStartOf="@+id/album_music_title_tv"
+        app:layout_constraintTop_toBottomOf="@+id/album_music_title_tv" />
+
+    <TextView
+        android:id="@+id/album_music_title_info_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:text="2021.03.25 | 정규 | 댄스 팝"
+        android:textSize="14sp"
+        app:layout_constraintEnd_toEndOf="@+id/album_singer_name_tv"
+        app:layout_constraintStart_toStartOf="@+id/album_singer_name_tv"
+        app:layout_constraintTop_toBottomOf="@+id/album_singer_name_tv" />
+
+    <ImageView
+        android:id="@+id/album_album_iv"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="10dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/img_album_exp2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/album_music_title_info_tv" />
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="5dp"
+        android:layout_marginBottom="5dp"
+        android:src="@drawable/widget_black_play"
+        app:layout_constraintBottom_toBottomOf="@+id/album_album_iv"
+        app:layout_constraintEnd_toEndOf="@+id/album_album_iv" />
+
+
+    <LinearLayout
+        android:id="@+id/layoutSongSelect"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="@+id/album_album_iv"
+        app:layout_constraintStart_toStartOf="@+id/album_album_iv"
+        app:layout_constraintTop_toBottomOf="@+id/album_album_iv">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="수록곡"
+            android:textColor="@color/flo"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:text="상세정보"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:text="영상"
+            android:textColor="@color/black" />
+
+    </LinearLayout>
+
+
+    <View
+        android:id="@+id/album_line_view"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="15dp"
+        android:background="#dcdcdc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layoutSongSelect" />
+
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:fillViewport="true"
+        android:orientation="vertical"
+        android:overScrollMode="never"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-
-        <ImageView
-            android:id="@+id/album_like_iv"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginEnd="15dp"
-            android:src="@drawable/ic_my_like_off"
-            app:layout_constraintBottom_toBottomOf="@+id/album_more_iv"
-            app:layout_constraintEnd_toStartOf="@+id/album_more_iv"
-            app:layout_constraintTop_toTopOf="@+id/album_more_iv" />
-
-        <ImageView
-            android:id="@+id/album_more_iv"
-            android:layout_width="35dp"
-            android:layout_height="35dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginEnd="15dp"
-            android:background="@color/white"
-            android:scaleType="fitXY"
-            android:src="@drawable/btn_player_more"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/album_lp_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="180dp"
-            android:layout_marginStart="155dp"
-            android:src="@drawable/img_album_lp"
-            app:layout_constraintBottom_toBottomOf="@+id/album_album_iv"
-            app:layout_constraintStart_toStartOf="@+id/album_album_iv"
-            app:layout_constraintTop_toTopOf="@+id/album_album_iv" />
-
-        <ImageView
-            android:id="@+id/album_back_iv"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="40dp"
-            android:background="@color/white"
-            android:scaleType="fitXY"
-            android:src="@drawable/btn_arrow_black"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-
-        <TextView
-            android:id="@+id/album_music_title_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="IU 5th Album 'LILAC'"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/album_back_iv" />
-
-
-        <TextView
-            android:id="@+id/album_singer_name_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:text="가수"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@+id/album_music_title_tv"
-            app:layout_constraintStart_toStartOf="@+id/album_music_title_tv"
-            app:layout_constraintTop_toBottomOf="@+id/album_music_title_tv" />
-
-        <TextView
-            android:id="@+id/album_music_title_info_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:text="2021.03.25 | 정규 | 댄스 팝"
-            android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="@+id/album_singer_name_tv"
-            app:layout_constraintStart_toStartOf="@+id/album_singer_name_tv"
-            app:layout_constraintTop_toBottomOf="@+id/album_singer_name_tv" />
-
-        <ImageView
-            android:id="@+id/album_album_iv"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_marginTop="10dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/img_album_exp2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/album_music_title_info_tv" />
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_marginEnd="5dp"
-            android:layout_marginBottom="5dp"
-            android:src="@drawable/widget_black_play"
-            app:layout_constraintBottom_toBottomOf="@+id/album_album_iv"
-            app:layout_constraintEnd_toEndOf="@+id/album_album_iv" />
-
-
-        <LinearLayout
-            android:id="@+id/linearLayout4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="@+id/album_album_iv"
-            app:layout_constraintStart_toStartOf="@+id/album_album_iv"
-            app:layout_constraintTop_toBottomOf="@+id/album_album_iv">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="수록곡"
-                android:textColor="@color/flo"
-                android:textStyle="bold" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="100dp"
-                android:text="상세정보"
-                android:textColor="@color/black" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="100dp"
-                android:text="영상"
-                android:textColor="@color/black" />
-
-        </LinearLayout>
-
-        <!--3주차 탭레이아웃-->
-
-        <!--    <com.google.android.material.tabs.TabLayout-->
-        <!--        android:id="@+id/album_tabLayout_tl"-->
-        <!--        android:layout_width="match_parent"-->
-        <!--        android:layout_height="wrap_content"-->
-        <!--        app:tabMaxWidth="0dp"-->
-        <!--        app:tabGravity="fill"-->
-        <!--        app:tabMode="fixed"-->
-        <!--        app:tabIndicatorFullWidth="false"-->
-        <!--        app:tabRippleColor="@android:color/transparent"-->
-        <!--        app:layout_constraintEnd_toEndOf="parent"-->
-        <!--        app:layout_constraintStart_toStartOf="parent"-->
-        <!--        app:layout_constraintTop_toBottomOf="@+id/album_album_iv"-->
-        <!--        app:tabIndicatorColor="@color/select_color"-->
-        <!--        app:tabIndicatorGravity="bottom"-->
-        <!--        app:tabSelectedTextColor="@color/select_color" />-->
-
-        <View
-            android:id="@+id/album_line_view"
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="15dp"
-            android:background="#dcdcdc"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/album_line_view">
 
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/album_line_view">
+            android:layout_height="wrap_content">
 
 
             <LinearLayout
-                android:id="@+id/song_mix_layout"
+                android:id="@+id/layoutSongMix"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
@@ -202,7 +186,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <TextView
-                    android:id="@+id/song_mix_tv"
+                    android:id="@+id/txSongMix"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
@@ -210,14 +194,14 @@
                     android:textColor="@color/black" />
 
                 <ImageView
-                    android:id="@+id/song_mixoff_tg"
+                    android:id="@+id/imgSongMixOffTag"
                     android:layout_width="50dp"
                     android:layout_height="25dp"
                     android:layout_gravity="center"
                     android:src="@drawable/btn_toggle_off" />
 
                 <ImageView
-                    android:id="@+id/song_mixon_tg"
+                    android:id="@+id/imgSongMixOnTag"
                     android:layout_width="50dp"
                     android:layout_height="25dp"
                     android:layout_gravity="center"
@@ -235,7 +219,7 @@
                 android:layout_marginTop="10dp"
                 android:src="@drawable/btn_playlist_select_off"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/song_mix_layout" />
+                app:layout_constraintTop_toBottomOf="@+id/layoutSongMix" />
 
             <TextView
                 android:id="@+id/song_all_select_tv"
@@ -316,7 +300,7 @@
                         app:layout_constraintTop_toTopOf="@+id/song_list_order_01_tv" />
 
                     <TextView
-                        android:id="@+id/song_music_title_01_tv"
+                        android:id="@+id/txSongTitle01"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
@@ -329,19 +313,19 @@
 
 
                     <TextView
-                        android:id="@+id/song_singer_name_01_tv"
+                        android:id="@+id/txSongArtist01"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
                         android:layout_marginBottom="10dp"
-                        android:text="가수"
+                        android:text="IU"
                         android:textSize="10sp"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="@+id/song_list_title_01_tv"
                         app:layout_constraintTop_toBottomOf="@+id/song_list_title_01_tv" />
 
                     <ImageView
-                        android:id="@+id/song_play_01_iv"
+                        android:id="@+id/imgSongPlay01"
                         android:layout_width="25dp"
                         android:layout_height="25dp"
                         android:src="@drawable/btn_miniplayer_play"
@@ -355,9 +339,9 @@
                         android:layout_height="25dp"
                         android:layout_marginEnd="15dp"
                         android:src="@drawable/btn_player_more"
-                        app:layout_constraintBottom_toBottomOf="@+id/song_singer_name_01_tv"
+                        app:layout_constraintBottom_toBottomOf="@+id/txSongArtist01"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/song_music_title_01_tv" />
+                        app:layout_constraintTop_toTopOf="@+id/txSongTitle01" />
 
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
@@ -713,6 +697,9 @@
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
 
-</androidx.core.widget.NestedScrollView>
+
+    </androidx.core.widget.NestedScrollView>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
