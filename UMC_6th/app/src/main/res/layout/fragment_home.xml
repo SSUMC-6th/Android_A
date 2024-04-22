@@ -336,17 +336,16 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <ImageView
-            android:id="@+id/imgBanner2"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="10dp"
-            android:src="@drawable/img_home_viewpager_exp"
-            app:layout_constraintDimensionRatio="1120:202"
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/homeViewPager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/layoutSecond" />
+
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layoutFourth"
@@ -354,7 +353,7 @@
             android:layout_height="match_parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/imgBanner2">
+            app:layout_constraintTop_toBottomOf="@id/homeViewPager">
 
             <TextView
                 android:id="@+id/txFourthTitle"
