@@ -9,9 +9,12 @@ import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.example.umc_6th.adapter.AlbumPagerAdapter
 import com.example.umc_6th.databinding.FragmentAlbumBinding
+import com.google.android.material.tabs.TabLayoutMediator
 
-class AlbumFragment: Fragment() {
+class AlbumFragment: Fragment(R.layout.fragment_album) {
     // 여기에 Fragment의 구현 내용을 작성합니다.
 
     private var _binding: FragmentAlbumBinding? = null
@@ -34,27 +37,17 @@ class AlbumFragment: Fragment() {
             requireActivity().supportFragmentManager.popBackStack()
         }
 
-        // 취향 mix 이미지 변경
-        binding.imgSongMixOffTag.setOnClickListener(){
-            binding.imgSongMixOffTag.visibility=View.GONE
-            binding.imgSongMixOnTag.visibility=View.VISIBLE
-        }
-        binding.imgSongMixOnTag.setOnClickListener(){
-            binding.imgSongMixOnTag.visibility=View.GONE
-            binding.imgSongMixOffTag.visibility=View.VISIBLE
-        }
+        val adapter = AlbumPagerAdapter(this)
+        binding.albumViewPager.adapter = adapter
 
-        binding.imgSongPlay01.setOnClickListener(){
-            goToSongActivity(binding.txSongTitle01.text.toString(), binding.txSongArtist01.text.toString())
-        }
-    }
-
-    fun goToSongActivity(songTitle: String, songArtist: String) {
-        val intent = Intent(activity, SongActivity::class.java).apply {
-            putExtra("songTitle", songTitle)
-            putExtra("songArtist", songArtist)
-        }
-        startActivity(intent)
+        TabLayoutMediator(binding.tlAlbum, binding.albumViewPager) { tab, position ->
+            tab.text = when (position) {
+                0 -> "수록곡"
+                1 -> "상세정보"
+                2 -> "영상"
+                else -> null
+            }
+        }.attach()
     }
 
 

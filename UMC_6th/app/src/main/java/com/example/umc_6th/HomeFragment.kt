@@ -4,30 +4,46 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.fragment.app.Fragment
 import com.example.umc_6th.databinding.FragmentHomeBinding
+import androidx.viewpager2.adapter.FragmentStateAdapter
 
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(R.layout.fragment_home) {
     // 여기에 Fragment의 구현 내용을 작성합니다.
     private var _binding: FragmentHomeBinding? = null
+    private val binding get() = _binding!!
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val view = inflater.inflate(R.layout.fragment_home, container, false)
+        _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
-        val imgSecondAlbum1 = view.findViewById<ImageView>(R.id.imgSecondAlbum1)
-        imgSecondAlbum1.setOnClickListener {
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.imgSecondAlbum1.setOnClickListener {
             val transaction = requireActivity().supportFragmentManager.beginTransaction()
             transaction.replace(R.id.main_container, AlbumFragment())
             transaction.addToBackStack(null)  // 백 스택에 추가
             transaction.commit()
         }
-
-        return view
-        }
+        val adapter = ViewPagerAdapter(this)
+        binding.homeViewPager.adapter = adapter
     }
-    // 필요한 경우 다른 Fragment 생명주기 메소드를 오버라이드합니다.
+
+    class ViewPagerAdapter(fragment: Fragment) : FragmentStateAdapter(fragment) {
+        private val fragments = arrayOf(FragmentHomeBanner())
+        override fun getItemCount(): Int = fragments.size
+        override fun createFragment(position: Int): Fragment = fragments[position]
+    }
+
+
+    class FragmentHomeBanner : Fragment(R.layout.fragment_home_banner1) {
+        // 필요한 경우 여기에 로직 추가
+    }
+}
