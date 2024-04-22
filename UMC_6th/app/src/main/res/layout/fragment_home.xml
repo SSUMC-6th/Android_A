@@ -11,161 +11,68 @@
         android:layout_height="match_parent">
 
 
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/homeMainViewPager"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layoutFirst"
+        <me.relex.circleindicator.CircleIndicator3
+            android:id="@+id/indicator"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="30dp"
+            app:ci_drawable="@color/flo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/homeMainViewPager" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="15dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/imgMainBanner"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:src="@drawable/img_first_album_default"
-                app:layout_constraintDimensionRatio="1:1"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <LinearLayout
-                android:id="@+id/linearLayout"
-                android:layout_width="0dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="15dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:id="@+id/imgMainMic"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:src="@drawable/btn_main_mike" />
-
-                <ImageView
-                    android:id="@+id/imgMainTicket"
-                    android:layout_width="50dp"
-                    android:layout_height="35dp"
-                    android:src="@drawable/btn_main_ticket" />
-
-                <ImageView
-                    android:id="@+id/imgMainSetting"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:src="@drawable/btn_main_setting" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/txBannerTitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="0dp"
-                android:text="포근하게 덮어주는 꿈의 목소리"
-                android:textColor="#FFFFFF"
-                android:textSize="27sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toStartOf="@+id/imgBtnPlay"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/linearLayout" />
+                android:id="@+id/imgMainMic"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/btn_main_mike" />
 
             <ImageView
-                android:id="@+id/imgBtnPlay"
-                android:layout_width="70dp"
-                android:layout_height="70dp"
-                android:layout_marginEnd="10dp"
-                android:src="@drawable/btn_panel_play_large"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/txBannerTitle" />
-
-            <TextView
-                android:id="@+id/txMainBannerEx"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="15dp"
-                android:text="총 15곡 2019.11.11"
-                android:textColor="#ffffff"
-                app:layout_constraintBottom_toTopOf="@+id/imgMainBannerAlbum1"
-                app:layout_constraintStart_toStartOf="@+id/txBannerTitle" />
+                android:id="@+id/imgMainTicket"
+                android:layout_width="50dp"
+                android:layout_height="35dp"
+                android:src="@drawable/btn_main_ticket" />
 
             <ImageView
-                android:id="@+id/imgMainBannerAlbum1"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginBottom="15dp"
-                android:src="@drawable/img_album_exp"
-                app:layout_constraintBottom_toTopOf="@+id/imgMainBannerAlbum2"
-                app:layout_constraintStart_toStartOf="@+id/imgMainBannerAlbum2" />
+                android:id="@+id/imgMainSetting"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/btn_main_setting" />
+        </LinearLayout>
 
-            <TextView
-                android:id="@+id/txMainBannerSongTitle1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:text="Butter"
-                android:textColor="#ffffff"
-                app:layout_constraintStart_toEndOf="@+id/imgMainBannerAlbum1"
-                app:layout_constraintTop_toTopOf="@+id/imgMainBannerAlbum1" />
-
-            <TextView
-                android:id="@+id/txMainBannerSongArtist1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:text="방탄소년단"
-                android:textColor="#ffffff"
-                app:layout_constraintStart_toEndOf="@+id/imgMainBannerAlbum1"
-                app:layout_constraintTop_toBottomOf="@+id/txMainBannerSongTitle1" />
-
-            <ImageView
-                android:id="@+id/imgMainBannerAlbum2"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginBottom="20dp"
-                android:src="@drawable/img_album_exp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="@+id/txMainBannerEx" />
-
-            <TextView
-                android:id="@+id/txMainBannerSongTitle2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:text="Butter"
-                android:textColor="#ffffff"
-                app:layout_constraintBottom_toTopOf="@id/txMainBannerSongArtist2"
-                app:layout_constraintStart_toEndOf="@+id/imgMainBannerAlbum2"
-                app:layout_constraintTop_toTopOf="@+id/imgMainBannerAlbum2" />
-
-            <TextView
-                android:id="@+id/txMainBannerSongArtist2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="15dp"
-                android:layout_marginBottom="20dp"
-                android:text="방탄소년단"
-                android:textColor="#ffffff"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imgMainBannerAlbum2" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/layoutSecond"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/layoutFirst">
+            app:layout_constraintTop_toBottomOf="@id/indicator">
 
             <TextView
                 android:id="@+id/txSecondTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:text="오늘 발매 음악"
                 android:textSize="18sp"
                 android:textStyle="bold"
@@ -244,8 +151,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:text="LILAC"
-                            android:textStyle="bold"
                             android:textSize="18sp"
+                            android:textStyle="bold"
                             app:layout_constraintStart_toStartOf="@id/imgSecondAlbum1"
                             app:layout_constraintTop_toBottomOf="@id/imgSecondAlbum1" />
 
@@ -280,8 +187,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:text="제목"
-                            android:textStyle="bold"
                             android:textSize="18sp"
+                            android:textStyle="bold"
                             app:layout_constraintStart_toStartOf="@id/imgSecondAlbum2"
                             app:layout_constraintTop_toBottomOf="@id/imgSecondAlbum2" />
 
@@ -316,8 +223,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:text="제목"
-                            android:textStyle="bold"
                             android:textSize="18sp"
+                            android:textStyle="bold"
                             app:layout_constraintStart_toStartOf="@id/imgSecondAlbum3"
                             app:layout_constraintTop_toBottomOf="@id/imgSecondAlbum3" />
 
