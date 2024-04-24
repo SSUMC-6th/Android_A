@@ -2,9 +2,11 @@ package com.example.umc_6th
 
 import android.app.Activity
 import android.content.Intent
+import android.graphics.PorterDuff
 import android.os.Bundle
 import android.os.PersistableBundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.ui.graphics.Color
 import com.example.umc_6th.databinding.ActivitySongBinding
 
 class SongActivity : AppCompatActivity() {
@@ -20,6 +22,21 @@ class SongActivity : AppCompatActivity() {
 
         binding.txSongTitle.text = songTitle
         binding.txSongArtist.text = songArtist
+
+        binding.imgSongRandom.setOnClickListener(){
+            if (binding.imgSongRandom.colorFilter != null) {
+                binding.imgSongRandom.clearColorFilter()
+            } else {
+                binding.imgSongRandom.setColorFilter(R.color.flo, PorterDuff.Mode.SRC_IN)
+            }
+        }
+        binding.imgSongRepeat.setOnClickListener(){
+            if (binding.imgSongRepeat.colorFilter != null) {
+                binding.imgSongRepeat.clearColorFilter()
+            } else {
+                binding.imgSongRepeat.setColorFilter(R.color.flo, PorterDuff.Mode.SRC_IN)
+            }
+        }
 
         binding.imgSongDown.setOnClickListener {
             val returnIntent = Intent().apply {
