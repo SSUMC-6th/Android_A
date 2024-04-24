@@ -5,12 +5,14 @@ import android.os.Bundle
 import android.os.PersistableBundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import com.example.myfirstapp.databinding.ActivityMainBinding
 import com.example.myfirstapp.databinding.ActivitySongBinding
 
 class SongActivity : AppCompatActivity() {
 
     lateinit var binding: ActivitySongBinding
+    private var isColorChanged = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,14 +49,35 @@ class SongActivity : AppCompatActivity() {
             binding.songMusicTitleTv.text = intent.getStringExtra("title")
             binding.songMusicSingerTv.text = intent.getStringExtra("singer")
         }
+
+        binding.songRepeatIv.setOnClickListener {
+            if (isColorChanged) {
+                // 변경된 색상을 다시 초기 색상으로 변경
+                binding.songRepeatIv.setColorFilter(ContextCompat.getColor(this, R.color.black))
+            } else {
+                binding.songRepeatIv.setColorFilter(ContextCompat.getColor(this, R.color.flo))
+            }
+            isColorChanged = !isColorChanged
+        }
+
+        binding.songRandomIv.setOnClickListener {
+            if (isColorChanged) {
+                // 변경된 색상을 다시 초기 색상으로 변경
+                binding.songRandomIv.setColorFilter(ContextCompat.getColor(this, R.color.black))
+            } else {
+                binding.songRandomIv.setColorFilter(ContextCompat.getColor(this, R.color.flo))
+            }
+            isColorChanged = !isColorChanged
+        }
     }
 
-    override fun onBackPressed() {
-        val intent = Intent(this, MainActivity::class.java)
-        intent.putExtra("message", "뒤로가기 버튼 클릭")
-        setResult(RESULT_OK, intent)
-        finish()
-    }
+//    override fun onBackPressed() {
+//        super.onBackPressed()
+//        val intent = Intent(this, MainActivity::class.java)
+//        intent.putExtra("message", "뒤로가기 버튼 클릭")
+//        setResult(RESULT_OK, intent)
+//        finish()
+//    }
 
     fun setPlayerStatus(isPlaying : Boolean){
         if(isPlaying){ //재생중

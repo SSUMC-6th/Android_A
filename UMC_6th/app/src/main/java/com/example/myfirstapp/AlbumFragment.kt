@@ -7,10 +7,13 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.example.myfirstapp.databinding.FragmentAlbumBinding
+import com.google.android.material.tabs.TabLayoutMediator
 
 class AlbumFragment : Fragment() {
 
     lateinit var binding : FragmentAlbumBinding
+
+    private  val information = arrayListOf("수록곡","상세정보","영상")
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,24 +29,13 @@ class AlbumFragment : Fragment() {
         binding.albumBackIv.setOnClickListener{
             (context as MainActivity).supportFragmentManager.beginTransaction().replace(R.id.main_container,HomeFragment()).commitAllowingStateLoss()
         }
-        binding.albumSongLalacCl.setOnClickListener{
-            Toast.makeText(activity,"LILAC",Toast.LENGTH_SHORT).show()
-        }
-        binding.albumSongFluCl.setOnClickListener{
-            Toast.makeText(activity,"FLU",Toast.LENGTH_SHORT).show()
-        }
-        binding.albumSongCoinCl.setOnClickListener{
-            Toast.makeText(activity,"Coin",Toast.LENGTH_SHORT).show()
-        }
-        binding.albumSongSpringhelloCl.setOnClickListener{
-            Toast.makeText(activity,"봄 안녕 봄",Toast.LENGTH_SHORT).show()
-        }
-        binding.albumSongCelebrityCl.setOnClickListener{
-            Toast.makeText(activity,"Celebrity",Toast.LENGTH_SHORT).show()
-        }
-        binding.albumSongSingCl.setOnClickListener{
-            Toast.makeText(activity,"돌림노래 (Feat.DEAN)",Toast.LENGTH_SHORT).show()
-        }
+
+        val albumVpAdapter = AlbumVpAdapter(this)
+        binding.albumContentVp.adapter = albumVpAdapter
+        TabLayoutMediator(binding.albumContentTb,binding.albumContentVp){
+            tab ,position ->
+            tab.text =information[position]
+        }.attach()
 
         return binding.root
     }

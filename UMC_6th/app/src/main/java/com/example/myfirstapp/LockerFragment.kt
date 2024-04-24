@@ -5,15 +5,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.example.myfirstapp.databinding.FragmentLockerBinding
+import com.google.android.material.tabs.TabLayoutMediator
 
 class LockerFragment : Fragment() {
-    // 여기에 Fragment의 구현 내용을 작성합니다.
+    lateinit var binding: FragmentLockerBinding
+    private val information = arrayListOf("저장한 곡", "음악파일", "저장앨범")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // 여기에서 Fragment의 레이아웃을 인플레이트합니다.
-        return inflater.inflate(R.layout.fragment_locker, container, false)
+        binding = FragmentLockerBinding.inflate(inflater, container, false)
+
+        val lockerAdapter = LockerVPAdapter(this)
+        binding.lockerContentVp.adapter = lockerAdapter
+
+        TabLayoutMediator(binding.lockerContentTb, binding.lockerContentVp){
+                tab, position ->
+            tab.text = information[position]
+        }.attach()
+        return binding.root
+
     }
 }
