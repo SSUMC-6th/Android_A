@@ -13,42 +13,44 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
     lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setTheme(R.style.Theme_UMC_6th)
+        setTheme(R.style.SplashTheme)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val song = Song(binding.mainMiniplayerTitleTv.text.toString(),binding.mainMiniplayerSingerTv.text.toString())
-
-        binding.mainPlayerCl.setOnClickListener{
-            //startActivity(Intent(this,SongActivity::class.java))
-            val intent = Intent(this,SongActivity::class.java)
-            intent.putExtra("title",song.title)
-            intent.putExtra("singer",song.singer)
-            startActivity(intent)
-        }
-
         initBottomNavigation()
 
-        Log.d("Song",song.title+song.singer)
+        val song = Song(
+            binding.mainMiniplayerTitleTv.text.toString(),
+            binding.mainMiniplayerSingerTv.text.toString(),
+            0,
+            60,
+            false
+        )
 
-//        activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
-//            if (result.resultCode == RESULT_OK) {
-//                val data = result.data
-//                if (data != null) {
-//                    val message = data.getStringExtra("message")
-//                    Log.d("message", message!!)
-//                    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
-//                }
-//            }
-//        }
+        activityResultLauncher =
+            registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+                if (result.resultCode == RESULT_OK) {
+                    val data = result.data
+                    if (data != null) {
+                        val message = data.getStringExtra("message")
+                        Log.d("message", message!!)
+                        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                    }
+                }
+            }
 
-        binding.mainPlayerCl.setOnClickListener{
-            val intent = Intent(this,SongActivity::class.java)
-//            intent.putExtra("title",song.title)
-//            intent.putExtra("singer",song.singer)
-            startActivity(intent)
+        binding.mainPlayerCl.setOnClickListener {
+            val intent = Intent(this, SongActivity::class.java)
+            intent.putExtra("title", song.title)
+            intent.putExtra("singer", song.singer)
+            intent.putExtra("second", song.second)
+            intent.putExtra("playTime", song.playTime)
+            intent.putExtra("isPlaying", song.isPlaying)
+//            startActivity(intent)
+            activityResultLauncher.launch(intent)
         }
     }
 

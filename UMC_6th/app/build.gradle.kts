@@ -7,9 +7,9 @@ android {
     namespace = "com.example.umc_6th"
     compileSdk = 34
 
-
     buildFeatures{
         viewBinding = true
+        dataBinding = true
     }
     defaultConfig {
         applicationId = "com.example.umc_6th"
