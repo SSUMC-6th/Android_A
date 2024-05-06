@@ -79,6 +79,9 @@ class SongActivity : AppCompatActivity() {
 
 
     fun setPlayerStatus (isPlaying : Boolean){
+        song.isPlaying = isPlaying
+        timer.isPlaying = isPlaying
+
         if(isPlaying){ // 재생중
             binding.songMiniplayerIv.visibility = View.GONE
             binding.songPauseIv.visibility = View.VISIBLE
