@@ -15,6 +15,11 @@
           <theme>@style/Theme.UMC_6th</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/activity_splash.xml">
+        <config>
+          <theme>@style/Theme.UMC_6th</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_album.xml">
         <config>
           <theme>@style/Theme.UMC_6th</theme>
@@ -91,9 +96,17 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a0892f6-22ae-44d0-9c68-5f47b708a220" name="Changes" comment="[maro/#13] feat : 3주차 완성">
+    <list default="true" id="2a0892f6-22ae-44d0-9c68-5f47b708a220" name="Changes" comment="[maro/#13] fix : AlbumFragment.kt 수정">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-04-20__8_09__Changes_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-04-20__8_10__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-04-20_오후_8_09_[Changes]1/shelved.patch" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_2024-04-20_오후_8_10_[Changes]/shelved.patch" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SongActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SongActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/song.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/song.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/activity_song.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/activity_song.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +116,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\이수민\.android\avd\Pixel_3a_API_34_extension_level_7_x86_64.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\ì´ìë¯¼\.android\avd\Pixel_3a_API_34_extension_level_7_x86_64.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -130,11 +143,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="layoutResourceFile" />
         <option value="Kotlin Data Class" />
         <option value="Class" />
         <option value="resourceFile" />
         <option value="Kotlin Class" />
+        <option value="layoutResourceFile" />
       </list>
     </option>
   </component>
@@ -154,7 +167,7 @@
     </excluded-from-favorite>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="maro/#1" />
+        <entry key="$PROJECT_DIR$" value="maro/#13" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -198,28 +211,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
-    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;maro/#13&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/android/MARO_HW1/UMC_6th/app/src/main/res/drawable&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "git-widget-placeholder": "maro/#18",
+    "last_opened_file_path": "C:/android/MARO_HW1/UMC_6th/app/src/main/res/drawable",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "configurable.group.appearance"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File&quot;: [
-      &quot;HgIgnore&quot;,
-      &quot;GitIgnore&quot;
+  "keyToStringList": {
+    "com.intellij.ide.scratch.ScratchImplUtil$2/New Scratch File": [
+      "HgIgnore",
+      "GitIgnore"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\android\MARO_HW1\UMC_6th\app\src\main\res\drawable" />
@@ -663,7 +676,23 @@
       <option name="project" value="LOCAL" />
       <updated>1713619638120</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="[maro/#13] feat : 3주차 완성">
+      <option name="closed" value="true" />
+      <created>1713629487729</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1713629487729</updated>
+    </task>
+    <task id="LOCAL-00013" summary="[maro/#13] fix : AlbumFragment.kt 수정">
+      <option name="closed" value="true" />
+      <created>1713629535223</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1713629535223</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -699,6 +728,7 @@
     <MESSAGE value="[maro/#13] feat : ViewPager Background" />
     <MESSAGE value="[maro/#13] feat : ViewPager Indicator, CircleIndicator, Auto Slide" />
     <MESSAGE value="[maro/#13] feat : 3주차 완성" />
-    <option name="LAST_COMMIT_MESSAGE" value="[maro/#13] feat : 3주차 완성" />
+    <MESSAGE value="[maro/#13] fix : AlbumFragment.kt 수정" />
+    <option name="LAST_COMMIT_MESSAGE" value="[maro/#13] fix : AlbumFragment.kt 수정" />
   </component>
 </project>
