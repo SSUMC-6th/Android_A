@@ -40,10 +40,10 @@ class SongActivity : AppCompatActivity() {
 //        }
 
         binding.songMiniplayerIv.setOnClickListener{
-            setPlayerStatus(false)
+            setPlayerStatus(true)
         }
         binding.songPauseIv.setOnClickListener{
-            setPlayerStatus(true)
+            setPlayerStatus(false)
         }
     }
 
@@ -75,11 +75,11 @@ class SongActivity : AppCompatActivity() {
         timer.isPlaying = isPlaying
 
         if(isPlaying){
-            binding.songMiniplayerIv.visibility= View.VISIBLE
-            binding.songPauseIv.visibility = View.GONE
-        } else{
-            binding.songMiniplayerIv.visibility=View.GONE
+            binding.songMiniplayerIv.visibility= View.GONE
             binding.songPauseIv.visibility = View.VISIBLE
+        } else{
+            binding.songMiniplayerIv.visibility=View.VISIBLE
+            binding.songPauseIv.visibility = View.GONE
         }
     }
 
