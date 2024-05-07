@@ -45,5 +45,24 @@ class SongActivity : AppCompatActivity() {
             setResult(Activity.RESULT_OK, returnIntent)
             finish()
         }
+        startTimer(60) // 미리듣기 1분
+    }
+    private fun startTimer(totalSeconds: Int) {
+        var elapsedSeconds = 0
+        Thread {
+            while (elapsedSeconds <= totalSeconds) {
+                val minutes = elapsedSeconds / 60
+                val seconds = elapsedSeconds % 6
+
+                runOnUiThread { // 메인 스레드에서 UI 업데이트
+                    binding.txSongBarStartTime.text = String.format("%02d:%02d", minutes, seconds)
+                }
+                Thread.sleep(1000)  // 1초 대기
+                elapsedSeconds++
+            }
+            runOnUiThread {
+                binding.txSongBarStartTime.text = "미리듣기는 1분입니다"
+            }
+        }.start()
     }
 }
