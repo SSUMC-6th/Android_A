@@ -4,12 +4,9 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.example.myfirstapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -19,13 +16,14 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setTheme(R.style.Theme_MyApplication)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
         setBottomNavigationView()
 
         //MainActivity에서 SongActivity로 데이터 값 넘기기 위한 변수명 지정
-        val song = Song(binding.mainPlayTitleTv.text.toString(), binding.mainPlaySingerTv.text.toString())
+        val song = Song(binding.mainPlayTitleTv.text.toString(), binding.mainPlaySingerTv.text.toString(),0,60,false)
 
         //SongActivity에서 Mainactivity로 데이터 넘긴거 받고 가수명과 노래 제목 toast로 출력
         activityResultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -43,6 +41,9 @@ class MainActivity : AppCompatActivity() {
             val intent = Intent(this, SongActivity::class.java)
             intent.putExtra("title", song.title)
             intent.putExtra("singer",song.singer)
+            intent.putExtra("second",song.second)
+            intent.putExtra("playTime",song.playTime)
+            intent.putExtra("isPlaying",song.isPlaying)
             activityResultLauncher.launch(intent)
         }
 

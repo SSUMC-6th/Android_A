@@ -148,6 +148,9 @@
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
         android:layout_marginTop="10dp"
+        android:background="@null"
+        android:paddingStart="0dp"
+        android:paddingEnd="0dp"
         android:progressTint="@color/song_player"
         android:progressBackgroundTint="@color/song_player_bg"
         android:progress="0"
@@ -198,13 +201,13 @@
             android:src="@drawable/btn_miniplayer_previous"/>
 
         <ImageView
-            android:id="@+id/song_miniplayer_play_iv"
+            android:id="@+id/song_miniplayer_pause_iv"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/btn_miniplayer_play"/>
 
         <ImageView
-            android:id="@+id/song_miniplayer_pause_iv"
+            android:id="@+id/song_miniplayer_play_iv"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:src="@drawable/btn_miniplay_mvpause"
