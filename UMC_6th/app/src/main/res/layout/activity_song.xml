@@ -169,7 +169,7 @@
 
     <View
         android:id="@+id/viewSongBarBlue"
-        android:layout_width="35dp"
+        android:layout_width="1dp"
         android:layout_height="2dp"
         android:layout_marginStart="20dp"
         android:background="@color/flo"
@@ -181,7 +181,7 @@
         android:id="@+id/txSongBarStartTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="00:08"
+        android:text="00:00"
         android:textColor="@color/flo"
         app:layout_constraintStart_toStartOf="@+id/viewSongBar"
         app:layout_constraintTop_toBottomOf="@+id/viewSongBar" />
