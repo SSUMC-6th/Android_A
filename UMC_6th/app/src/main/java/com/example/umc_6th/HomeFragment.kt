@@ -1,5 +1,6 @@
 package com.example.umc_6th
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -13,6 +14,9 @@ import java.util.Timer
 import java.util.TimerTask
 import android.os.Handler
 import android.os.Looper
+import android.widget.Button
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 
 class HomeFragment : Fragment() {
 
@@ -60,6 +64,37 @@ class HomeFragment : Fragment() {
 
         binding.homePannelIndicator.setViewPager(binding.homePannelBackgroundVp)
 
+        binding.homePannelBtnMemoIv.setOnClickListener {
+            val intent = Intent(requireActivity(), MemoActivity::class.java)
+            val activity = requireActivity() // fragment에서 SharedPreferences에 접근하려면 context가 필요함.
+            val sharedPreferences = activity.getSharedPreferences("memo", AppCompatActivity.MODE_PRIVATE)
+            val tempMemo = sharedPreferences.getString("tempMemo", null)
+
+            if(tempMemo != null) {
+                val dialogView = LayoutInflater.from(activity).inflate(R.layout.dialog, null)
+                val builder = AlertDialog.Builder(activity)
+                    .setView(dialogView)
+                    .setTitle("메모 복원하기")
+
+                val alertDialog = builder.show()
+                val yesBtn = alertDialog.findViewById<Button>(R.id.yes)
+                val noBtn = alertDialog.findViewById<Button>(R.id.no)
+
+                yesBtn!!.setOnClickListener {
+                    startActivity(intent)
+                }
+
+                noBtn!!.setOnClickListener {
+                    val editor = sharedPreferences.edit()
+                    editor.remove("tempMemo")
+                    editor.apply()
+                    startActivity(intent)
+                }
+
+            } else {
+                startActivity(intent)
+            }
+        }
         return binding.root
     }
 
