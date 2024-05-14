@@ -49,6 +49,7 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
     implementation ("androidx.fragment:fragment-ktx:1.6.2")
     implementation ("me.relex:circleindicator:2.1.6")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")  //gson
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)

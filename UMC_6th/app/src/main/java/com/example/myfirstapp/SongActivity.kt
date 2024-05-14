@@ -1,12 +1,14 @@
 package com.example.myfirstapp
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.myfirstapp.databinding.ActivitySongBinding
+import com.google.gson.Gson
 
 class SongActivity : AppCompatActivity() {
 
@@ -14,6 +16,8 @@ class SongActivity : AppCompatActivity() {
     private var isColorChanged = false
     lateinit var song : Song
     lateinit var timer: Timer
+    private var mediaPlayer: MediaPlayer? = null
+    private var gson: Gson = Gson()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,23 +27,12 @@ class SongActivity : AppCompatActivity() {
         initSong()
         setPlayer(song)
 
-        var title : String? = null
-        var singer : String? = null
 
-        //MainActivity에서 SongActivity로 넘긴 데이터 값 받는 곳
-        if(intent.hasExtra("title")&&intent.hasExtra("singer")){
-            binding.songMusicTitleTv.text = intent.getStringExtra("title")
-            binding.songMusicSingerTv.text = intent.getStringExtra("singer")
-        }
+      //songDownIb를 누르면 songActivity 종료
 
-        //SongActivity에서 Mainactivity로 데이터 넘기는 곳
-        //songDownIb를 누르면 intent가 넘어감
-        binding.songDownIb.setOnClickListener {
-            val intent = Intent(this, MainActivity::class.java)
-            intent.putExtra("message", title + " _ " + singer)
-            setResult(RESULT_OK, intent)
-            finish()
-        }
+       binding.songDownIb.setOnClickListener {
+           finish()
+       }
 
         binding.songMiniplayerPlayIv.setOnClickListener{
             setPlayerStatus(false)
@@ -69,10 +62,6 @@ class SongActivity : AppCompatActivity() {
         }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
-        timer.interrupt()
-    }
     private fun initSong() {
         if(intent.hasExtra("title") && intent.hasExtra("singer")) {
             song = Song(
@@ -80,39 +69,37 @@ class SongActivity : AppCompatActivity() {
                 intent.getStringExtra("singer")!!,
                 intent.getIntExtra("second", 0),
                 intent.getIntExtra("playTime", 0),
-                intent.getBooleanExtra("isPlaying", false)
+                intent.getBooleanExtra("isPlaying", false),
+                intent.getStringExtra("music")!!
             )
         }
         startTimer()
     }
-    private fun setPlayer(song: Song){
-        binding.songMusicTitleTv.text = intent.getStringExtra("title")
-        binding.songMusicSingerTv.text = intent.getStringExtra("singer")
-        binding.songStartTimeTv.text = String.format("%02d:%02d",song.second / 60, song.second % 60)
-        binding.songEndTimeTv.text = String.format("%02d:%02d",song.playTime / 60, song.playTime % 60)
-        binding.songSeekbarSb.progress = (song.second *1000 /song.playTime)
+    private fun setPlayer(song : Song) {
+        binding.songMusicTitleTv.text = intent.getStringExtra("title")!!
+        binding.songMusicSingerTv.text = intent.getStringExtra("singer")!!
+        binding.songStartTimeTv.text = String.format("%02d:%02d", song.second / 60, song.second % 60)
+        binding.songEndTimeTv.text = String.format("%02d:%02d", song.playTime / 60, song.playTime % 60)
+        binding.songSeekbarSb.progress = (song.second * 1000 / song.playTime)
 
+        val music = resources.getIdentifier(song.music, "raw", this.packageName)
+        mediaPlayer = MediaPlayer.create(this, music)
         setPlayerStatus(song.isPlaying)
     }
-
-//    override fun onBackPressed() {
-//        super.onBackPressed()
-//        val intent = Intent(this, MainActivity::class.java)
-//        intent.putExtra("message", "뒤로가기 버튼 클릭")
-//        setResult(RESULT_OK, intent)
-//        finish()
-//    }
-
     fun setPlayerStatus(isPlaying : Boolean){
         song.isPlaying = isPlaying
         timer.isPlaying = isPlaying
         if(isPlaying){ //재생중
             binding.songMiniplayerPlayIv.visibility = View.VISIBLE
             binding.songMiniplayerPauseIv.visibility = View.GONE
+            mediaPlayer?.start()
         }
         else{ //일시정지
             binding.songMiniplayerPlayIv.visibility = View.GONE
             binding.songMiniplayerPauseIv.visibility = View.VISIBLE
+            if(mediaPlayer?.isPlaying == true) {  //재생중이 아닐 때 정지하면 오류 발생 가능
+                mediaPlayer?.pause()
+            }
         }
     }
 
@@ -153,4 +140,23 @@ class SongActivity : AppCompatActivity() {
         }
 
     }
+    //사용자가 포커스를 잃었을 때 음악이 중지
+    override fun onPause() {
+        super.onPause()
+        setPlayerStatus(false)
+        song.second = ((binding.songSeekbarSb.progress * song.playTime)/100)/1000
+        val sharedPreferences = getSharedPreferences("song", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        val songJson = gson.toJson(song)
+        editor.putString("songData",songJson)
+        editor.apply()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        timer.interrupt()
+        mediaPlayer?.release()
+        mediaPlayer = null
+    }
+
 }
