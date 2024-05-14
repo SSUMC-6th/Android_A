@@ -167,11 +167,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layoutSongLike" />
 
-    <View
+    <SeekBar
         android:id="@+id/viewSongBarBlue"
         android:layout_width="1dp"
         android:layout_height="2dp"
         android:layout_marginStart="20dp"
+        android:progress="0"
+        android:max="100000"
         android:background="@color/flo"
         app:layout_constraintBottom_toBottomOf="@+id/viewSongBar"
         app:layout_constraintStart_toStartOf="parent"
