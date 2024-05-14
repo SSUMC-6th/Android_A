@@ -17,11 +17,11 @@
     <SeekBar
         android:id="@+id/main_miniplayer_progress_sb"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="10dp"
         android:background="@null"
         android:paddingEnd="0dp"
         android:paddingStart="0dp"
-        android:layout_marginBottom="-3dp"
+        android:layout_marginBottom="-4dp"
         android:progressBackgroundTint="@color/song_player_bg"
         android:progressTint="@color/song_player"
         android:progress="0"
