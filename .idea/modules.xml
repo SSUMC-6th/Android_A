@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/UMC_6th.iml" filepath="$PROJECT_DIR$/.idea/modules/UMC_6th.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/UMC_6th.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/UMC_6th.app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/UMC_6th.app.androidTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/UMC_6th.app.androidTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/UMC_6th.app.main.iml" filepath="$PROJECT_DIR$/.idea/modules/app/UMC_6th.app.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/UMC_6th.app.unitTest.iml" filepath="$PROJECT_DIR$/.idea/modules/app/UMC_6th.app.unitTest.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/UMC_6th.lib.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/UMC_6th.lib.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/myapplication/UMC_6th.myapplication.iml" filepath="$PROJECT_DIR$/.idea/modules/myapplication/UMC_6th.myapplication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/Android_A.iml" filepath="$PROJECT_DIR$/.idea/Android_A.iml" />
     </modules>
   </component>
 </project>

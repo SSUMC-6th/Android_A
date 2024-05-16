@@ -87,16 +87,11 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.fragment_search -> {
-                    // MemoActivity 시작
-                    val intent = Intent(this, MemoActivity::class.java)
-                    startActivity(intent)
-                    true
-                    /* search fragment
                     supportFragmentManager.beginTransaction().replace(
                         R.id.main_container,
                         SearchFragment()
                     ).commit()
-                    */
+
                     true
                 }
                 R.id.fragment_locker -> {
