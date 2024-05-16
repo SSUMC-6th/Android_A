@@ -26,6 +26,8 @@ class MainActivity : AppCompatActivity() {
             if (result.resultCode == Activity.RESULT_OK) {
                 val albumTitle = result.data?.getStringExtra("albumTitle") ?: "No Title Provided"
                 Toast.makeText(this, albumTitle, Toast.LENGTH_LONG).show()
+                val elapsedSeconds = result.data?.getIntExtra("elapsedSeconds", 0) ?: 0
+                updateSeekBar(elapsedSeconds)
             }
         }
 
@@ -42,7 +44,28 @@ class MainActivity : AppCompatActivity() {
             resultLauncher.launch(intent)
         }
 
+        setupButtonListeners()
+    }
 
+    private fun setupButtonListeners() {
+        binding.btnMainStart.setOnClickListener {
+            if (binding.mainSeekBar.isEnabled) {
+                binding.mainSeekBar.isEnabled = false
+            } else {
+                binding.mainSeekBar.isEnabled = true
+            }
+        }
+
+        binding.layoutPlayContainer.setOnClickListener {
+            val intent = Intent(this, SongActivity::class.java)
+            resultLauncher.launch(intent)
+        }
+    }
+
+    private fun updateSeekBar(elapsedSeconds: Int) {
+        val max = binding.mainSeekBar.max
+        val progress = elapsedSeconds * max / 60
+        binding.mainSeekBar.progress = progress
     }
 
 
@@ -68,6 +91,7 @@ class MainActivity : AppCompatActivity() {
                         R.id.main_container,
                         SearchFragment()
                     ).commit()
+
                     true
                 }
                 R.id.fragment_locker -> {

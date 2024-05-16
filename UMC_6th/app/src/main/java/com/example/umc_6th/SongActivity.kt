@@ -19,6 +19,8 @@ class SongActivity : AppCompatActivity() {
     @Volatile private var isTimerRunning: Boolean = false
     private var elapsedSeconds = 0
     private val totalSeconds = 60
+    //한곡재생
+    @Volatile private var isRepeatOne: Boolean = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,6 +39,7 @@ class SongActivity : AppCompatActivity() {
         binding.imgSongDown.setOnClickListener {
             val returnIntent = Intent().apply {
                 putExtra("albumTitle", "LILAC")
+                putExtra("elapsedSeconds", elapsedSeconds)
             }
             setResult(Activity.RESULT_OK, returnIntent)
             finish()
@@ -80,6 +83,18 @@ class SongActivity : AppCompatActivity() {
             binding.imgSongPlayBtn.visibility = View.VISIBLE
             binding.imgSongPlayPauseBtn.visibility = View.GONE
         }
+
+        binding.imgSongRepeat.setOnClickListener {
+            isRepeatOne = !isRepeatOne //반복 재생 상태
+            if (!isRepeatOne) {
+                binding.imgSongRepeat.setColorFilter(
+                    ContextCompat.getColor(this, R.color.flo),
+                    PorterDuff.Mode.SRC_IN
+                )
+            } else {
+                binding.imgSongRepeat.clearColorFilter()
+            }
+        }
     }
 
     private fun startOrResumeTimer() {
@@ -91,18 +106,30 @@ class SongActivity : AppCompatActivity() {
     private fun startTimer(totalSeconds: Int) {
         timerThread = Thread {
             while (elapsedSeconds <= totalSeconds && isTimerRunning) {
-                val minutes = elapsedSeconds / 60
-                val seconds = elapsedSeconds % 60
-                val newWidth = maxBarWidth * elapsedSeconds / totalSeconds
-                runOnUiThread {
-                    val layoutParams = binding.viewSongBarBlue.layoutParams
-                    layoutParams.width = newWidth
-                    binding.viewSongBarBlue.layoutParams = layoutParams
-                    binding.txSongBarStartTime.text = String.format("%02d:%02d", minutes, seconds)
-                }
+                updateUI()
                 Thread.sleep(1000)
                 elapsedSeconds++
+                if (elapsedSeconds > totalSeconds) {
+                    if (isRepeatOne) { // 반복 재생 상태일 때
+                        elapsedSeconds = 0  // 시간을 초기화하고
+                        updateUI()  // UI를 초기 상태로 갱신
+                        continue  // 반복
+                    }
+                    break  // 반복 재생이 아닐 때는 중지
+                }
             }
         }.apply { start() }
+    }
+
+    private fun updateUI() {
+        val minutes = elapsedSeconds / 60
+        val seconds = elapsedSeconds % 60
+        val newWidth = maxBarWidth * elapsedSeconds / totalSeconds
+        runOnUiThread {
+            val layoutParams = binding.viewSongBarBlue.layoutParams
+            layoutParams.width = newWidth
+            binding.viewSongBarBlue.layoutParams = layoutParams
+            binding.txSongBarStartTime.text = String.format("%02d:%02d", minutes, seconds)
+        }
     }
 }
