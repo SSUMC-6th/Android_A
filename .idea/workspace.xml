@@ -10,7 +10,22 @@
           <theme>@style/Theme.UMC_6th</theme>
         </config>
       </layout>
+      <layout url="file://$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/activity_memo.xml">
+        <config>
+          <theme>@style/Theme.UMC_6th</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/activity_memo_check.xml">
+        <config>
+          <theme>@style/Theme.UMC_6th</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/activity_song.xml">
+        <config>
+          <theme>@style/Theme.UMC_6th</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/dialog.xml">
         <config>
           <theme>@style/Theme.UMC_6th</theme>
         </config>
@@ -91,9 +106,14 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a0892f6-22ae-44d0-9c68-5f47b708a220" name="Changes" comment="[maro/#18] feat : Splash 화면 Theme으로 구현">
+    <list default="true" id="2a0892f6-22ae-44d0-9c68-5f47b708a220" name="Changes" comment="[maro/#23] feat :: 5주차 구현 완료 But Memo 실행 안 됨 이슈 발생">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SongActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SongActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/HomeFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/MemoActivity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/MemoCheckActivity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/activity_memo.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/dialog.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,7 +123,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\이수민\.android\avd\Pixel_3a_API_34_extension_level_7_x86_64.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\ì´ìë¯¼\.android\avd\Pixel_3a_API_34_extension_level_7_x86_64.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -131,10 +151,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Data Class" />
+        <option value="resourceFile" />
         <option value="Class" />
         <option value="Kotlin Class" />
         <option value="layoutResourceFile" />
-        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -154,7 +174,7 @@
     </excluded-from-favorite>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="maro/#13" />
+        <entry key="$PROJECT_DIR$" value="maro/#18" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -170,6 +190,7 @@
     <option name="branchProtectionPatterns">
       <list>
         <option value=".*.*\/.*.*" />
+        <option value="main" />
       </list>
     </option>
   </component>
@@ -185,7 +206,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="ProjectErrors" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -206,7 +227,7 @@
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;maro/#18&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;maro/#23&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/android/MARO_HW1/UMC_6th/app/src/main/res/drawable&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.17&quot;,
@@ -227,6 +248,7 @@
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\android\MARO_HW1\UMC_6th\app\src\main\res\drawable" />
+      <recent name="C:\android\MARO_HW1\UMC_6th\app\src\main\res\raw" />
     </key>
   </component>
   <component name="RunManager" selected="Android App.app">
@@ -695,7 +717,31 @@
       <option name="project" value="LOCAL" />
       <updated>1715005497177</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="[maro/#18] feat : 4주차 구현 완료">
+      <option name="closed" value="true" />
+      <created>1715019385821</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1715019385821</updated>
+    </task>
+    <task id="LOCAL-00017" summary="[maro/#23] feat :: 5주차 구현 완료 But Memo 실행 안 됨 이슈 발생">
+      <option name="closed" value="true" />
+      <created>1715506349430</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1715506349430</updated>
+    </task>
+    <task id="LOCAL-00018" summary="[maro/#23] feat :: 5주차 구현 완료 But Memo 실행 안 됨 이슈 발생">
+      <option name="closed" value="true" />
+      <created>1715506370734</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1715506370734</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -734,6 +780,8 @@
     <MESSAGE value="[maro/#13] fix : AlbumFragment.kt 수정" />
     <MESSAGE value="[maro/#18] feat : Timer seekBar 오류 &amp;&amp; Splash 화면 Handler로 구현" />
     <MESSAGE value="[maro/#18] feat : Splash 화면 Theme으로 구현" />
-    <option name="LAST_COMMIT_MESSAGE" value="[maro/#18] feat : Splash 화면 Theme으로 구현" />
+    <MESSAGE value="[maro/#18] feat : 4주차 구현 완료" />
+    <MESSAGE value="[maro/#23] feat :: 5주차 구현 완료 But Memo 실행 안 됨 이슈 발생" />
+    <option name="LAST_COMMIT_MESSAGE" value="[maro/#23] feat :: 5주차 구현 완료 But Memo 실행 안 됨 이슈 발생" />
   </component>
 </project>
