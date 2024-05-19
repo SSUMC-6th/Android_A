@@ -12,6 +12,7 @@ import androidx.fragment.app.setFragmentResult
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.umc_6th.databinding.FragmentHomeBinding
+import com.google.gson.Gson
 import java.util.ArrayList
 import java.util.Timer
 import java.util.TimerTask
@@ -54,10 +55,8 @@ class HomeFragment : Fragment() {
         binding.homeTodayMusicAlbumRv.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
 
         albumRVAdapter.setMyItemClickListener(object : AlbumRVAdapter.MyItemClickListener{
-            override fun onItemClick() {
-                (context as MainActivity).supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_frm,AlbumFragment())
-                    .commitAllowingStateLoss()
+            override fun onItemClick(album: Album) {
+                changeAlbumFragment(album)
             }
         })
 
@@ -83,6 +82,19 @@ class HomeFragment : Fragment() {
 
         return binding.root
     }
+
+    private fun changeAlbumFragment(album: Album) {
+        (context as MainActivity).supportFragmentManager.beginTransaction()
+            .replace(R.id.main_frm, AlbumFragment().apply {
+                arguments = Bundle().apply {
+                    val gson = Gson()
+                    val albumJson = gson.toJson(album)
+                    putString("album", albumJson)
+                }
+            })
+            .commitAllowingStateLoss()
+    }
+
     private fun autoSlide(adapter: BannerVPAdapter) {
         timer.scheduleAtFixedRate(object : TimerTask() {
             override fun run() {

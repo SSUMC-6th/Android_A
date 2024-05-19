@@ -5,10 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.umc_6th.databinding.ItemAlbumBinding
 
-class AlbumRVAdapter(private val albumlist:ArrayList<Album>) : RecyclerView.Adapter<AlbumRVAdapter.ViewHolder>() {
+class AlbumRVAdapter(private val albumList:ArrayList<Album>) : RecyclerView.Adapter<AlbumRVAdapter.ViewHolder>() {
 
     interface MyItemClickListener{
-        fun onItemClick()
+        fun onItemClick(album: Album)
     }
 
     private lateinit var mItemClickListener : MyItemClickListener
@@ -23,13 +23,13 @@ class AlbumRVAdapter(private val albumlist:ArrayList<Album>) : RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: AlbumRVAdapter.ViewHolder, position: Int) {
-        holder.bind(albumlist[position])
+        holder.bind(albumList[position])
         holder.itemView.setOnClickListener{
-            mItemClickListener.onItemClick()
+            mItemClickListener.onItemClick(albumList[position])
         }
     }
 
-    override fun getItemCount(): Int  = albumlist.size
+    override fun getItemCount(): Int  = albumList.size
 
     inner class ViewHolder(val binding:ItemAlbumBinding): RecyclerView.ViewHolder(binding.root){
         fun bind(album: Album){
