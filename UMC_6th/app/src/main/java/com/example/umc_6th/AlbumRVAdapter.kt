@@ -7,6 +7,15 @@ import com.example.umc_6th.databinding.ItemAlbumBinding
 
 class AlbumRVAdapter(private val albumlist:ArrayList<Album>) : RecyclerView.Adapter<AlbumRVAdapter.ViewHolder>() {
 
+    interface MyItemClickListener{
+        fun onItemClick()
+    }
+
+    private lateinit var mItemClickListener : MyItemClickListener
+    fun setMyItemClickListener(itemClickListener: MyItemClickListener){
+        mItemClickListener = itemClickListener
+    }
+
     override fun onCreateViewHolder(viewGroup: ViewGroup, viewType: Int): AlbumRVAdapter.ViewHolder {
         val binding: ItemAlbumBinding = ItemAlbumBinding.inflate(LayoutInflater.from(viewGroup.context),viewGroup,false)
 
@@ -15,6 +24,9 @@ class AlbumRVAdapter(private val albumlist:ArrayList<Album>) : RecyclerView.Adap
 
     override fun onBindViewHolder(holder: AlbumRVAdapter.ViewHolder, position: Int) {
         holder.bind(albumlist[position])
+        holder.itemView.setOnClickListener{
+            mItemClickListener.onItemClick()
+        }
     }
 
     override fun getItemCount(): Int  = albumlist.size
