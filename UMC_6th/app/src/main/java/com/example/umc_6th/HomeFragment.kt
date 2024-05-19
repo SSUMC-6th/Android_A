@@ -58,6 +58,9 @@ class HomeFragment : Fragment() {
             override fun onItemClick(album: Album) {
                 changeAlbumFragment(album)
             }
+            override fun onRemoveAlbum(position: Int) {
+                albumRVAdapter.removeItem(position)
+            }
         })
 
         val bannerAdapter = BannerVPAdapter(this)
