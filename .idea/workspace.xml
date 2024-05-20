@@ -96,11 +96,11 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a0892f6-22ae-44d0-9c68-5f47b708a220" name="Changes" comment="[maro/#23] feat :: 5주차 구현 완료, Memo 삭제">
+    <list default="true" id="2a0892f6-22ae-44d0-9c68-5f47b708a220" name="Changes" comment="[maro/#28] feat :: RecyclerView item">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/AlbumFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/AlbumFragment.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/HomeFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/item_album.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/item_album.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_album.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_album.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +110,7 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\이수민\.android\avd\Pixel_3a_API_34_extension_level_7_x86_64.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\ì´ìë¯¼\.android\avd\Pixel_3a_API_34_extension_level_7_x86_64.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -737,7 +737,15 @@
       <option name="project" value="LOCAL" />
       <updated>1715784614776</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="[maro/#28] feat :: RecyclerView item">
+      <option name="closed" value="true" />
+      <created>1716170497553</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1716170497553</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -779,6 +787,7 @@
     <MESSAGE value="[maro/#18] feat : 4주차 구현 완료" />
     <MESSAGE value="[maro/#23] feat :: 5주차 구현 완료 But Memo 실행 안 됨 이슈 발생" />
     <MESSAGE value="[maro/#23] feat :: 5주차 구현 완료, Memo 삭제" />
-    <option name="LAST_COMMIT_MESSAGE" value="[maro/#23] feat :: 5주차 구현 완료, Memo 삭제" />
+    <MESSAGE value="[maro/#28] feat :: RecyclerView item" />
+    <option name="LAST_COMMIT_MESSAGE" value="[maro/#28] feat :: RecyclerView item" />
   </component>
 </project>

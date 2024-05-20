@@ -18,6 +18,7 @@ import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.gson.Gson
 
 class HomeFragment : Fragment() {
 
@@ -36,6 +37,8 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
 
     ): View? {
+        binding = FragmentHomeBinding.inflate(inflater, container, false)
+
         albumDatas.apply {
             add(Album("Butter", "방탄소년단 (BTS)", R.drawable.img_album_exp))
             add(Album("Lilac", "아이유 (IU)", R.drawable.img_album_exp2))
@@ -48,8 +51,6 @@ class HomeFragment : Fragment() {
         val albumRVAdapter = AlbumRVAdapter(albumDatas)
         binding.homeTodayMusicAlbumRv.adapter = albumRVAdapter
         binding.homeTodayMusicAlbumRv.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
-
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         val bannerAdapter = BannerVPAdapter(this)
         bannerAdapter.addFragment(BannerFragment(R.drawable.img_home_viewpager_exp))
@@ -71,7 +72,25 @@ class HomeFragment : Fragment() {
 
         binding.homePannelIndicator.setViewPager(binding.homePannelBackgroundVp)
 
+        albumRVAdapter.setItemClickListener(object : AlbumRVAdapter.OnItemClickListener {
+            override fun onItemClick(album : Album) {
+                changeToAlbumFragment(album)
+            }
+        })
+
         return binding.root
+    }
+
+    private fun changeToAlbumFragment(album: Album) {
+        (context as MainActivity).supportFragmentManager.beginTransaction()
+            .replace(R.id.main_frm, AlbumFragment().apply {
+                arguments = Bundle().apply {
+                    val gson = Gson()
+                    val albumToJson = gson.toJson(album)
+                    putString("album", albumToJson)
+                }
+            })
+            .commitAllowingStateLoss()
     }
 
     private fun autoSlide(adapter: BannerVPAdapter) {
