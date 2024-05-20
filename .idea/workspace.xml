@@ -106,13 +106,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a0892f6-22ae-44d0-9c68-5f47b708a220" name="Changes" comment="[maro/#28] feat &amp;&amp; fix :: 앨범 상세 정보 개발 &amp;&amp; 앱 꺼짐 에러 수정">
+    <list default="true" id="2a0892f6-22ae-44d0-9c68-5f47b708a220" name="Changes" comment="[maro/#28] feat :: 보관함 개발">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/LockerFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/LockerFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/LockerVPAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/LockerVPAdapter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SavedSongFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SavedSongFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_locker.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_locker.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_saved_song.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_saved_song.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -765,7 +761,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716172521692</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="[maro/#28] feat :: 보관함 개발">
+      <option name="closed" value="true" />
+      <created>1716178932335</created>
+      <option name="number" value="00022" />
+      <option name="presentableId" value="LOCAL-00022" />
+      <option name="project" value="LOCAL" />
+      <updated>1716178932335</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -809,6 +813,7 @@
     <MESSAGE value="[maro/#23] feat :: 5주차 구현 완료, Memo 삭제" />
     <MESSAGE value="[maro/#28] feat :: RecyclerView item" />
     <MESSAGE value="[maro/#28] feat &amp;&amp; fix :: 앨범 상세 정보 개발 &amp;&amp; 앱 꺼짐 에러 수정" />
-    <option name="LAST_COMMIT_MESSAGE" value="[maro/#28] feat &amp;&amp; fix :: 앨범 상세 정보 개발 &amp;&amp; 앱 꺼짐 에러 수정" />
+    <MESSAGE value="[maro/#28] feat :: 보관함 개발" />
+    <option name="LAST_COMMIT_MESSAGE" value="[maro/#28] feat :: 보관함 개발" />
   </component>
 </project>
