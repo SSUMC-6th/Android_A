@@ -20,7 +20,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.Gson
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), CommunicationInterface {
 
     lateinit var binding : FragmentHomeBinding
 
@@ -31,6 +31,13 @@ class HomeFragment : Fragment() {
         super.onCreate(savedInstanceState)
     }
     private var albumDatas = ArrayList<Album>()
+
+    override fun sendData(album: Album) {
+        if(activity is MainActivity) {
+            val activity = activity as MainActivity
+            activity.updateMainPlayerCl(album)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -51,6 +58,7 @@ class HomeFragment : Fragment() {
         val albumRVAdapter = AlbumRVAdapter(albumDatas)
         binding.homeTodayMusicAlbumRv.adapter = albumRVAdapter
         binding.homeTodayMusicAlbumRv.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+
 
         val bannerAdapter = BannerVPAdapter(this)
         bannerAdapter.addFragment(BannerFragment(R.drawable.img_home_viewpager_exp))
@@ -74,14 +82,18 @@ class HomeFragment : Fragment() {
 
         albumRVAdapter.setItemClickListener(object : AlbumRVAdapter.OnItemClickListener {
             override fun onItemClick(album : Album) {
-                changeToAlbumFragment(album)
+                changeAlbumFragment(album)
+            }
+
+            override fun onPlayAlbum(album: Album) {
+                sendData(album)
             }
         })
 
         return binding.root
     }
 
-    private fun changeToAlbumFragment(album: Album) {
+    private fun changeAlbumFragment(album: Album) {
         (context as MainActivity).supportFragmentManager.beginTransaction()
             .replace(R.id.main_frm, AlbumFragment().apply {
                 arguments = Bundle().apply {
