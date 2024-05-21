@@ -15,6 +15,7 @@ class MainActivity : AppCompatActivity() {
     lateinit var binding : ActivityMainBinding
     lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
 
+
     private var song:Song = Song()
     private var gson: Gson = Gson()
 
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setBottomNavigationView()
+
 
 //        MainActivity에서 SongActivity로 데이터 값 넘기기 위한 변수명 지정
 //        val song = Song(binding.mainPlayTitleTv.text.toString(), binding.mainPlaySingerTv.text.toString(),0,60,false,"music_lilac")
