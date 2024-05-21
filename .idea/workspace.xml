@@ -106,8 +106,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a0892f6-22ae-44d0-9c68-5f47b708a220" name="Changes" comment="[maro/#28] feat :: 선택 앨범 정보로 변경 실패">
+    <list default="true" id="2a0892f6-22ae-44d0-9c68-5f47b708a220" name="Changes" comment="[maro/#28] feat :: 파일 추가">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/AlbumRVAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/AlbumRVAdapter.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -786,7 +787,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716187165248</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="[maro/#28] feat :: 파일 추가">
+      <option name="closed" value="true" />
+      <created>1716286338161</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1716286338161</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -833,6 +842,7 @@
     <MESSAGE value="[maro/#28] feat :: 보관함 개발" />
     <MESSAGE value="[maro/#28] feat &amp;&amp; fix :: 보관함 switch on/off 에러 해결 &amp;&amp; 삭제 기능 추가" />
     <MESSAGE value="[maro/#28] feat :: 선택 앨범 정보로 변경 실패" />
-    <option name="LAST_COMMIT_MESSAGE" value="[maro/#28] feat :: 선택 앨범 정보로 변경 실패" />
+    <MESSAGE value="[maro/#28] feat :: 파일 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="[maro/#28] feat :: 파일 추가" />
   </component>
 </project>
