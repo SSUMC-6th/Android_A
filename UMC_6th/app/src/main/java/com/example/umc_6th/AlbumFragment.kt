@@ -11,9 +11,11 @@ import com.example.umc_6th.databinding.FragmentAlbumBinding
 import com.example.umc_6th.databinding.FragmentAlbumBinding.inflate
 import com.example.umc_6th.databinding.FragmentSongBinding
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.gson.Gson
 
 class AlbumFragment : Fragment() {
     lateinit var binding: FragmentAlbumBinding
+    private var gson : Gson = Gson()
 
     private  val information = arrayListOf("수록곡","상세정보","영상")
     override fun onCreateView(
@@ -21,7 +23,12 @@ class AlbumFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = inflate(inflater,container,false)
+        binding = FragmentAlbumBinding.inflate(inflater,container,false)
+
+        val albumToJson = arguments?.getString("album")
+        val album = gson.fromJson(albumToJson, Album::class.java)
+        setInit(album)
+
         binding.albumBackIv.setOnClickListener{
             (context as MainActivity).supportFragmentManager.beginTransaction().
             replace(R.id.main_frm,HomeFragment()).
@@ -33,10 +40,10 @@ class AlbumFragment : Fragment() {
 
 
         setFragmentResultListener("TitleInfo") { requestKey, bundle ->
-            binding.albumTitleTv.text = bundle.getString("title")
+            binding.albumMusicTitleTv.text = bundle.getString("title")
         }
         setFragmentResultListener("SingerInfo") { requestKey, bundle ->
-            binding.albumSingerTv.text = bundle.getString("singer")
+            binding.albumSingerNameTv.text = bundle.getString("singer")
         }
 
         TabLayoutMediator(binding.albumContentTb,binding.albumContentVp){
@@ -46,4 +53,11 @@ class AlbumFragment : Fragment() {
 
         return binding.root
     }
+
+    private fun setInit(album : Album) {
+        binding.albumAlbumIv.setImageResource(album.coverImage!!)
+        binding.albumMusicTitleTv.text = album.title.toString()
+        binding.albumSingerNameTv.text = album.singer.toString()
+    }
+
 }
