@@ -10,6 +10,11 @@ class AlbumRVAdapter(private val albumList:ArrayList<Album>) : RecyclerView.Adap
     interface MyItemClickListener{
         fun onItemClick(album: Album)
         fun onRemoveAlbum(position: Int)
+        fun onPlayAlbum(album: Album)
+    }
+
+    interface CommunicationInterface{
+        fun sendData(album: Album)
     }
 
     private lateinit var mItemClickListener : MyItemClickListener
@@ -35,8 +40,12 @@ class AlbumRVAdapter(private val albumList:ArrayList<Album>) : RecyclerView.Adap
 
     override fun onBindViewHolder(holder: AlbumRVAdapter.ViewHolder, position: Int) {
         holder.bind(albumList[position])
-        holder.itemView.setOnClickListener{ mItemClickListener.onItemClick(albumList[position]) }
+        holder.itemView.setOnClickListener{
+            mItemClickListener.onItemClick(albumList[position]) }
 //        holder.binding.itemAlbumTitleTv.setOnClickListener{mItemClickListener.onRemoveAlbum(position)}
+        holder.binding.itemAlbumPlayImgIv.setOnClickListener{
+            mItemClickListener.onItemClick(albumList[position])
+        }
     }
 
     override fun getItemCount(): Int  = albumList.size
@@ -48,7 +57,4 @@ class AlbumRVAdapter(private val albumList:ArrayList<Album>) : RecyclerView.Adap
             binding.itemAlbumCoverImgIv.setImageResource(album.coverImg!!)
         }
     }
-
-
-
 }

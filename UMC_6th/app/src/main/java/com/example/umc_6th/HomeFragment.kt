@@ -17,7 +17,7 @@ import java.util.ArrayList
 import java.util.Timer
 import java.util.TimerTask
 
-class HomeFragment : Fragment() {
+class HomeFragment : Fragment(), AlbumRVAdapter.CommunicationInterface {
 
     lateinit var binding: FragmentHomeBinding
 
@@ -27,6 +27,13 @@ class HomeFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+    }
+
+    override fun sendData(album: Album) {
+        if (activity is MainActivity) {
+            val activity = activity as MainActivity
+            activity.updateMainPlayerCl(album)
+        }
     }
 
     override fun onCreateView(
@@ -60,6 +67,9 @@ class HomeFragment : Fragment() {
             }
             override fun onRemoveAlbum(position: Int) {
                 albumRVAdapter.removeItem(position)
+            }
+            override fun onPlayAlbum(album: Album) {
+                sendData(album)
             }
         })
 
