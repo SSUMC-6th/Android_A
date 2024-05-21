@@ -2,6 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="@color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -120,7 +121,7 @@
                 android:text="해외"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/txSecondTitle" />
-
+<!-- 기존 스크롤 뷰 -->
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -144,6 +145,16 @@
                             android:src="@drawable/img_album_exp2"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/imgSecondAlbumPlay1"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="5dp"
+                            android:src="@drawable/widget_black_play"
+                            app:layout_constraintBottom_toBottomOf="@id/imgSecondAlbum1"
+                            app:layout_constraintEnd_toEndOf="parent" />
 
                         <TextView
                             android:id="@+id/imgSecondTitle1"
@@ -181,6 +192,16 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
+                        <ImageView
+                            android:id="@+id/imgSecondAlbumPlay2"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="5dp"
+                            android:src="@drawable/widget_black_play"
+                            app:layout_constraintBottom_toBottomOf="@id/imgSecondAlbum2"
+                            app:layout_constraintEnd_toEndOf="parent" />
+
                         <TextView
                             android:id="@+id/imgSecondTitle2"
                             android:layout_width="wrap_content"
@@ -217,6 +238,16 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
+                        <ImageView
+                            android:id="@+id/imgSecondAlbumPlay3"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_marginEnd="8dp"
+                            android:layout_marginBottom="5dp"
+                            android:src="@drawable/widget_black_play"
+                            app:layout_constraintBottom_toBottomOf="@id/imgSecondAlbum3"
+                            app:layout_constraintEnd_toEndOf="parent" />
+
                         <TextView
                             android:id="@+id/imgSecondTitle3"
                             android:layout_width="wrap_content"
@@ -240,6 +271,18 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </HorizontalScrollView>
+
+<!-- 리사이클러뷰
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/homeTodayMusicAlbum"
+                android:layout_width="match_parent"
+                android:layout_height="210dp"
+                android:layout_marginTop="10dp"
+                tools:listitem="@layout/item_album"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                android:orientation="horizontal"
+                app:layout_constraintTop_toBottomOf="@id/txSecondTitle"/>
+-->
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
