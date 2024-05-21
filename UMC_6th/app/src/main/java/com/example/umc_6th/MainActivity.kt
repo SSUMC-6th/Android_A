@@ -7,12 +7,14 @@ import android.widget.Toast
 import androidx.activity.result.ActivityResultLauncher
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import com.example.umc_6th.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
-
+    private lateinit var viewModel: HomeFragment.SharedViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,8 +26,6 @@ class MainActivity : AppCompatActivity() {
             ActivityResultContracts.StartActivityForResult()
         ) { result ->
             if (result.resultCode == Activity.RESULT_OK) {
-                val albumTitle = result.data?.getStringExtra("albumTitle") ?: "No Title Provided"
-                Toast.makeText(this, albumTitle, Toast.LENGTH_LONG).show()
                 val elapsedSeconds = result.data?.getIntExtra("elapsedSeconds", 0) ?: 0
                 updateSeekBar(elapsedSeconds)
             }
@@ -39,12 +39,20 @@ class MainActivity : AppCompatActivity() {
 
         binding.layoutPlayContainer.setOnClickListener(){
             val intent = Intent(this, SongActivity::class.java)
-            intent.putExtra("songTitle", binding.txPlayTitle.text)
-            intent.putExtra("songArtist", binding.txPlayArtist.text)
+            intent.putExtra("songTitle", binding.txPlayTitle.text.toString())
+            intent.putExtra("songArtist", binding.txPlayArtist.text.toString())
             resultLauncher.launch(intent)
         }
 
         setupButtonListeners()
+        viewModel = ViewModelProvider(this).get(HomeFragment.SharedViewModel::class.java)
+        viewModel.selectedTitle.observe(this, Observer {
+            binding.txPlayTitle.text = it
+        })
+
+        viewModel.selectedArtist.observe(this, Observer {
+            binding.txPlayArtist.text = it
+        })
     }
 
     private fun setupButtonListeners() {
@@ -54,11 +62,6 @@ class MainActivity : AppCompatActivity() {
             } else {
                 binding.mainSeekBar.isEnabled = true
             }
-        }
-
-        binding.layoutPlayContainer.setOnClickListener {
-            val intent = Intent(this, SongActivity::class.java)
-            resultLauncher.launch(intent)
         }
     }
 
