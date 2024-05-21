@@ -97,7 +97,7 @@
         <SeekBar
             android:id="@+id/mainSeekBar"
             android:layout_width="match_parent"
-            android:layout_height="2dp"
+            android:layout_height="3dp"
             android:background="@null"
             android:max="100000"
             android:paddingStart="0dp"

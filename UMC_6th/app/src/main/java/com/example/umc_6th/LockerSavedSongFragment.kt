@@ -32,6 +32,18 @@ class LockerSavedSongFragment : Fragment() {
             add(Album("Lilac", "아이유 (IU)", R.drawable.img_album_exp2))
             add(Album("Drama", "에스파 (aespa)", R.drawable.img_album_drama))
             add(Album("Weekend", "태연 (Tae Yeon)", R.drawable.img_album_exp6))
+            add(Album("Love wins all", "아이유 (IU)", R.drawable.img_album_lovewinsall))
+            add(Album("해야 (HEYA)", "IVE", R.drawable.img_album_heya))
+            add(Album("Supernova", "에스파 (aespa)", R.drawable.img_album_supernova))
+            add(Album("Lilac", "아이유 (IU)", R.drawable.img_album_exp2))
+            add(Album("Drama", "에스파 (aespa)", R.drawable.img_album_drama))
+            add(Album("Weekend", "태연 (Tae Yeon)", R.drawable.img_album_exp6))
+            add(Album("Love wins all", "아이유 (IU)", R.drawable.img_album_lovewinsall))
+            add(Album("해야 (HEYA)", "IVE", R.drawable.img_album_heya))
+            add(Album("Supernova", "에스파 (aespa)", R.drawable.img_album_supernova))
+            add(Album("Lilac", "아이유 (IU)", R.drawable.img_album_exp2))
+            add(Album("Drama", "에스파 (aespa)", R.drawable.img_album_drama))
+            add(Album("Weekend", "태연 (Tae Yeon)", R.drawable.img_album_exp6))
         }
         val lockerAlbumRecyclerAdapter = LockerAlbumRecyclerAdapter(albumDatas)
         binding.rvLockerSavedSong.adapter = lockerAlbumRecyclerAdapter
