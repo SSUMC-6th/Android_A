@@ -106,11 +106,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a0892f6-22ae-44d0-9c68-5f47b708a220" name="Changes" comment="[maro/#28] feat &amp;&amp; fix :: 보관함 switch on/off 에러 해결 &amp;&amp; 삭제 기능 추가">
+    <list default="true" id="2a0892f6-22ae-44d0-9c68-5f47b708a220" name="Changes" comment="[maro/#28] feat :: 선택 앨범 정보로 변경 실패">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/HomeFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/MainActivity.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -781,7 +778,15 @@
       <option name="project" value="LOCAL" />
       <updated>1716183771907</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="[maro/#28] feat :: 선택 앨범 정보로 변경 실패">
+      <option name="closed" value="true" />
+      <created>1716187165248</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1716187165248</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -827,6 +832,7 @@
     <MESSAGE value="[maro/#28] feat &amp;&amp; fix :: 앨범 상세 정보 개발 &amp;&amp; 앱 꺼짐 에러 수정" />
     <MESSAGE value="[maro/#28] feat :: 보관함 개발" />
     <MESSAGE value="[maro/#28] feat &amp;&amp; fix :: 보관함 switch on/off 에러 해결 &amp;&amp; 삭제 기능 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="[maro/#28] feat &amp;&amp; fix :: 보관함 switch on/off 에러 해결 &amp;&amp; 삭제 기능 추가" />
+    <MESSAGE value="[maro/#28] feat :: 선택 앨범 정보로 변경 실패" />
+    <option name="LAST_COMMIT_MESSAGE" value="[maro/#28] feat :: 선택 앨범 정보로 변경 실패" />
   </component>
 </project>
