@@ -107,4 +107,10 @@ class MainActivity : AppCompatActivity() {
         binding.mainMiniplayerSingerTv.text = song.singer
         binding.mainMiniplayerProgressSb.progress = (song.second * 100000 / song.playTime)
     }
+
+    fun updateMainPlayerCl(album: Album) {
+        binding.mainMiniplayerTitleTv.text = album.title
+        binding.mainMiniplayerSingerTv.text = album.singer
+        binding.mainMiniplayerProgressSb.progress = 0
+    }
 }
