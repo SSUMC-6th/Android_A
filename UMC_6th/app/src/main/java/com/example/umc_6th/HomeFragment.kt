@@ -14,10 +14,14 @@ import com.example.umc_6th.adapter.ViewPagerAdapter
 import com.example.umc_6th.databinding.FragmentHomeBinding
 import me.relex.circleindicator.CircleIndicator3
 import android.os.Looper
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 
 
 class HomeFragment : Fragment() {
     // 여기에 Fragment의 구현 내용을 작성합니다.
+    private lateinit var viewModel: SharedViewModel
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
     private lateinit var handler: Handler
@@ -27,6 +31,7 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        viewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
         return binding.root
@@ -62,7 +67,18 @@ class HomeFragment : Fragment() {
             }
         }
         startAutoSlide()
+
+        binding.imgSecondAlbumPlay1.setOnClickListener(){
+            viewModel.selectedTitle.value = binding.txSecondTitle1.getText().toString()
+            viewModel.selectedArtist.value = binding.txSecondArtist1.getText().toString()
+        }
     }
+
+    class SharedViewModel : ViewModel() {
+        val selectedTitle = MutableLiveData<String>()
+        val selectedArtist = MutableLiveData<String>()
+    }
+
 
     private fun startAutoSlide() {
         handler.postDelayed(runnable, 3000) // 3초에 한번씩 페이지 이동

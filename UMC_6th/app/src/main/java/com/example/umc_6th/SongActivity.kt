@@ -5,6 +5,7 @@ import android.content.Intent
 import android.graphics.PorterDuff
 import android.os.Bundle
 import android.os.PersistableBundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.ui.graphics.Color
@@ -29,6 +30,8 @@ class SongActivity : AppCompatActivity() {
 
         val songTitle = intent.getStringExtra("songTitle")
         val songArtist = intent.getStringExtra("songArtist")
+
+        Log.d("SongActivity", "Received title: $songTitle, artist: $songArtist")
 
         binding.txSongTitle.text = songTitle
         binding.txSongArtist.text = songArtist

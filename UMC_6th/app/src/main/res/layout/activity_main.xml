@@ -28,48 +28,6 @@
         app:layout_constraintStart_toStartOf="parent">
 
 
-        <SeekBar
-            android:id="@+id/mainSeekBar"
-            android:layout_width="match_parent"
-            android:layout_height="10dp"
-            android:background="@null"
-            android:max="100000"
-            android:paddingStart="0dp"
-            android:paddingEnd="0dp"
-            android:progress="0"
-            android:progressBackgroundTint="@color/song_player_bg"
-            android:progressTint="@color/song_player"
-            android:thumb="@drawable/transparent_thumb"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <LinearLayout
-            android:id="@+id/layoutPlayLeft"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/txPlayTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="제목"
-                android:textColor="@color/black"
-                android:textSize="13sp" />
-
-            <TextView
-                android:id="@+id/txPlayArtist"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="아티스트"
-                android:textSize="11sp" />
-        </LinearLayout>
-
         <LinearLayout
             android:id="@+id/layoutPlayRight"
             android:layout_width="0dp"
@@ -109,6 +67,48 @@
                 android:layout_weight="1.3"
                 android:src="@drawable/btn_miniplayer_go_list" />
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layoutPlayLeft"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/txPlayTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="제목"
+                android:textColor="@color/black"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/txPlayArtist"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="아티스트"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <SeekBar
+            android:id="@+id/mainSeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="3dp"
+            android:background="@null"
+            android:max="100000"
+            android:paddingStart="0dp"
+            android:paddingEnd="0dp"
+            android:progress="0"
+            android:progressBackgroundTint="@color/song_player_bg"
+            android:progressTint="@color/song_player"
+            android:thumb="@drawable/transparent_thumb"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
