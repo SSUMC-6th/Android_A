@@ -44,7 +44,7 @@ class AlbumRVAdapter(private val albumList:ArrayList<Album>) : RecyclerView.Adap
             mItemClickListener.onItemClick(albumList[position]) }
 //        holder.binding.itemAlbumTitleTv.setOnClickListener{mItemClickListener.onRemoveAlbum(position)}
         holder.binding.itemAlbumPlayImgIv.setOnClickListener{
-            mItemClickListener.onItemClick(albumList[position])
+            mItemClickListener.onPlayAlbum(albumList[position])
         }
     }
 
