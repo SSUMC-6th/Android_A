@@ -125,6 +125,9 @@ class SongActivity : AppCompatActivity() {
         binding.songPreviousIv.setOnClickListener{
             moveSong(-1)
         }
+        binding.songLikeIv.setOnClickListener {
+            setLike(songs[nowPos].isLike)
+        }
     }
 
     private fun initSong(){
@@ -146,6 +149,17 @@ class SongActivity : AppCompatActivity() {
         Log.d("now Song ID",songs[nowPos].id.toString())
         startTimer()
         setPlayer(songs[nowPos])
+    }
+
+    private fun setLike(isLike: Boolean){
+        songs[nowPos].isLike = !isLike
+        songDB.songDao().updateIsLikeById(!isLike,songs[nowPos].id)
+
+        if(!isLike){
+            binding.songLikeIv.setImageResource(R.drawable.ic_my_like_on)
+        } else{
+            binding.songLikeIv.setImageResource(R.drawable.ic_my_like_off)
+        }
     }
 
     private fun moveSong(direct: Int){
@@ -171,7 +185,6 @@ class SongActivity : AppCompatActivity() {
         }
     }
 
-
     private fun getPlayingSongPosition(songId: Int): Int{
         for(i in 0 until songs.size){
             if(songs[i].id == songId){
@@ -191,6 +204,13 @@ class SongActivity : AppCompatActivity() {
 
         val music = resources.getIdentifier(song.music,"raw",this.packageName)
         mediaPlayer = MediaPlayer.create(this,music)
+
+        if(song.isLike){
+            binding.songLikeIv.setImageResource(R.drawable.ic_my_like_on)
+        } else{
+            binding.songLikeIv.setImageResource(R.drawable.ic_my_like_off)
+        }
+
         setPlayerStatus(song.isPlaying)
     }
 
