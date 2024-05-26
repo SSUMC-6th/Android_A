@@ -83,14 +83,16 @@ class SongActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        setPlayerStatus(false)
-
         songs[nowPos].second = (songs[nowPos].playTime * binding.songProgressSb.progress) / 100000
         songs[nowPos].isPlaying = false
+        setPlayerStatus(false)
+
         val sharedPreferences = getSharedPreferences("song", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
 
         editor.putInt("songsId",songs[nowPos].id)
+        //재생 중이던 song이 몇초까지 재생되었는지 정보 저장
+        editor.putInt("second",songs[nowPos].second)
         editor.apply()
     }
 

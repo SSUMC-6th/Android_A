@@ -14,6 +14,11 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var binding: ActivityMainBinding
     lateinit var activityResultLauncher: ActivityResultLauncher<Intent>
+
+    val songs = arrayListOf<Song>()
+    lateinit var songDB: SongDatabase
+    var nowPos = 0
+
     private var song : Song = Song()
     private var gson : Gson = Gson()
 
@@ -25,6 +30,7 @@ class MainActivity : AppCompatActivity() {
 
         inputDummySongs()
         initBottomNavigation()
+        initPlayList()
 
         activityResultLauncher =
             registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
@@ -56,8 +62,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    override fun onStart() {
-        super.onStart()
+    override fun onResume() {
+        super.onResume()
 //        val sharedPreferences = getSharedPreferences("song", MODE_PRIVATE)
 //        val jsonToSong = sharedPreferences.getString("songData", null)
 //
@@ -69,16 +75,26 @@ class MainActivity : AppCompatActivity() {
         val sharedPreferences = getSharedPreferences("song", MODE_PRIVATE)
         val songId = sharedPreferences.getInt("songId",0)
 
-        val songDB = SongDatabase.getInstance(this)!!
+        nowPos = getPlayingSongPosition(songId)
 
-        song = if(songId == 0){
-            songDB.songDao().getSong(1)
-        } else {
-            songDB.songDao().getSong(songId)
-        }
-
+        //얘는 잘 나옴
         Log.d("song ID", song.id.toString())
-        setMiniPlayer(song)
+
+        setMiniPlayer(songs[nowPos])
+    }
+
+    private fun getPlayingSongPosition(songId: Int): Int{
+        for(i in 0 until songs.size){
+            if(songs[i].id == songId){
+                return i
+            }
+        }
+        return 0
+    }
+
+    private fun initPlayList(){
+        songDB = SongDatabase.getInstance(this)!!
+        songs.addAll(songDB.songDao().getSongs())
     }
 
     private fun initBottomNavigation() {
@@ -122,10 +138,12 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setMiniPlayer(song : Song) {
+    private fun setMiniPlayer(song: Song) {
         binding.mainMiniplayerTitleTv.text = song.title
         binding.mainMiniplayerSingerTv.text = song.singer
-        binding.mainMiniplayerProgressSb.progress = (song.second * 100000 / song.playTime)
+        val sharedPreferences = getSharedPreferences("song", MODE_PRIVATE)
+        val second = sharedPreferences.getInt("second",0)
+        binding.mainMiniplayerProgressSb.progress = ( second * 100000 / song.playTime)
     }
 
     fun updateMainPlayerCl(album: Album) {
