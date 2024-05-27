@@ -55,7 +55,7 @@ class LockerAlbumRVAdapter () : RecyclerView.Adapter<LockerAlbumRVAdapter.ViewHo
     }
 
     interface OnItemClickListener {
-        fun onRemoveAlbum(position: Int) {
+        fun onRemoveAlbum(SongId: Int) {
         }
     }
 

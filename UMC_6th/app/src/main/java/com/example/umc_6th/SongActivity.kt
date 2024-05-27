@@ -50,13 +50,12 @@ class SongActivity : AppCompatActivity() {
         var title : String? = null
         var singer : String? = null
 
-        if(intent.hasExtra("title") && intent.hasExtra("singer")){
-            title = intent.getStringExtra("title")
-            singer = intent.getStringExtra("singer")
-            binding.songMusicTitleTv.text = title
-            binding.songSingerNameTv.text = singer
-        }
-
+//        if(intent.hasExtra("title") && intent.hasExtra("singer")){
+//            title = intent.getStringExtra("title")
+//            singer = intent.getStringExtra("singer")
+//            binding.songMusicTitleTv.text = title
+//            binding.songSingerNameTv.text = singer
+//        }
     }
 
     private fun isServiceRunning(inputClass: Class<ForegroundService>): Boolean {
@@ -95,6 +94,15 @@ class SongActivity : AppCompatActivity() {
         editor.putInt("second",songs[nowPos].second)
         editor.apply()
     }
+
+//    override fun onBackPressed() {
+//        super.onBackPressed()
+//        val intent = Intent(this, MainActivity::class.java)
+//        intent.putExtra("message", "뒤로가기 버튼 클릭")
+//
+//        setResult(RESULT_OK, intent)
+//        finish()
+//    }
 
     override fun onDestroy() {
         super.onDestroy()
@@ -149,6 +157,7 @@ class SongActivity : AppCompatActivity() {
         nowPos = getPlayingSongPosition(songId)
 
         Log.d("now Song ID",songs[nowPos].id.toString())
+
         startTimer()
         setPlayer(songs[nowPos])
     }
@@ -159,27 +168,28 @@ class SongActivity : AppCompatActivity() {
 
         if(!isLike){
             binding.songLikeIv.setImageResource(R.drawable.ic_my_like_on)
+            Toast.makeText(this,"Liked",Toast.LENGTH_SHORT).show()
         } else{
             binding.songLikeIv.setImageResource(R.drawable.ic_my_like_off)
+            Toast.makeText(this,"Unliked",Toast.LENGTH_SHORT).show()
         }
     }
 
     private fun moveSong(direct: Int){
         if(nowPos + direct < 0){
 //            nowPos = songs.size -1
-            Toast.makeText(this,"first song", Toast.LENGTH_SHORT).show()
-            return
+            CustomSnackbar.make(binding.root, "처음 곡입니다.").show()
+//            Toast.makeText(this,"first song", Toast.LENGTH_SHORT).show()
         }
         else if(nowPos + direct >= songs.size){
-            Toast.makeText(this,"last song",Toast.LENGTH_SHORT).show()
-            return
+            CustomSnackbar.make(binding.root,"마지막 곡입니다.").show()
+//            Toast.makeText(this,"last song",Toast.LENGTH_SHORT).show()
         }
         else {
             nowPos += direct
 
             timer.interrupt()
             startTimer()
-
             mediaPlayer?.release() // 미디어 플레이어가 갖고 있던 리소스를 해제한다.
             mediaPlayer = null // 미디어 플레이어를 해제한다.
 

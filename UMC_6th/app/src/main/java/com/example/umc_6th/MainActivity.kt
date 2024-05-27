@@ -52,13 +52,13 @@ class MainActivity : AppCompatActivity() {
 //            intent.putExtra("playTime", song.playTime)
 //            intent.putExtra("isPlaying", song.isPlaying)
 //            intent.putExtra("music",song.music)
-//            activityResultLauncher.launch(intent)
             val editor = getSharedPreferences("song", MODE_PRIVATE).edit()
             editor.putInt("songId", song.id)
             editor.apply()
 
             val intent = Intent(this,SongActivity::class.java)
             startActivity(intent)
+            activityResultLauncher.launch(intent)
         }
     }
 
@@ -163,11 +163,12 @@ class MainActivity : AppCompatActivity() {
                 "Lilac",
                 "아이유 (IU)",
                 0,
-                200,
+                244,
                 false,
                 "music_lilac",
                 R.drawable.img_album_exp2,
                 false,
+                1
             )
         )
 
@@ -181,6 +182,7 @@ class MainActivity : AppCompatActivity() {
                 "music_flu",
                 R.drawable.img_album_exp2,
                 false,
+                1
             )
         )
 
@@ -194,6 +196,7 @@ class MainActivity : AppCompatActivity() {
                 "music_butter",
                 R.drawable.img_album_exp,
                 false,
+                2
             )
         )
 
@@ -202,11 +205,12 @@ class MainActivity : AppCompatActivity() {
                 "Next Level",
                 "에스파 (AESPA)",
                 0,
-                210,
+                221,
                 false,
                 "music_next",
                 R.drawable.img_album_exp3,
                 false,
+                3
             )
         )
 
@@ -220,6 +224,7 @@ class MainActivity : AppCompatActivity() {
                 "music_boy",
                 R.drawable.img_album_exp,
                 false,
+                2
             )
         )
 
@@ -233,10 +238,12 @@ class MainActivity : AppCompatActivity() {
                 "music_bbom",
                 R.drawable.img_album_exp5,
                 false,
+                4
             )
         )
 
         val _songs = songDB.songDao().getSongs()
         Log.d("DB data",_songs.toString())
     }
+
 }
