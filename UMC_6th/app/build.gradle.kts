@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -46,6 +47,9 @@ android {
 
 dependencies {
 
+    implementation("androidx.room:room-migration:2.6.0")
+    implementation("androidx.room:room-runtime:2.6.0")
+    kapt("androidx.room:room-compiler:2.6.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.fragment:fragment-ktx:1.3.0")
