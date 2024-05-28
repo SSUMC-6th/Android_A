@@ -6,9 +6,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.myfirstapp.databinding.ItemLockerAlbumBinding
 
-class LockerAlbumRVAdapter (private val albumList: ArrayList<Album>) : RecyclerView.Adapter<LockerAlbumRVAdapter.ViewHolder>() {
+class LockerAlbumRVAdapter () : RecyclerView.Adapter<LockerAlbumRVAdapter.ViewHolder>() {
 
     private val switchStatus = SparseBooleanArray()
+    private val songs = ArrayList<Song>()
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -20,13 +21,13 @@ class LockerAlbumRVAdapter (private val albumList: ArrayList<Album>) : RecyclerV
     }
 
     override fun onBindViewHolder(holder: LockerAlbumRVAdapter.ViewHolder, position: Int) {
-        holder.bind(albumList[position])
-        holder.itemView.setOnClickListener {
-            itemClickListener.onItemClick(albumList[position])
-        }
+        holder.bind(songs[position])
+
         holder.binding.itemAlbumMoreIv.setOnClickListener {
-            itemClickListener.onRemoveAlbum(position)
+            itemClickListener.onRemoveAlbum(songs[position].id) // 좋아요 취소로 업데이트하는 메서드
+            removeSong(position) // 현재 화면에서 아이템을 제거
         }
+
         val switch =  holder.binding.switchRV
         switch.isChecked = switchStatus[position]
         switch.setOnClickListener {
@@ -41,11 +42,10 @@ class LockerAlbumRVAdapter (private val albumList: ArrayList<Album>) : RecyclerV
         }
     }
 
-    override fun getItemCount(): Int = albumList.size
+    override fun getItemCount(): Int = songs.size
 
     interface OnItemClickListener {
-        fun onItemClick(album : Album)
-        fun onRemoveAlbum(position: Int)
+        fun onRemoveAlbum(songId: Int)
     }
 
     private lateinit var itemClickListener : OnItemClickListener
@@ -54,22 +54,24 @@ class LockerAlbumRVAdapter (private val albumList: ArrayList<Album>) : RecyclerV
         this.itemClickListener = onItemClickListener
     }
 
-    fun addItem(album: Album){
-        albumList.add(album)
+    fun addSongs(songs: ArrayList<Song>) {
+        this.songs.clear()
+        this.songs.addAll(songs)
+
         notifyDataSetChanged()
     }
 
-    fun removeItem(position: Int){
-        albumList.removeAt(position)
+    private fun removeSong(position: Int){
+        songs.removeAt(position)
         notifyDataSetChanged()
     }
 
     inner class ViewHolder(val binding: ItemLockerAlbumBinding): RecyclerView.ViewHolder(binding.root){
 
-        fun bind(album: Album){
-            binding.itemAlbumTitleTv.text = album.title
-            binding.itemAlbumSingerTv.text = album.singer
-            binding.itemAlbumCoverIv.setImageResource(album.coverImage!!)
+        fun bind(song : Song){
+            binding.itemAlbumTitleTv.text = song.title
+            binding.itemAlbumSingerTv.text = song.singer
+            binding.itemAlbumCoverIv.setImageResource(song.coverImg!!)
         }
     }
 }
