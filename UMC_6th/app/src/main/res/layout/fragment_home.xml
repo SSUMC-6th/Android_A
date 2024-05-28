@@ -121,7 +121,7 @@
                 android:text="해외"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="@id/txSecondTitle" />
-<!-- 기존 스크롤 뷰 -->
+<!-- 기존 스크롤 뷰
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -271,8 +271,8 @@
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </HorizontalScrollView>
-
-<!-- 리사이클러뷰
+-->
+<!-- 리사이클러뷰-->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/homeTodayMusicAlbum"
                 android:layout_width="match_parent"
@@ -282,7 +282,7 @@
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 android:orientation="horizontal"
                 app:layout_constraintTop_toBottomOf="@id/txSecondTitle"/>
--->
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

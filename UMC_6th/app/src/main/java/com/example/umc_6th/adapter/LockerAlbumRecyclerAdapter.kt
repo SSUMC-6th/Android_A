@@ -51,7 +51,7 @@ class LockerAlbumRecyclerAdapter(private val albumList: ArrayList<Album>) : Recy
         fun bind(album: Album){
             binding.txItemLockerAlbumTitle.text = album.title
             binding.txItemLockerAlbumArtist.text = album.artist
-            binding.imgItemLockerAlbumCover.setImageResource(album.coverImage!!)
+            binding.imgItemLockerAlbumCover.setImageResource(album.coverImg!!)
         }
     }
 

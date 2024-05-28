@@ -1,6 +1,7 @@
 package com.example.umc_6th
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.graphics.PorterDuff
 import android.os.Bundle
@@ -11,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.ui.graphics.Color
 import androidx.core.content.ContextCompat
 import com.example.umc_6th.databinding.ActivitySongBinding
+import com.google.gson.Gson
 import kotlin.math.log
 
 class SongActivity : AppCompatActivity() {
@@ -22,6 +24,13 @@ class SongActivity : AppCompatActivity() {
     private val totalSeconds = 60
     //한곡재생
     @Volatile private var isRepeatOne: Boolean = true
+
+
+    //songDB
+    private var gson: Gson = Gson()
+    val songs = arrayListOf<Song>()
+    lateinit var songDB: SongDatabase
+    var nowPos = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,6 +62,18 @@ class SongActivity : AppCompatActivity() {
             binding.viewSongBarBlue.layoutParams.width=1
         }
 
+        initPlayList()  // 노래 목록 초기화
+        if (songs.isNotEmpty()) {
+            nowPos = 0  // 초기 위치 설정
+            updateSongUI(songs[nowPos])  // 초기 노래 UI 업데이트
+        }
+        setupNavigationListeners()
+
+        val sharedPref = this.getPreferences(Context.MODE_PRIVATE)
+        nowPos = sharedPref.getInt("LastSongPosition", 0)
+        if (songs.isNotEmpty()) {
+            updateSongUI(songs[nowPos])
+        }
     }
 
     private fun setupColorFilters() {
@@ -98,12 +119,30 @@ class SongActivity : AppCompatActivity() {
                 binding.imgSongRepeat.clearColorFilter()
             }
         }
+        binding.imgSongLike.setOnClickListener {
+            toggleLikeStatus()
+        }
     }
 
     private fun startOrResumeTimer() {
         if (timerThread == null || !timerThread!!.isAlive) {
             startTimer(totalSeconds)
         }
+    }
+    private fun RestartTimer(){
+        if (timerThread != null && timerThread!!.isAlive) {
+            // 기존 타이머가 실행 중이면 중단
+            isTimerRunning = false
+            try {
+                timerThread!!.join()  // 기존 스레드가 완전히 종료될 때까지 대기
+            } catch (e: InterruptedException) {
+                e.printStackTrace()
+            }
+        }
+        // 새로운 타이머 시작
+        elapsedSeconds = 0  // 시간을 초기화
+        isTimerRunning = true
+        startTimer(totalSeconds)
     }
 
     private fun startTimer(totalSeconds: Int) {
@@ -116,7 +155,16 @@ class SongActivity : AppCompatActivity() {
                     if (isRepeatOne) { // 반복 재생 상태일 때
                         elapsedSeconds = 0  // 시간을 초기화하고
                         updateUI()  // UI를 초기 상태로 갱신
-                        continue  // 반복
+                        // 곡 반복 재생 또는 다음 곡 재생 처리
+                        if (isRepeatOne) {
+                            // 같은 곡을 반복 재생
+                            continue
+                        } else {
+                            // 다음 곡으로 넘어가기
+                            runOnUiThread {
+                                playNextSong()
+                            }
+                        } // 반복
                     }
                     break  // 반복 재생이 아닐 때는 중지
                 }
@@ -135,4 +183,85 @@ class SongActivity : AppCompatActivity() {
             binding.txSongBarStartTime.text = String.format("%02d:%02d", minutes, seconds)
         }
     }
-}
+
+
+    override fun onPause() {
+        super.onPause()
+        val sharedPref = this.getPreferences(Context.MODE_PRIVATE) ?: return
+        with (sharedPref.edit()) {
+            putInt("LastSongPosition", nowPos)
+            apply()
+        }
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        timerThread?.interrupt()
+    }
+
+    private fun initPlayList(){
+        songDB = SongDatabase.getInstance(this)!!
+        songs.addAll(songDB.songDao().getSongs())
+    }
+
+    private fun addSongToDB(song: Song) {
+        songDB.songDao().insert(song)
+    }
+
+    private fun findPositionBySongId(songId: Int) {
+        nowPos = songs.indexOfFirst { it.id == songId }
+    }
+
+    private fun setupNavigationListeners() {
+        binding.imgSongPlayNext.setOnClickListener {
+            if (nowPos < songs.size - 1) {
+                nowPos++
+                updateSongUI(songs[nowPos])
+                RestartTimer()
+            }
+        }
+
+        binding.imgSongPlayPrev.setOnClickListener {
+            if (nowPos > 0) {
+                nowPos--
+                updateSongUI(songs[nowPos])
+                RestartTimer()
+            }
+        }
+    }
+
+    private fun updateSongUI(song: Song) {
+        binding.txSongTitle.text = song.title
+        binding.txSongArtist.text = song.artist
+        song.coverImg?.let { binding.imgSongAlbum.setImageResource(it) }
+        updateHeartIcon(song.isLike)
+    }
+
+    private fun toggleLikeStatus() {
+        val currentSong = songs[nowPos]
+        val newLikeStatus = !currentSong.isLike
+        currentSong.isLike = newLikeStatus
+        songDB.songDao().updateIsLikeById(newLikeStatus, currentSong.id)
+        updateHeartIcon(newLikeStatus)
+    }
+
+
+    private fun updateHeartIcon(isLiked: Boolean) {
+        if (isLiked) {
+            binding.imgSongLike.setImageResource(R.drawable.ic_my_like_on)
+        } else {
+            binding.imgSongLike.setImageResource(R.drawable.ic_my_like_off)
+        }
+    }
+
+    private fun playNextSong() {
+        if (nowPos < songs.size - 1) {
+            nowPos++
+        } else {
+            nowPos = 0  // 목록의 첫 번째 곡으로 돌아가기
+        }
+        updateSongUI(songs[nowPos])
+        startOrResumeTimer()  // 타이머를 다시 시작
+    }
+
+
+    }
