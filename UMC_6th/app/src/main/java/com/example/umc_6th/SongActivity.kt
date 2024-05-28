@@ -7,7 +7,10 @@ import android.graphics.PorterDuff
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
+import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.ui.graphics.Color
 import androidx.core.content.ContextCompat
@@ -242,6 +245,12 @@ class SongActivity : AppCompatActivity() {
         currentSong.isLike = newLikeStatus
         songDB.songDao().updateIsLikeById(newLikeStatus, currentSong.id)
         updateHeartIcon(newLikeStatus)
+
+        if (newLikeStatus) {
+            showToast(this, "좋아요 한 곡에 담겼습니다.")
+        } else {
+            showToast(this, "좋아요 한 곡이 취소되었습니다.")
+        }
     }
 
 
@@ -263,5 +272,18 @@ class SongActivity : AppCompatActivity() {
         startOrResumeTimer()  // 타이머를 다시 시작
     }
 
+    private fun showToast(context: Context, message: String) {
+        val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val layout = inflater.inflate(R.layout.custom_like_toast,
+            findViewById(R.id.custom_toast_container))
 
+        val text: TextView = layout.findViewById(R.id.toast_text)
+        text.text = message
+
+        with (Toast(context)) {
+            duration = Toast.LENGTH_SHORT
+            view = layout
+            show()
+        }
     }
+}
