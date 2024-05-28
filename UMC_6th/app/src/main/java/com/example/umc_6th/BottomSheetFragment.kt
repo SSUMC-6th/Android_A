@@ -1,5 +1,6 @@
 package com.example.umc_6th
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -36,5 +37,9 @@ class BottomSheetFragment : BottomSheetDialogFragment() {
         binding.bottomSheetIv4.setOnClickListener {
             Toast.makeText(requireActivity(),"삭제 버튼 클릭",Toast.LENGTH_SHORT).show()
         }
+        binding.bottomSheetTv4.setOnClickListener {
+
+        }
     }
+
 }

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:gravity="center_horizontal"
     tools:context=".BottomSheetFragment"
-    android:background="@color/colorPrimary">
+    android:background="@color/flo">
 
     <TextView
         android:id="@+id/bottom_sheet_tv1"
@@ -27,7 +27,7 @@
         android:id="@+id/bottom_sheet_iv1"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:src="@drawable/btn_miniplayer_play"
+        android:src="@drawable/btn_editbar_play"
         app:layout_constraintBottom_toTopOf="@+id/bottom_sheet_tv1"
         app:layout_constraintEnd_toStartOf="@+id/bottom_sheet_iv2"
         app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +51,7 @@
         android:id="@+id/bottom_sheet_iv2"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:src="@drawable/btn_miniplayer_play"
+        android:src="@drawable/btn_editbar_addplaylist"
         app:layout_constraintBottom_toTopOf="@+id/bottom_sheet_tv2"
         app:layout_constraintStart_toEndOf="@+id/bottom_sheet_iv1"
         app:layout_constraintEnd_toStartOf="@+id/bottom_sheet_iv3"
@@ -75,7 +75,7 @@
         android:id="@+id/bottom_sheet_iv3"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:src="@drawable/btn_miniplayer_play"
+        android:src="@drawable/btn_editbar_mylist"
         app:layout_constraintBottom_toTopOf="@+id/bottom_sheet_tv2"
         app:layout_constraintStart_toEndOf="@+id/bottom_sheet_iv2"
         app:layout_constraintEnd_toStartOf="@id/bottom_sheet_iv4"
@@ -99,7 +99,7 @@
         android:id="@+id/bottom_sheet_iv4"
         android:layout_width="0dp"
         android:layout_height="50dp"
-        android:src="@drawable/btn_miniplayer_play"
+        android:src="@drawable/btn_editbar_delete"
         app:layout_constraintBottom_toTopOf="@+id/bottom_sheet_tv2"
         app:layout_constraintStart_toEndOf="@+id/bottom_sheet_iv3"
         app:layout_constraintTop_toTopOf="parent"
