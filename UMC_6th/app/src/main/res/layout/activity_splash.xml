@@ -6,7 +6,7 @@
     android:background="@color/white">
 
     <ImageView
-        android:id="@+id/btnMainBefore"
+        android:id="@+id/btnMainPrev"
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"

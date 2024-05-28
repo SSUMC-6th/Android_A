@@ -26,4 +26,10 @@ interface SongDao {
 
     @Query("SELECT * FROM SongTable WHERE isLike= :isLike")
     fun getLikedSongs(isLike: Boolean): List<Song>
+
+    @Query("SELECT * FROM SongTable WHERE id > :currentId LIMIT 1")
+    fun getNextSong(currentId: Int): Song?
+
+    @Query("SELECT * FROM SongTable WHERE id < :currentId ORDER BY id DESC LIMIT 1")
+    fun getPreviousSong(currentId: Int): Song?
 }

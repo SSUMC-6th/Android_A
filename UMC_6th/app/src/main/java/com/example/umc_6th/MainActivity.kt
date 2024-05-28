@@ -1,6 +1,7 @@
 package com.example.umc_6th
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -10,6 +11,7 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.umc_6th.adapter.SharedPreferencesHelper
 import com.example.umc_6th.databinding.ActivityMainBinding
 import com.google.gson.Gson
 
@@ -17,9 +19,11 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
     private lateinit var viewModel: HomeFragment.SharedViewModel
+    lateinit var prefs: SharedPreferencesHelper
 
     private var song:Song = Song()
     private var gson: Gson = Gson()
+    private var isPlaying: Boolean = false
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -73,6 +77,8 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        prefs = SharedPreferencesHelper(this)
+
     }
 
     override fun onStart() {
@@ -91,14 +97,44 @@ class MainActivity : AppCompatActivity() {
         Log.d("song ID", song.id.toString())
         setMiniPlayer(song)
     }
+    override fun onPause() {
+        super.onPause()
+        savePlaybackState(isPlaying)  // 현재 재생 상태를 저장
+    }
+
+    override fun onResume() {
+        super.onResume()
+        updateFromSharedPrefs()  // 추가적으로 UI 업데이트
+    }
+
 
     private fun setupButtonListeners() {
+        binding.btnMainStart.setOnClickListener {
+            isPlaying = !isPlaying
+            updatePlaybackUI(isPlaying)  // 재생 버튼 상태 업데이트 등
+            savePlaybackState(isPlaying)  // 재생 상태 저장
+        }
+
         binding.btnMainStart.setOnClickListener {
             if (binding.mainSeekBar.isEnabled) {
                 binding.mainSeekBar.isEnabled = false
             } else {
                 binding.mainSeekBar.isEnabled = true
             }
+        }
+        binding.btnMainNext.setOnClickListener {
+            playNextSong()
+        }
+        binding.btnMainPrev.setOnClickListener {
+            playPreviousSong()
+        }
+    }
+
+    private fun updatePlaybackUI(isPlaying: Boolean) {
+        if (isPlaying) {
+            binding.btnMainStart.setImageResource(R.drawable.btn_miniplay_pause) // 재생 중 아이콘으로 변경
+        } else {
+            binding.btnMainStart.setImageResource(R.drawable.btn_miniplayer_play) // 일시 정지 아이콘으로 변경
         }
     }
 
@@ -112,6 +148,49 @@ class MainActivity : AppCompatActivity() {
         binding.txPlayTitle.text = song.title
         binding.txPlayArtist.text = song.artist
         binding.mainSeekBar.progress = (song.second*100000)/song.playTime
+    }
+
+    private fun playNextSong() {
+        val songDB = SongDatabase.getInstance(this)!!
+        val currentSongId = prefs.getSongId()
+        val nextSong = songDB.songDao().getNextSong(currentSongId)  // 다음 곡을 조회하는 로직 필요
+        if (nextSong != null) {
+            setMiniPlayer(nextSong)
+            prefs.saveSongId(nextSong.id)  // Shared Preferences에 다음 곡 ID 저장
+        }
+    }
+
+    private fun playPreviousSong() {
+        val songDB = SongDatabase.getInstance(this)!!
+        val currentSongId = prefs.getSongId()
+        val previousSong = songDB.songDao().getPreviousSong(currentSongId)  // 이전 곡을 조회하는 로직 필요
+        if (previousSong != null) {
+            setMiniPlayer(previousSong)
+            prefs.saveSongId(previousSong.id)  // Shared Preferences에 이전 곡 ID 저장
+        }
+    }
+
+    private fun updateFromSharedPrefs() {
+        val sharedPref = this.getPreferences(Context.MODE_PRIVATE) ?: return
+        val songId = sharedPref.getInt("songId", -1)
+        if (songId != -1) {
+            val songTitle = sharedPref.getString("songTitle", "")
+            val songArtist = sharedPref.getString("songArtist", "")
+            val songProgress = sharedPref.getInt("songProgress", 0)
+
+            Log.d("MainActivity", "Loaded songId: $songId, Title: $songTitle, Artist: $songArtist, Progress: $songProgress")
+            binding.txPlayTitle.text = songTitle
+            binding.txPlayArtist.text = songArtist
+            updateSeekBar(songProgress)
+        }
+    }
+
+    private fun savePlaybackState(isPlaying: Boolean) {
+        val sharedPref = getPreferences(Context.MODE_PRIVATE) ?: return
+        with (sharedPref.edit()) {
+            putBoolean("isPlaying", isPlaying)
+            apply()
+        }
     }
 
     private fun inputDummySongs(){

@@ -190,11 +190,7 @@ class SongActivity : AppCompatActivity() {
 
     override fun onPause() {
         super.onPause()
-        val sharedPref = this.getPreferences(Context.MODE_PRIVATE) ?: return
-        with (sharedPref.edit()) {
-            putInt("LastSongPosition", nowPos)
-            apply()
-        }
+        saveCurrentSongInfo()
     }
     override fun onDestroy() {
         super.onDestroy()
@@ -284,6 +280,17 @@ class SongActivity : AppCompatActivity() {
             duration = Toast.LENGTH_SHORT
             view = layout
             show()
+        }
+    }
+
+    private fun saveCurrentSongInfo() {
+        val sharedPref = this.getPreferences(Context.MODE_PRIVATE) ?: return
+        with (sharedPref.edit()) {
+            putInt("songId", songs[nowPos].id)
+            putString("songTitle", songs[nowPos].title)
+            putString("songArtist", songs[nowPos].artist)
+            putInt("songProgress", elapsedSeconds)
+            apply()
         }
     }
 }
