@@ -34,11 +34,12 @@ class HomeFragment : Fragment() , CommunicationInterface {
         songDB = SongDatabase.getInstance(requireContext())!!
         albumDatas.addAll(songDB.albumDao().getAlbums())
         Log.d("albumlist", albumDatas.toString())
+        inputDummyAlbums()
 
 
         val albumRVAdapter = AlbumRVAdapter(albumDatas)
         binding.homeTodayAlbumRv.adapter = albumRVAdapter
-        binding.homeTodayAlbumRv.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+        binding.homeTodayAlbumRv.layoutManager = LinearLayoutManager(requireActivity(),LinearLayoutManager.HORIZONTAL,false)
 
         albumRVAdapter.setMyItemClickListener(object: AlbumRVAdapter.MyItemClickListener{
             override fun onItemClick(album: Album) {

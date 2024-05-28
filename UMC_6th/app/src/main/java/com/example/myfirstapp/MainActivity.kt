@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
     val songs = arrayListOf<Song>()
     lateinit var songDB: SongDatabase
     var nowPos = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setTheme(R.style.Theme_MyApplication)
@@ -120,31 +121,14 @@ class MainActivity : AppCompatActivity() {
         nowPos = getPlayingSongPosition(songId)
         setMiniPlayer(songs[nowPos])
     }
-//    override fun onStart() {
-//        super.onStart()
-//        val sharedPreferences = getSharedPreferences("song", MODE_PRIVATE)
-//        // songId는 SongActivity에서 onPause가 호출되었을 때
-//        // 재생 중이던 노래의 id(pk)이다.
-//        val songId = sharedPreferences.getInt("songId", 0)
-//
-//        val songDB = SongDatabase.getInstance(this)!!
-//
-//        song = if (songId == 0){ // 재생 중이던 노래가 없었으면
-//            songDB.songDao().getSong(1)
-//        } else{ // 재생 중이던 노래가 있었으면
-//            songDB.songDao().getSong(songId)
-//        }
-//
-//        Log.d("song ID", song.id.toString())
-//        setMiniPlayer(song)
-//    }
+
     private fun setMiniPlayer(song: Song){
         binding.mainPlayTitleTv.text = song.title
         binding.mainPlaySingerTv.text = song.singer
         val sharedPreferences = getSharedPreferences("song", MODE_PRIVATE)
         val second = sharedPreferences.getInt("second", 0)
         Log.d("spfSecond", second.toString())
-        binding.mainMiniplayerProgressSb.progress = (song.second * 100000 / song.playTime)
+        binding.mainMiniplayerProgressSb.progress = (second * 100000 / song.playTime)
     }
     fun updateMainPlayerCl(album : Album) {
         binding.mainPlayTitleTv.text = album.title

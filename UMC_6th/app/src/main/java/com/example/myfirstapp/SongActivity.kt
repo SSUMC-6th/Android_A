@@ -30,7 +30,6 @@ class SongActivity : AppCompatActivity() {
         initSong()
         initClickListener()
 
-
     }
 
     private fun initPlayList(){
@@ -43,11 +42,11 @@ class SongActivity : AppCompatActivity() {
         }
 
         binding.songMiniplayerPlayIv.setOnClickListener {
-            setPlayerStatus(true)
+            setPlayerStatus(false)
         }
 
         binding.songMiniplayerPauseIv.setOnClickListener {
-            setPlayerStatus(false)
+            setPlayerStatus(true)
         }
         binding.songMiniplayerNextIv.setOnClickListener {
             moveSong(+1)
@@ -73,10 +72,12 @@ class SongActivity : AppCompatActivity() {
     }
     private fun moveSong(direct: Int){
         if(nowPos + direct < 0){
-            Toast.makeText(this,"first song",Toast.LENGTH_SHORT).show()
+            CustomSnackbar.make(binding.root, "처음 곡입니다.").show()
+            //Toast.makeText(this,"first song",Toast.LENGTH_SHORT).show()
         }
         if(nowPos + direct >= songs.size){
-            Toast.makeText(this,"last song",Toast.LENGTH_SHORT).show()
+            CustomSnackbar.make(binding.root, "마지막 곡입니다").show()
+            //Toast.makeText(this,"last song",Toast.LENGTH_SHORT).show()
             return
         }
         nowPos +=direct
@@ -109,6 +110,7 @@ class SongActivity : AppCompatActivity() {
         }
 
     }
+
 
     private fun setPlayer(song : Song) {
         binding.songMusicTitleTv.text = song.title
@@ -188,6 +190,7 @@ class SongActivity : AppCompatActivity() {
     override fun onPause() {
         super.onPause()
         songs[nowPos].second = (songs[nowPos].playTime * binding.songSeekbarSb.progress) / 100000
+        Log.d("second", songs[nowPos].second.toString())
         songs[nowPos].isPlaying = false
         setPlayerStatus(false)
 
