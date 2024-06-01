@@ -1,6 +1,7 @@
 package com.example.umc_6th
 
 import android.app.Activity
+import android.app.ActivityManager
 import android.content.Context
 import android.content.Intent
 import android.graphics.PorterDuff
@@ -103,12 +104,14 @@ class SongActivity : AppCompatActivity() {
             binding.imgSongPlayPauseBtn.visibility = View.VISIBLE
             binding.imgSongPlayBtn.visibility = View.GONE
             startOrResumeTimer()
+            startStopService()
         }
 
         binding.imgSongPlayPauseBtn.setOnClickListener {
             isTimerRunning = false
             binding.imgSongPlayBtn.visibility = View.VISIBLE
             binding.imgSongPlayPauseBtn.visibility = View.GONE
+            startStopService()
         }
 
         binding.imgSongRepeat.setOnClickListener {
@@ -292,5 +295,30 @@ class SongActivity : AppCompatActivity() {
             putInt("songProgress", elapsedSeconds)
             apply()
         }
+    }
+
+    private fun startStopService() {
+        if (isServiceRunning(ForegroundService::class.java)) {
+            Toast.makeText(this, "Foreground Service Stopped", Toast.LENGTH_SHORT).show()
+            stopService(Intent(this, ForegroundService::class.java))
+        }
+        else {
+            Toast.makeText(this, "Foreground Service Started", Toast.LENGTH_SHORT).show()
+            startService(Intent(this, ForegroundService::class.java))
+        }
+    }
+
+    private fun isServiceRunning(inputClass : Class<ForegroundService>) : Boolean {
+        val manager : ActivityManager = getSystemService(
+            Context.ACTIVITY_SERVICE
+        ) as ActivityManager
+
+        for (service : ActivityManager.RunningServiceInfo in manager.getRunningServices(Integer.MAX_VALUE)) {
+            if (inputClass.name.equals(service.service.className)) {
+                return true
+            }
+
+        }
+        return false
     }
 }

@@ -116,6 +116,12 @@
         android:id="@+id/tlAlbum"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        app:tabTextColor="@color/grey"
+        app:tabSelectedTextColor="@color/flo"
+        app:tabIndicatorColor="@color/flo"
+        app:tabIndicatorFullWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgAlbumAlbumCov">

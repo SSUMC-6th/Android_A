@@ -10,9 +10,11 @@ import com.example.umc_6th.adapter.LockerAlbumRecyclerAdapter
 import com.example.umc_6th.databinding.FragmentLockerSavedSongBinding
 import com.google.gson.Gson
 
-class LockerSavedSongFragment : Fragment() {
+class LockerSavedSongFragment : Fragment(){
     private var songDatas = ArrayList<Song>()
     lateinit var binding : FragmentLockerSavedSongBinding
+    lateinit var songDB: SongDatabase
+    val lockerAlbumRecyclerAdapter = LockerAlbumRecyclerAdapter(songDatas)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,7 +41,6 @@ class LockerSavedSongFragment : Fragment() {
         if (songDB != null) {
             songDatas = ArrayList(songDB.songDao().getLikedSongs(true))
         }
-        val lockerAlbumRecyclerAdapter = LockerAlbumRecyclerAdapter(songDatas)
         binding.rvLockerSavedSong.adapter = lockerAlbumRecyclerAdapter
         binding.rvLockerSavedSong.layoutManager = LinearLayoutManager(requireActivity())
 
@@ -72,5 +73,7 @@ class LockerSavedSongFragment : Fragment() {
             })
             .commitAllowingStateLoss()
     }
+
+
 
 }

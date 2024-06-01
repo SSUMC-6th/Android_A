@@ -46,6 +46,7 @@ class HomeFragment : Fragment() {
             add(Album(4, "Drama", "에스파 (aespa)", R.drawable.img_album_drama))
             add(Album(5, "Weekend", "태연 (Tae Yeon)", R.drawable.img_album_exp6))
         }
+
         val albumRecyclerAdapter = AlbumRecyclerAdapter(albumDatas)
         binding.homeTodayMusicAlbum.adapter = albumRecyclerAdapter
         binding.homeTodayMusicAlbum.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
@@ -58,9 +59,6 @@ class HomeFragment : Fragment() {
         albumRecyclerAdapter.setItemClickListener(object : AlbumRecyclerAdapter.OnItemClickListener {
             override fun onItemClick(album : Album) {
                 changeToAlbumFragment(album)
-                (context as MainActivity).supportFragmentManager.beginTransaction()
-                    .replace(R.id.main_container, AlbumFragment())
-                    .commitAllowingStateLoss()
             }
         })
         return binding.root

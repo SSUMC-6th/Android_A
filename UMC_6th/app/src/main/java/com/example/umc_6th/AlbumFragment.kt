@@ -29,6 +29,11 @@ class AlbumFragment: Fragment(R.layout.fragment_album) {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentAlbumBinding.inflate(inflater, container, false)
+
+        //앨범 데이터
+        val albumToJson = arguments?.getString("album")
+        val album = gson.fromJson(albumToJson, Album::class.java)
+        setInit(album)
         return binding.root
     }
 
@@ -63,7 +68,7 @@ class AlbumFragment: Fragment(R.layout.fragment_album) {
 
     private fun setInit(album : Album) {
         Log.d("AlbumFragment", "Album parsed: ${album.title}, ${album.artist}, ${album.coverImg}")
-       // binding.imgAlbumAlbumCov.setImageResource(album.coverImage!!)
+        binding.imgAlbumAlbumCov.setImageResource(album.coverImg!!)
         binding.txAlbumAlbumTitle.text = album.title
         binding.txAlbumAlbumArtist.text = album.artist
     }
