@@ -19,9 +19,12 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
     private lateinit var viewModel: HomeFragment.SharedViewModel
-    lateinit var prefs: SharedPreferencesHelper
+    private lateinit var prefs: SharedPreferencesHelper
 
     private var song:Song = Song()
+    private val songs = arrayListOf<Song>()
+    lateinit var songDB: SongDatabase
+    private var nowPos = 0
     private var gson: Gson = Gson()
     private var isPlaying: Boolean = false
 
@@ -34,12 +37,14 @@ class MainActivity : AppCompatActivity() {
 
         inputDummySongs()
  //       inputDummyAlbums()
-        resultLauncher = registerForActivityResult(
-            ActivityResultContracts.StartActivityForResult()
-        ) { result ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                val elapsedSeconds = result.data?.getIntExtra("elapsedSeconds", 0) ?: 0
-                updateSeekBar(elapsedSeconds)
+        resultLauncher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == RESULT_OK) {
+                val data = result.data
+                if (data != null) {
+                    val message = data.getStringExtra("message")
+                    Log.d("message", message!!)
+                    Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                }
             }
         }
 
@@ -58,7 +63,9 @@ class MainActivity : AppCompatActivity() {
 
  */
 
+        initPlayList()
         setupButtonListeners()
+        //아래는 뭐지??
         viewModel = ViewModelProvider(this).get(HomeFragment.SharedViewModel::class.java)
         viewModel.selectedTitle.observe(this, Observer { title ->
             binding.txPlayTitle.text = title
@@ -80,7 +87,7 @@ class MainActivity : AppCompatActivity() {
         prefs = SharedPreferencesHelper(this)
 
     }
-
+//문제없음..
     override fun onStart() {
         super.onStart()
         val spf = getSharedPreferences("song", MODE_PRIVATE)
@@ -97,6 +104,8 @@ class MainActivity : AppCompatActivity() {
         Log.d("song ID", song.id.toString())
         setMiniPlayer(song)
     }
+
+
     override fun onPause() {
         super.onPause()
         savePlaybackState(isPlaying)  // 현재 재생 상태를 저장
@@ -138,16 +147,18 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun updateSeekBar(elapsedSeconds: Int) {
+    private fun updateSeekBar(elapsedSeconds: Int, totalTime: Int) {
         val max = binding.mainSeekBar.max
-        val progress = elapsedSeconds * max / 60
+        val progress = elapsedSeconds * max / totalTime
         binding.mainSeekBar.progress = progress
     }
 
     private fun setMiniPlayer(song : Song){
-        binding.txPlayTitle.text = song.title
-        binding.txPlayArtist.text = song.artist
-        binding.mainSeekBar.progress = (song.second*100000)/song.playTime
+        runOnUiThread {
+            binding.txPlayTitle.text = song.title
+            binding.txPlayArtist.text = song.artist
+            binding.mainSeekBar.progress = (song.second * 100000) / song.playTime
+        }
     }
 
     private fun playNextSong() {
@@ -171,9 +182,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateFromSharedPrefs() {
-        val sharedPref = this.getPreferences(Context.MODE_PRIVATE) ?: return
+        val sharedPref = getSharedPreferences("song", MODE_PRIVATE)
         val songId = sharedPref.getInt("songId", -1)
-        if (songId != -1) {
+        nowPos = getPlayingSongPosition(songId)
+        if (songId != nowPos) {
             val songTitle = sharedPref.getString("songTitle", "")
             val songArtist = sharedPref.getString("songArtist", "")
             val songProgress = sharedPref.getInt("songProgress", 0)
@@ -181,14 +193,31 @@ class MainActivity : AppCompatActivity() {
             Log.d("MainActivity", "Loaded songId: $songId, Title: $songTitle, Artist: $songArtist, Progress: $songProgress")
             binding.txPlayTitle.text = songTitle
             binding.txPlayArtist.text = songArtist
-            updateSeekBar(songProgress)
+            updateSeekBar(songProgress, songs[nowPos].playTime)
         }
     }
 
+    private fun initPlayList(){
+        songDB = SongDatabase.getInstance(this)!!
+        songs.addAll(songDB.songDao().getSongs())
+    }
+
+    private fun getPlayingSongPosition(songId: Int): Int{
+        for (i in 0 until songs.size){
+            if (songs[i].id == songId){
+                return i
+            }
+        }
+        return 0
+    }
+
     private fun savePlaybackState(isPlaying: Boolean) {
-        val sharedPref = getPreferences(Context.MODE_PRIVATE) ?: return
+        val sharedPref = getSharedPreferences("song", MODE_PRIVATE) ?: return
         with (sharedPref.edit()) {
             putBoolean("isPlaying", isPlaying)
+            putString("songTitle", binding.txPlayTitle.text.toString())
+            putString("songArtist", binding.txPlayArtist.text.toString())
+            putInt("songProgress", binding.mainSeekBar.progress)
             apply()
         }
     }

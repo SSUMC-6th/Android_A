@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 
 class SharedPreferencesHelper(context: Context) {
-    private val PREFS_NAME = "appPreferences"
+    private val PREFS_NAME = "song"
     private var preferences: SharedPreferences = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE)
 
     fun saveSongId(songId: Int) {

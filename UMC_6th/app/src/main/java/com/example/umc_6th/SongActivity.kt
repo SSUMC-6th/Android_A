@@ -5,19 +5,17 @@ import android.app.ActivityManager
 import android.content.Context
 import android.content.Intent
 import android.graphics.PorterDuff
+import android.media.MediaPlayer
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.ui.graphics.Color
 import androidx.core.content.ContextCompat
 import com.example.umc_6th.databinding.ActivitySongBinding
 import com.google.gson.Gson
-import kotlin.math.log
 
 class SongActivity : AppCompatActivity() {
     private lateinit var binding : ActivitySongBinding
@@ -25,7 +23,7 @@ class SongActivity : AppCompatActivity() {
     private var timerThread: Thread? = null
     @Volatile private var isTimerRunning: Boolean = false
     private var elapsedSeconds = 0
-    private val totalSeconds = 60
+    private var totalSeconds = 60
     //한곡재생
     @Volatile private var isRepeatOne: Boolean = true
 
@@ -36,48 +34,43 @@ class SongActivity : AppCompatActivity() {
     lateinit var songDB: SongDatabase
     var nowPos = 0
 
+    //곡재생
+    private var mediaPlayer : MediaPlayer? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySongBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val songTitle = intent.getStringExtra("songTitle")
-        val songArtist = intent.getStringExtra("songArtist")
+        initPlayList()  // 노래 목록 초기화
+        val sharedPref = getSharedPreferences("song", MODE_PRIVATE)
+        nowPos = sharedPref.getInt("songId", 0)
+        Log.d("songId", nowPos.toString())
+        if (songs.isNotEmpty()) {
+            updateSongUI(songs[nowPos])
+        }
+     //   val songTitle = intent.getStringExtra("songTitle")
+       // val songArtist = intent.getStringExtra("songArtist")
 
-        Log.d("SongActivity", "Received title: $songTitle, artist: $songArtist")
+   //     Log.d("SongActivity", "Received title: $songTitle, artist: $songArtist")
 
-        binding.txSongTitle.text = songTitle
-        binding.txSongArtist.text = songArtist
+  //      binding.txSongTitle.text = songTitle
+    //    binding.txSongArtist.text = songArtist
 
         setupColorFilters()
-        setupButtonListeners()
-
-        binding.imgSongDown.setOnClickListener {
-            val returnIntent = Intent().apply {
-                putExtra("albumTitle", "LILAC")
-                putExtra("elapsedSeconds", elapsedSeconds)
-            }
-            setResult(Activity.RESULT_OK, returnIntent)
-            finish()
-        }
+        setupButtonListeners(songs[nowPos])
 
         binding.viewSongBar.post{
             maxBarWidth = binding.viewSongBar.width
             binding.viewSongBarBlue.layoutParams.width=1
         }
 
-        initPlayList()  // 노래 목록 초기화
         if (songs.isNotEmpty()) {
             nowPos = 0  // 초기 위치 설정
             updateSongUI(songs[nowPos])  // 초기 노래 UI 업데이트
         }
         setupNavigationListeners()
 
-        val sharedPref = this.getPreferences(Context.MODE_PRIVATE)
-        nowPos = sharedPref.getInt("LastSongPosition", 0)
-        if (songs.isNotEmpty()) {
-            updateSongUI(songs[nowPos])
-        }
     }
 
     private fun setupColorFilters() {
@@ -98,11 +91,16 @@ class SongActivity : AppCompatActivity() {
         }
     }
 
-    private fun setupButtonListeners() {
+    private fun setupButtonListeners(song : Song) {
+        binding.imgSongDown.setOnClickListener {
+            finish()
+        }
+
         binding.imgSongPlayBtn.setOnClickListener {
             isTimerRunning = true
             binding.imgSongPlayPauseBtn.visibility = View.VISIBLE
             binding.imgSongPlayBtn.visibility = View.GONE
+            playSong(song)
             startOrResumeTimer()
             startStopService()
         }
@@ -135,7 +133,7 @@ class SongActivity : AppCompatActivity() {
             startTimer(totalSeconds)
         }
     }
-    private fun RestartTimer(){
+    private fun restartTimer(){
         if (timerThread != null && timerThread!!.isAlive) {
             // 기존 타이머가 실행 중이면 중단
             isTimerRunning = false
@@ -155,7 +153,12 @@ class SongActivity : AppCompatActivity() {
         timerThread = Thread {
             while (elapsedSeconds <= totalSeconds && isTimerRunning) {
                 updateUI()
-                Thread.sleep(1000)
+                try {
+                    Thread.sleep(1000)
+                } catch (ie: InterruptedException) {
+                    Thread.currentThread().interrupt() // 인터럽트 상태 복원
+                    return@Thread // 스레드를 안전하게 종료
+                }
                 elapsedSeconds++
                 if (elapsedSeconds > totalSeconds) {
                     if (isRepeatOne) { // 반복 재생 상태일 때
@@ -187,17 +190,25 @@ class SongActivity : AppCompatActivity() {
             layoutParams.width = newWidth
             binding.viewSongBarBlue.layoutParams = layoutParams
             binding.txSongBarStartTime.text = String.format("%02d:%02d", minutes, seconds)
+
         }
     }
-
 
     override fun onPause() {
         super.onPause()
         saveCurrentSongInfo()
+        songs[nowPos].second = (songs[nowPos].playTime * binding.viewSongBarBlue.progress) / 100000
+        songs[nowPos].isPlaying = false
+        val sharedPreferences = getSharedPreferences("song", MODE_PRIVATE)
+        val editor = sharedPreferences.edit()
+        editor.putInt("songId", songs[nowPos].id)
+        editor.apply()
     }
     override fun onDestroy() {
         super.onDestroy()
         timerThread?.interrupt()
+        mediaPlayer?.release()
+        mediaPlayer = null
     }
 
     private fun initPlayList(){
@@ -218,7 +229,7 @@ class SongActivity : AppCompatActivity() {
             if (nowPos < songs.size - 1) {
                 nowPos++
                 updateSongUI(songs[nowPos])
-                RestartTimer()
+                restartTimer()
             }
         }
 
@@ -226,7 +237,7 @@ class SongActivity : AppCompatActivity() {
             if (nowPos > 0) {
                 nowPos--
                 updateSongUI(songs[nowPos])
-                RestartTimer()
+                restartTimer()
             }
         }
     }
@@ -236,6 +247,10 @@ class SongActivity : AppCompatActivity() {
         binding.txSongArtist.text = song.artist
         song.coverImg?.let { binding.imgSongAlbum.setImageResource(it) }
         updateHeartIcon(song.isLike)
+        totalSeconds = songs[nowPos].playTime
+        val minutes = totalSeconds / 60
+        val seconds = totalSeconds % 60
+        binding.txSongBarEndTime.text = String.format("%02d:%02d", minutes, seconds)
     }
 
     private fun toggleLikeStatus() {
@@ -287,7 +302,7 @@ class SongActivity : AppCompatActivity() {
     }
 
     private fun saveCurrentSongInfo() {
-        val sharedPref = this.getPreferences(Context.MODE_PRIVATE) ?: return
+        val sharedPref = getSharedPreferences("song", MODE_PRIVATE) ?: return
         with (sharedPref.edit()) {
             putInt("songId", songs[nowPos].id)
             putString("songTitle", songs[nowPos].title)
@@ -321,4 +336,35 @@ class SongActivity : AppCompatActivity() {
         }
         return false
     }
+
+    //song init
+
+    private fun playSong(song: Song) {
+        mediaPlayer?.release()
+        mediaPlayer = MediaPlayer().apply {
+
+            val resourceId = resources.getIdentifier(song.music, "raw", packageName)
+            println("song은"+resourceId)
+            if (resourceId != 0) {
+                val afd = resources.openRawResourceFd(resourceId)
+                afd?.let {
+                    setDataSource(it.fileDescriptor, it.startOffset, it.length)
+                    it.close()
+                    prepare()
+                    start()
+
+                    setOnCompletionListener {
+                        // 노래 재생이 끝났을 때 처리
+                        playNextSong() // 다음 곡 재생
+                    }
+
+                    setOnErrorListener { mp, what, extra ->
+                        mp.reset() // 에러가 발생했을 때 MediaPlayer를 리셋
+                        true // 에러 처리 완료
+                    }
+                }
+            }
+        }
+    }
+
 }

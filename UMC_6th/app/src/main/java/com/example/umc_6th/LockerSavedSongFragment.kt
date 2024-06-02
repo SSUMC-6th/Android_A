@@ -37,6 +37,7 @@ class LockerSavedSongFragment : Fragment(){
         }
 
  */
+        //음악 가져오기
         val songDB = SongDatabase.getInstance(requireContext())
         if (songDB != null) {
             songDatas = ArrayList(songDB.songDao().getLikedSongs(true))
