@@ -3,6 +3,7 @@ package com.example.umc_6th
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -19,7 +20,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var resultLauncher: ActivityResultLauncher<Intent>
     private lateinit var viewModel: HomeFragment.SharedViewModel
-    private lateinit var prefs: SharedPreferencesHelper
 
     private var song:Song = Song()
     private val songs = arrayListOf<Song>()
@@ -32,6 +32,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
+        val prefs = getSharedPreferences("song", MODE_PRIVATE)
 
         setContentView(binding.root)
 
@@ -77,21 +78,20 @@ class MainActivity : AppCompatActivity() {
 
         binding.layoutPlayContainer.setOnClickListener{
             val editor = getSharedPreferences("song", MODE_PRIVATE).edit()
-            editor.putInt("songId",song.id)
+            editor.putInt("songId",songs[nowPos].id-1)
             editor.apply()
 
             val intent = Intent(this,SongActivity::class.java)
             startActivity(intent)
         }
 
-        prefs = SharedPreferencesHelper(this)
 
     }
 //문제없음..
     override fun onStart() {
         super.onStart()
-        val spf = getSharedPreferences("song", MODE_PRIVATE)
-        val songId = spf.getInt("songId",0)
+        val prefs = getSharedPreferences("song", MODE_PRIVATE)
+        val songId = prefs.getInt("songId",0)
 
         val songDB = SongDatabase.getInstance(this)!!
 
@@ -114,6 +114,7 @@ class MainActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         updateFromSharedPrefs()  // 추가적으로 UI 업데이트
+        Log.d("MainActivityNextSongId", nowPos.toString())
     }
 
 
@@ -162,22 +163,32 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun playNextSong() {
+        val prefs = getSharedPreferences("song", MODE_PRIVATE)
         val songDB = SongDatabase.getInstance(this)!!
-        val currentSongId = prefs.getSongId()
+        val currentSongId = prefs.getInt("songId",0)
         val nextSong = songDB.songDao().getNextSong(currentSongId)  // 다음 곡을 조회하는 로직 필요
         if (nextSong != null) {
             setMiniPlayer(nextSong)
-            prefs.saveSongId(nextSong.id)  // Shared Preferences에 다음 곡 ID 저장
+            val editor = prefs.edit()
+            editor.putInt("songId", nextSong.id)
+            editor.apply()
+            Log.d("isRight?", nextSong.id.toString())
+        // 일단 재생중으로 선택. Shared Preferences에 다음 곡 ID 저장
         }
     }
 
     private fun playPreviousSong() {
+        val prefs = getSharedPreferences("song", MODE_PRIVATE)
         val songDB = SongDatabase.getInstance(this)!!
-        val currentSongId = prefs.getSongId()
+        val currentSongId = prefs.getInt("songId",0)
         val previousSong = songDB.songDao().getPreviousSong(currentSongId)  // 이전 곡을 조회하는 로직 필요
         if (previousSong != null) {
             setMiniPlayer(previousSong)
-            prefs.saveSongId(previousSong.id)  // Shared Preferences에 이전 곡 ID 저장
+            val editor = prefs.edit()
+            editor.putInt("songId", previousSong.id)
+            editor.apply()
+            Log.d("isRight?", previousSong.id.toString())
+        // 일단 재생중으로 선택. Shared Preferences에 이전 곡 ID 저장
         }
     }
 

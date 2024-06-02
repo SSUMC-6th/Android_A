@@ -45,7 +45,6 @@ class SongActivity : AppCompatActivity() {
         initPlayList()  // 노래 목록 초기화
         val sharedPref = getSharedPreferences("song", MODE_PRIVATE)
         nowPos = sharedPref.getInt("songId", 0)
-        Log.d("songId", nowPos.toString())
         if (songs.isNotEmpty()) {
             updateSongUI(songs[nowPos])
         }
@@ -194,6 +193,16 @@ class SongActivity : AppCompatActivity() {
         }
     }
 
+
+    override fun onStart() {
+        super.onStart()
+        val sharedPref = getSharedPreferences("song", MODE_PRIVATE)
+        nowPos = sharedPref.getInt("songId", 0)
+        Log.d("SongActivitysongId", nowPos.toString())
+        if (songs.isNotEmpty()) {
+            updateSongUI(songs[nowPos])
+        }
+    }
     override fun onPause() {
         super.onPause()
         saveCurrentSongInfo()
@@ -283,6 +292,7 @@ class SongActivity : AppCompatActivity() {
             nowPos = 0  // 목록의 첫 번째 곡으로 돌아가기
         }
         updateSongUI(songs[nowPos])
+        Log.d("SongActivityNextSongId", nowPos.toString())
         startOrResumeTimer()  // 타이머를 다시 시작
     }
 
