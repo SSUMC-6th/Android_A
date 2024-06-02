@@ -14,6 +14,7 @@ import com.example.umc_6th.adapter.ViewPagerAdapter
 import com.example.umc_6th.databinding.FragmentHomeBinding
 import me.relex.circleindicator.CircleIndicator3
 import android.os.Looper
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -30,6 +31,9 @@ class HomeFragment : Fragment() {
     private lateinit var handler: Handler
     private lateinit var runnable: Runnable
     private var albumDatas = ArrayList<Album>()
+    private lateinit var songDB: SongDatabase
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -38,6 +42,7 @@ class HomeFragment : Fragment() {
         viewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
 
+        /*
         albumDatas.apply {
             add(Album(0, "Love wins all", "아이유 (IU)", R.drawable.img_album_lovewinsall))
             add(Album(1, "해야 (HEYA)", "IVE", R.drawable.img_album_heya))
@@ -46,6 +51,12 @@ class HomeFragment : Fragment() {
             add(Album(4, "Drama", "에스파 (aespa)", R.drawable.img_album_drama))
             add(Album(5, "Weekend", "태연 (Tae Yeon)", R.drawable.img_album_exp6))
         }
+         */
+
+        inputDummyAlbums()
+        songDB = SongDatabase.getInstance(requireContext())!!
+        albumDatas.addAll(songDB.albumDao().getAlbums())
+        Log.d("albumlist", albumDatas.toString())
 
         val albumRecyclerAdapter = AlbumRecyclerAdapter(albumDatas)
         binding.homeTodayMusicAlbum.adapter = albumRecyclerAdapter
@@ -131,6 +142,48 @@ class HomeFragment : Fragment() {
     }
 
 
+    //ROOM_DB
+    private fun inputDummyAlbums() {
+        val songDB = SongDatabase.getInstance(requireActivity())!!
+        val albums = songDB.albumDao().getAlbums()
+
+        if (albums.isNotEmpty()) return
+        songDB.albumDao().insert(
+            Album(
+                0,
+                "IU 5th Album 'LILAC'", "아이유 (IU)", R.drawable.img_album_exp2
+            )
+        )
+
+        songDB.albumDao().insert(
+            Album(
+                1,
+                "Butter", "방탄소년단 (BTS)", R.drawable.img_album_exp
+            )
+        )
+
+        songDB.albumDao().insert(
+            Album(
+                2,
+                "Next Level", "에스파 (AESPA)", R.drawable.img_album_exp3
+            )
+        )
+
+        songDB.albumDao().insert(
+            Album(
+                3,
+                "MAP OF THE SOUL : PERSONA", "방탄소년단 (BTS)", R.drawable.img_album_exp4
+            )
+        )
+
+        songDB.albumDao().insert(
+            Album(
+                4,
+                "GREAT!", "모모랜드 (MOMOLAND)", R.drawable.img_album_exp5
+            )
+        )
+
+    }
 
     class FragmentHomeBanner : Fragment(R.layout.fragment_home_banner1) {
         // 필요한 경우 여기에 로직 추가

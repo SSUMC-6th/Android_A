@@ -6,10 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import com.example.umc_6th.adapter.LockerPagerAdapter
 import com.example.umc_6th.databinding.FragmentHomeBinding
 import com.example.umc_6th.databinding.FragmentLockerBinding
@@ -21,6 +23,7 @@ class LockerFragment : Fragment() {
     private val binding get() = _binding!!
     private val information = arrayListOf("저장한곡", "음악파일")
 
+    private lateinit var sharedViewModel: SharedViewModel
     private lateinit var bottomSheetDialog: BottomSheetDialog
     lateinit var songDB: SongDatabase
 
@@ -42,6 +45,8 @@ class LockerFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        sharedViewModel = ViewModelProvider(requireActivity()).get(SharedViewModel::class.java)
+
 
         binding.txLockerSelectAll.setOnClickListener{
             showBottomSheetDialog()
@@ -51,12 +56,11 @@ class LockerFragment : Fragment() {
     private fun showBottomSheetDialog() {
         bottomSheetDialog = BottomSheetDialog(requireContext())
         bottomSheetDialog.setContentView(R.layout.bottom_sheet_dialog)
-
         val btnDislike = bottomSheetDialog.findViewById<ImageView>(R.id.imgDialogDelete)
         btnDislike?.setOnClickListener {
+            sharedViewModel.triggerDislikeAll()
             bottomSheetDialog.dismiss()  // Dialog 숨기기
         }
-
         bottomSheetDialog.show()
     }
 

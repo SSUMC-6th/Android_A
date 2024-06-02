@@ -1,5 +1,6 @@
 package com.example.umc_6th.adapter
 
+import android.annotation.SuppressLint
 import android.util.SparseBooleanArray
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,9 +9,11 @@ import com.example.umc_6th.R
 import com.example.umc_6th.Song
 import com.example.umc_6th.databinding.ItemLockerAlbumBinding
 
-class LockerAlbumRecyclerAdapter(private val songList: ArrayList<Song>) : RecyclerView.Adapter<LockerAlbumRecyclerAdapter.ViewHolder>() {
+class LockerAlbumRecyclerAdapter() : RecyclerView.Adapter<LockerAlbumRecyclerAdapter.ViewHolder>() {
 
     private val switchStatus = SparseBooleanArray()
+    private val songs = ArrayList<Song>()
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -22,7 +25,7 @@ class LockerAlbumRecyclerAdapter(private val songList: ArrayList<Song>) : Recycl
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val song = songList[position]
+        val song = songs[position]
         holder.bind(song)
 
         // 항목 클릭 이벤트
@@ -36,7 +39,7 @@ class LockerAlbumRecyclerAdapter(private val songList: ArrayList<Song>) : Recycl
         }
     }
 
-    override fun getItemCount(): Int = songList.size
+    override fun getItemCount(): Int = songs.size
 
     inner class ViewHolder(val binding: ItemLockerAlbumBinding): RecyclerView.ViewHolder(binding.root){
 
@@ -58,8 +61,17 @@ class LockerAlbumRecyclerAdapter(private val songList: ArrayList<Song>) : Recycl
         this.itemClickListener = onItemClickListener
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun addSongs(songs: ArrayList<Song>) {
+        this.songs.clear()
+        this.songs.addAll(songs)
+
+        notifyDataSetChanged()
+    }
+
+
     fun removeItem(position: Int){
-        songList.removeAt(position)
+        songs.removeAt(position)
         notifyDataSetChanged()
     }
 }
