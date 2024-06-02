@@ -39,11 +39,20 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <ImageView
-                android:id="@+id/btnMainBefore"
+                android:id="@+id/btnMainPrev"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1.5"
                 android:src="@drawable/btn_miniplayer_previous" />
+
+            <ImageView
+                android:id="@+id/btnMainPause"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.6"
+                android:src="@drawable/btn_miniplay_pause"
+                android:visibility="gone"/>
+
 
             <ImageView
                 android:id="@+id/btnMainStart"
@@ -129,5 +138,7 @@
         app:itemIconSize="15dp"
         app:itemPadding="0dp"
         android:background="#FFFFFF"/>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

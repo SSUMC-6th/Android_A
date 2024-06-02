@@ -35,9 +35,9 @@
         android:layout_height="0dp"
         app:layout_constraintDimensionRatio="125:564"
         android:src="@drawable/img_album_lp"
-        app:layout_constraintBottom_toBottomOf="@+id/album_album_iv"
-        app:layout_constraintStart_toEndOf="@+id/album_album_iv"
-        app:layout_constraintTop_toTopOf="@+id/album_album_iv" />
+        app:layout_constraintBottom_toBottomOf="@+id/imgAlbumAlbumCov"
+        app:layout_constraintStart_toEndOf="@+id/imgAlbumAlbumCov"
+        app:layout_constraintTop_toTopOf="@+id/imgAlbumAlbumCov" />
 
     <ImageView
         android:id="@+id/album_back_iv"
@@ -53,7 +53,7 @@
 
 
     <TextView
-        android:id="@+id/album_music_title_tv"
+        android:id="@+id/txAlbumAlbumTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -67,15 +67,15 @@
 
 
     <TextView
-        android:id="@+id/album_singer_name_tv"
+        android:id="@+id/txAlbumAlbumArtist"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="3dp"
         android:text="IU"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@+id/album_music_title_tv"
-        app:layout_constraintStart_toStartOf="@+id/album_music_title_tv"
-        app:layout_constraintTop_toBottomOf="@+id/album_music_title_tv" />
+        app:layout_constraintEnd_toEndOf="@+id/txAlbumAlbumTitle"
+        app:layout_constraintStart_toStartOf="@+id/txAlbumAlbumTitle"
+        app:layout_constraintTop_toBottomOf="@+id/txAlbumAlbumTitle" />
 
     <TextView
         android:id="@+id/album_music_title_info_tv"
@@ -84,12 +84,12 @@
         android:layout_marginTop="3dp"
         android:text="2021.03.25 | 정규 | 댄스 팝"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="@+id/album_singer_name_tv"
-        app:layout_constraintStart_toStartOf="@+id/album_singer_name_tv"
-        app:layout_constraintTop_toBottomOf="@+id/album_singer_name_tv" />
+        app:layout_constraintEnd_toEndOf="@+id/txAlbumAlbumArtist"
+        app:layout_constraintStart_toStartOf="@+id/txAlbumAlbumArtist"
+        app:layout_constraintTop_toBottomOf="@+id/txAlbumAlbumArtist" />
 
     <ImageView
-        android:id="@+id/album_album_iv"
+        android:id="@+id/imgAlbumAlbumCov"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginStart="100dp"
@@ -108,17 +108,23 @@
         android:layout_marginEnd="5dp"
         android:layout_marginBottom="5dp"
         android:src="@drawable/widget_black_play"
-        app:layout_constraintBottom_toBottomOf="@+id/album_album_iv"
-        app:layout_constraintEnd_toEndOf="@+id/album_album_iv" />
+        app:layout_constraintBottom_toBottomOf="@+id/imgAlbumAlbumCov"
+        app:layout_constraintEnd_toEndOf="@+id/imgAlbumAlbumCov" />
 
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tlAlbum"
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        app:tabTextColor="@color/grey"
+        app:tabSelectedTextColor="@color/flo"
+        app:tabIndicatorColor="@color/flo"
+        app:tabIndicatorFullWidth="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/album_album_iv">
+        app:layout_constraintTop_toBottomOf="@+id/imgAlbumAlbumCov">
 
 
     </com.google.android.material.tabs.TabLayout>
@@ -167,15 +173,6 @@
 <!--    </LinearLayout>-->
 
 
-    <View
-        android:id="@+id/album_line_view"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_marginTop="15dp"
-        android:background="#dcdcdc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layoutSongSelect" />
 
 
 

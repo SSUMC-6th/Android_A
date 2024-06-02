@@ -2,6 +2,7 @@ package com.example.umc_6th
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,18 +14,26 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.example.umc_6th.adapter.AlbumPagerAdapter
 import com.example.umc_6th.databinding.FragmentAlbumBinding
 import com.google.android.material.tabs.TabLayoutMediator
+import com.google.gson.Gson
 
 class AlbumFragment: Fragment(R.layout.fragment_album) {
     // 여기에 Fragment의 구현 내용을 작성합니다.
 
     private var _binding: FragmentAlbumBinding? = null
     private val binding get() = _binding!!
+    private var gson: Gson = Gson()
+    private val information = arrayListOf("수록곡", "상세정보", "영상")
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentAlbumBinding.inflate(inflater, container, false)
+
+        //앨범 데이터
+        val albumToJson = arguments?.getString("album")
+        val album = gson.fromJson(albumToJson, Album::class.java)
+        setInit(album)
         return binding.root
     }
 
@@ -48,6 +57,20 @@ class AlbumFragment: Fragment(R.layout.fragment_album) {
                 else -> null
             }
         }.attach()
+
+        arguments?.getString("album")?.let { json ->
+            val gson = Gson()
+            val album = gson.fromJson(json, Album::class.java)
+            Log.d("AlbumFragment", "Album parsed: ${album.title}, ${album.artist}, ${album.coverImg}")
+            setInit(album)
+        }
+    }
+
+    private fun setInit(album : Album) {
+        Log.d("AlbumFragment", "Album parsed: ${album.title}, ${album.artist}, ${album.coverImg}")
+        binding.imgAlbumAlbumCov.setImageResource(album.coverImg!!)
+        binding.txAlbumAlbumTitle.text = album.title
+        binding.txAlbumAlbumArtist.text = album.artist
     }
 
 
