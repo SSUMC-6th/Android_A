@@ -212,6 +212,7 @@ class SongActivity : AppCompatActivity() {
         val editor = sharedPreferences.edit()
         editor.putInt("songId", songs[nowPos].id)
         editor.apply()
+        Log.d("songProgress", songs[nowPos].second.toString())
     }
     override fun onDestroy() {
         super.onDestroy()

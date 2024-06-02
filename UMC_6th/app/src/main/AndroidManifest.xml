@@ -41,6 +41,8 @@
             android:hardwareAccelerated="true"
             android:label="@string/title_activity_song"
             android:theme="@style/Theme.UMC_6th"></activity>
+        <activity android:name=".LoginActivity"/>
+        <activity android:name=".SignUpActivity"/>
     </application>
 
 </manifest>
