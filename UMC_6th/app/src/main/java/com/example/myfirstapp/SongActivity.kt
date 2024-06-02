@@ -5,6 +5,7 @@ import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.example.myfirstapp.databinding.ActivitySongBinding
@@ -13,98 +14,143 @@ import com.google.gson.Gson
 class SongActivity : AppCompatActivity() {
 
     lateinit var binding: ActivitySongBinding
-    private var isColorChanged = false
-    lateinit var song : Song
     lateinit var timer: Timer
     private var mediaPlayer: MediaPlayer? = null
-    private var gson: Gson = Gson()
+
+    val songs = arrayListOf<Song>()
+    lateinit var songDB: SongDatabase
+    var nowPos = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySongBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        initPlayList()
         initSong()
-        setPlayer(song)
+        initClickListener()
 
+    }
 
-      //songDownIb를 누르면 songActivity 종료
+    private fun initPlayList(){
+        songDB = SongDatabase.getInstance(this)!!
+        songs.addAll(songDB.songDao().getSongs())
+    }
+    private fun initClickListener(){
+        binding.songDownIb.setOnClickListener {
+            finish()
+        }
 
-       binding.songDownIb.setOnClickListener {
-           finish()
-       }
-
-        binding.songMiniplayerPlayIv.setOnClickListener{
+        binding.songMiniplayerPlayIv.setOnClickListener {
             setPlayerStatus(false)
         }
-        binding.songMiniplayerPauseIv.setOnClickListener{
+
+        binding.songMiniplayerPauseIv.setOnClickListener {
             setPlayerStatus(true)
         }
-
-        binding.songRepeatIv.setOnClickListener {
-            if (isColorChanged) {
-                // 변경된 색상을 다시 초기 색상으로 변경
-                binding.songRepeatIv.setColorFilter(ContextCompat.getColor(this, R.color.black))
-            } else {
-                binding.songRepeatIv.setColorFilter(ContextCompat.getColor(this, R.color.flo))
-            }
-            isColorChanged = !isColorChanged
+        binding.songMiniplayerNextIv.setOnClickListener {
+            moveSong(+1)
         }
-
-        binding.songRandomIv.setOnClickListener {
-            if (isColorChanged) {
-                // 변경된 색상을 다시 초기 색상으로 변경
-                binding.songRandomIv.setColorFilter(ContextCompat.getColor(this, R.color.black))
-            } else {
-                binding.songRandomIv.setColorFilter(ContextCompat.getColor(this, R.color.flo))
-            }
-            isColorChanged = !isColorChanged
+        binding.songMiniplayerPreIv.setOnClickListener {
+            moveSong(-1)
+        }
+        binding.songLikeIv.setOnClickListener {
+            setLike(songs[nowPos].isLike)
         }
     }
 
     private fun initSong() {
-        if(intent.hasExtra("title") && intent.hasExtra("singer")) {
-            song = Song(
-                intent.getStringExtra("title")!!,
-                intent.getStringExtra("singer")!!,
-                intent.getIntExtra("second", 0),
-                intent.getIntExtra("playTime", 0),
-                intent.getBooleanExtra("isPlaying", false),
-                intent.getStringExtra("music")!!
-            )
-        }
+        val spf = getSharedPreferences("song", MODE_PRIVATE)
+        val songId = spf.getInt("songId", 0)
+
+        nowPos = getPlayingSongPosition(songId)
+
+        Log.d("now Song ID", songs[nowPos].id.toString())
+
         startTimer()
+        setPlayer(songs[nowPos])
     }
+    private fun moveSong(direct: Int){
+        if(nowPos + direct < 0){
+            CustomSnackbar.make(binding.root, "처음 곡입니다.").show()
+            //Toast.makeText(this,"first song",Toast.LENGTH_SHORT).show()
+        }
+        if(nowPos + direct >= songs.size){
+            CustomSnackbar.make(binding.root, "마지막 곡입니다").show()
+            //Toast.makeText(this,"last song",Toast.LENGTH_SHORT).show()
+            return
+        }
+        nowPos +=direct
+
+        timer.interrupt()
+        startTimer()
+
+        mediaPlayer?.release()
+        mediaPlayer = null
+
+        setPlayer(songs[nowPos])
+    }
+    // songId로 position을 얻는 메서드
+    private fun getPlayingSongPosition(songId: Int): Int{
+        for (i in 0 until songs.size){
+            if (songs[i].id == songId){
+                return i
+            }
+        }
+        return 0
+    }
+    private fun setLike(isLike: Boolean){
+        songs[nowPos].isLike = !isLike
+        songDB.songDao().updateIsLikeById(!isLike,songs[nowPos].id)
+
+        if (!isLike){
+            binding.songLikeIv.setImageResource(R.drawable.ic_my_like_on)
+        } else{
+            binding.songLikeIv.setImageResource(R.drawable.ic_my_like_off)
+        }
+
+    }
+
+
     private fun setPlayer(song : Song) {
-        binding.songMusicTitleTv.text = intent.getStringExtra("title")!!
-        binding.songMusicSingerTv.text = intent.getStringExtra("singer")!!
+        binding.songMusicTitleTv.text = song.title
+        binding.songMusicSingerTv.text = song.singer
         binding.songStartTimeTv.text = String.format("%02d:%02d", song.second / 60, song.second % 60)
         binding.songEndTimeTv.text = String.format("%02d:%02d", song.playTime / 60, song.playTime % 60)
+        binding.songAlbumIv.setImageResource(song.coverImg!!)
         binding.songSeekbarSb.progress = (song.second * 1000 / song.playTime)
 
         val music = resources.getIdentifier(song.music, "raw", this.packageName)
         mediaPlayer = MediaPlayer.create(this, music)
+
+        if(song.isLike) {
+            binding.songLikeIv.setImageResource(R.drawable.ic_my_like_on)
+        }
+        else {
+            binding.songLikeIv.setImageResource(R.drawable.ic_my_like_off)
+        }
+
         setPlayerStatus(song.isPlaying)
     }
-    fun setPlayerStatus(isPlaying : Boolean){
-        song.isPlaying = isPlaying
+    fun setPlayerStatus (isPlaying : Boolean){
+        songs[nowPos].isPlaying = isPlaying
         timer.isPlaying = isPlaying
-        if(isPlaying){ //재생중
-            binding.songMiniplayerPlayIv.visibility = View.VISIBLE
+
+        if(isPlaying){ // 재생중
             binding.songMiniplayerPauseIv.visibility = View.GONE
+            binding.songMiniplayerPlayIv.visibility = View.VISIBLE
             mediaPlayer?.start()
-        }
-        else{ //일시정지
-            binding.songMiniplayerPlayIv.visibility = View.GONE
+        } else { // 일시정지
             binding.songMiniplayerPauseIv.visibility = View.VISIBLE
-            if(mediaPlayer?.isPlaying == true) {  //재생중이 아닐 때 정지하면 오류 발생 가능
+            binding.songMiniplayerPlayIv.visibility = View.GONE
+            if(mediaPlayer?.isPlaying == true) { // 재생 중이 아닐 때에 pause를 하면 에러가 나기 때문에 이를 방지
                 mediaPlayer?.pause()
             }
         }
     }
 
     private fun startTimer() {
-        timer = Timer(song.playTime, song.isPlaying)
+        timer = Timer(songs[nowPos].playTime, songs[nowPos].isPlaying)
         timer.start()
     }
     inner class Timer(private val playTime: Int, var isPlaying: Boolean = true):Thread(){
@@ -143,12 +189,15 @@ class SongActivity : AppCompatActivity() {
     //사용자가 포커스를 잃었을 때 음악이 중지
     override fun onPause() {
         super.onPause()
+        songs[nowPos].second = (songs[nowPos].playTime * binding.songSeekbarSb.progress) / 100000
+        Log.d("second", songs[nowPos].second.toString())
+        songs[nowPos].isPlaying = false
         setPlayerStatus(false)
-        song.second = ((binding.songSeekbarSb.progress * song.playTime)/100)/1000
+
         val sharedPreferences = getSharedPreferences("song", MODE_PRIVATE)
         val editor = sharedPreferences.edit()
-        val songJson = gson.toJson(song)
-        editor.putString("songData",songJson)
+        editor.putInt("songId", songs[nowPos].id)
+        editor.putInt("second", songs[nowPos].second)
         editor.apply()
     }
 
