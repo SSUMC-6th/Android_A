@@ -14,13 +14,14 @@
         app:cardElevation="0dp"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent">
+
         <ImageView
             android:id="@+id/item_album_cover_img_iv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:src="@drawable/img_album_exp2"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.cardview.widget.CardView>
 
     <ImageView
