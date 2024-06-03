@@ -22,7 +22,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 class LockerFragment : Fragment() {
     private var _binding: FragmentLockerBinding? = null
     private val binding get() = _binding!!
-    private val information = arrayListOf("저장한곡", "음악파일")
+    private val information = arrayListOf("저장한곡", "음악파일", "저장앨범")
 
     private lateinit var sharedViewModel: SharedViewModel
     private lateinit var bottomSheetDialog: BottomSheetDialog
@@ -95,6 +95,7 @@ class LockerFragment : Fragment() {
         initViews()
     }
 
+    // 로그인 또는 로그아웃 기능
     private fun getJwt() : Int {
         val spf = requireActivity().getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
         return spf!!.getInt("jwt", 0)

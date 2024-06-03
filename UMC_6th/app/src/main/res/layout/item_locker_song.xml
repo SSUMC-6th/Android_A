@@ -9,8 +9,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewItemLockerAlbumCover"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_marginLeft="20dp"
         app:cardCornerRadius="7dp"
         app:cardElevation="0dp"
@@ -78,17 +78,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@+id/cardViewItemLockerAlbumCover"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/txItemLockerAlbumInfo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="2021.03.25 | 정규 | 댄스 팝"
-            android:textColor="#a8a8a8"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="@+id/item_album_singer_tv"
-            app:layout_constraintTop_toBottomOf="@+id/item_album_singer_tv" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

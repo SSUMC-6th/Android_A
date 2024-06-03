@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
@@ -23,6 +24,8 @@ class AlbumFragment: Fragment(R.layout.fragment_album) {
     private val binding get() = _binding!!
     private var gson: Gson = Gson()
     private val information = arrayListOf("수록곡", "상세정보", "영상")
+    private var isLiked : Boolean = false
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -33,18 +36,23 @@ class AlbumFragment: Fragment(R.layout.fragment_album) {
         //앨범 데이터
         val albumToJson = arguments?.getString("album")
         val album = gson.fromJson(albumToJson, Album::class.java)
+        isLiked = isLikedAlbum(album.id)
         setInit(album)
+        setOnClickListener(album)
+
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+/*
         // 뒤로가기 이미지 뷰에 클릭 리스너 설정
         binding.albumBackIv.setOnClickListener {
             // 이전 프래그먼트로 돌아가기
             requireActivity().supportFragmentManager.popBackStack()
         }
+
+ */
 
         val adapter = AlbumPagerAdapter(this)
         binding.albumViewPager.adapter = adapter
@@ -71,6 +79,57 @@ class AlbumFragment: Fragment(R.layout.fragment_album) {
         binding.imgAlbumAlbumCov.setImageResource(album.coverImg!!)
         binding.txAlbumAlbumTitle.text = album.title
         binding.txAlbumAlbumArtist.text = album.artist
+        if(isLiked) {
+            binding.albumLikeIv.setImageResource(R.drawable.ic_my_like_on)
+        }else {
+            binding.albumLikeIv.setImageResource((R.drawable.ic_my_like_off))
+        }
+    }
+
+    private fun getJwt() : Int {
+        val spf = requireActivity().getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
+        return spf.getInt("jwt", 0)
+    }
+
+    private fun likeAlbum(userId : Int, albumId : Int) {
+        val songDB = SongDatabase.getInstance(requireActivity())!!
+        val like = Like(userId, albumId)
+
+        songDB.albumDao().likeAlbum(like)
+    }
+    private fun isLikedAlbum(albumId : Int) : Boolean {
+        val songDB = SongDatabase.getInstance(requireActivity())!!
+        val userId = getJwt()
+
+        val likeId : Int? = songDB.albumDao().isLikedAlbum(userId, albumId)
+        return likeId != null
+    }
+
+    private fun disLikeAlbum(albumId : Int) {
+        val songDB = SongDatabase.getInstance(requireActivity())!!
+        val userId = getJwt()
+
+        songDB.albumDao().disLikeAlbum(userId, albumId)
+    }
+
+    private fun setOnClickListener(album : Album) {
+        val userId = getJwt()
+        binding.albumLikeIv.setOnClickListener {
+            if(isLiked) {
+                binding.albumLikeIv.setImageResource(R.drawable.ic_my_like_off)
+                disLikeAlbum(album.id)
+            }else {
+                binding.albumLikeIv.setImageResource((R.drawable.ic_my_like_on))
+                likeAlbum(userId, album.id)
+            }
+            isLiked = !isLiked
+        }
+        binding.albumBackIv.setOnClickListener {
+            (context as MainActivity).supportFragmentManager.beginTransaction()
+                .replace(R.id.main_container, HomeFragment())
+                .commitAllowingStateLoss()
+        }
+
     }
 
 
