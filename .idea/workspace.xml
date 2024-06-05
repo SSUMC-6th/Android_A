@@ -126,14 +126,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a0892f6-22ae-44d0-9c68-5f47b708a220" name="Changes" comment="[maro/#38] feat :: 로그인, 회원가입 페이지 &amp; 회원가입 구현">
+    <list default="true" id="2a0892f6-22ae-44d0-9c68-5f47b708a220" name="Changes" comment="[maro/#38] feat :: 좋아요 표시 유저 구분">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/Album.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/Album.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/AlbumFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/AlbumFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/LockerFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/LockerFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SavedAlbumFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SavedAlbumFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_locker.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_locker.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_saved_album.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_saved_album.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/LookFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/LookFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_look.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_look.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -171,12 +167,12 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Kotlin Object" />
-        <option value="resourceFile" />
         <option value="layoutResourceFile" />
         <option value="Kotlin Interface" />
         <option value="Class" />
         <option value="Kotlin Data Class" />
         <option value="Kotlin Class" />
+        <option value="resourceFile" />
       </list>
     </option>
   </component>
@@ -874,7 +870,15 @@
       <option name="project" value="LOCAL" />
       <updated>1717575232707</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="[maro/#38] feat :: 좋아요 표시 유저 구분">
+      <option name="closed" value="true" />
+      <created>1717579273891</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1717579273891</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -899,7 +903,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="[maro/#3] feat : udemy 1주차 구현 -" />
     <MESSAGE value="[maro/#3] feat : udemy 1주차 구현 - fragment_home.xml" />
     <MESSAGE value="[maro/#3] feat : fragment_home.xml 구현" />
     <MESSAGE value="[maro/#7] feat : 2주차 구현" />
@@ -924,6 +927,7 @@
     <MESSAGE value="[maro/#33] feat :: SongDao, SongDatabase 추가" />
     <MESSAGE value="[maro/#33] feat :: 7주차 구현 완료" />
     <MESSAGE value="[maro/#38] feat :: 로그인, 회원가입 페이지 &amp; 회원가입 구현" />
-    <option name="LAST_COMMIT_MESSAGE" value="[maro/#38] feat :: 로그인, 회원가입 페이지 &amp; 회원가입 구현" />
+    <MESSAGE value="[maro/#38] feat :: 좋아요 표시 유저 구분" />
+    <option name="LAST_COMMIT_MESSAGE" value="[maro/#38] feat :: 좋아요 표시 유저 구분" />
   </component>
 </project>
