@@ -3,7 +3,7 @@ package com.example.umc_6th
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class PannelVpAdapter (fragment : Fragment) : FragmentStateAdapter(fragment) {
+class PannelVPAdapter(fragment:Fragment) : FragmentStateAdapter(fragment) {
 
     private val fragmentList : ArrayList<Fragment> = ArrayList()
 
@@ -15,7 +15,7 @@ class PannelVpAdapter (fragment : Fragment) : FragmentStateAdapter(fragment) {
         return fragmentList[position]
     }
 
-    fun addFragment(fragment: Fragment) {
+    fun addFragment(fragment: Fragment){
         fragmentList.add(fragment)
         notifyItemInserted(fragmentList.size-1)
     }

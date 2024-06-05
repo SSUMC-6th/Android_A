@@ -1,39 +1,38 @@
 package com.example.umc_6th
 
-import android.content.Intent
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
 import androidx.fragment.app.setFragmentResult
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.viewpager2.widget.ViewPager2
 import com.example.umc_6th.databinding.FragmentHomeBinding
+import com.google.gson.Gson
+import java.util.ArrayList
 import java.util.Timer
 import java.util.TimerTask
-import android.os.Handler
-import android.os.Looper
-import android.widget.Button
-import androidx.appcompat.app.AlertDialog
-import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.google.gson.Gson
 
-class HomeFragment : Fragment(), CommunicationInterface {
+class HomeFragment : Fragment(), AlbumRVAdapter.CommunicationInterface {
 
-    lateinit var binding : FragmentHomeBinding
+    lateinit var binding: FragmentHomeBinding
 
     private val timer = Timer()
     private val handler = Handler(Looper.getMainLooper())
+    private var albumDatas = ArrayList<Album>()
+    private lateinit var songDB: SongDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
-    private var albumDatas = ArrayList<Album>()
 
     override fun sendData(album: Album) {
-        if(activity is MainActivity) {
+        if (activity is MainActivity) {
             val activity = activity as MainActivity
             activity.updateMainPlayerCl(album)
         }
@@ -42,23 +41,34 @@ class HomeFragment : Fragment(), CommunicationInterface {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-
     ): View? {
-        binding = FragmentHomeBinding.inflate(inflater, container, false)
+        binding = FragmentHomeBinding.inflate(inflater,container,false)
 
-        albumDatas.apply {
-            add(Album("Butter", "방탄소년단 (BTS)", R.drawable.img_album_exp))
-            add(Album("Lilac", "아이유 (IU)", R.drawable.img_album_exp2))
-            add(Album("Next Level", "에스파 (AESPA)", R.drawable.img_album_exp3))
-            add(Album("Boy with Luv", "방탄소년단 (BTS)", R.drawable.img_album_exp4))
-            add(Album("BBoom BBoom", "모모랜드 (MOMOLAND)", R.drawable.img_album_exp5))
-            add(Album("Weekend", "태연 (Tae Yeon)", R.drawable.img_album_exp6))
+        songDB = SongDatabase.getInstance(requireContext())!!
+        albumDatas.addAll(songDB.albumDao().getAlbums())
+
+        inputDummyAlbums()
+
+        Log.d("HomeFragment", "Album Data Size: ${albumDatas.size}")
+        albumDatas.forEach { album ->
+            Log.d("HomeFragment", "Album: ${album.title}")
         }
 
         val albumRVAdapter = AlbumRVAdapter(albumDatas)
         binding.homeTodayMusicAlbumRv.adapter = albumRVAdapter
-        binding.homeTodayMusicAlbumRv.layoutManager = LinearLayoutManager(requireActivity(), LinearLayoutManager.HORIZONTAL, false)
+        binding.homeTodayMusicAlbumRv.layoutManager = LinearLayoutManager(requireActivity(),LinearLayoutManager.HORIZONTAL,false)
 
+        albumRVAdapter.setMyItemClickListener(object : AlbumRVAdapter.MyItemClickListener{
+            override fun onItemClick(album: Album) {
+                changeAlbumFragment(album)
+            }
+            override fun onRemoveAlbum(position: Int) {
+                albumRVAdapter.removeItem(position)
+            }
+            override fun onPlayAlbum(album: Album) {
+                sendData(album)
+            }
+        })
 
         val bannerAdapter = BannerVPAdapter(this)
         bannerAdapter.addFragment(BannerFragment(R.drawable.img_home_viewpager_exp))
@@ -71,24 +81,14 @@ class HomeFragment : Fragment(), CommunicationInterface {
 
         autoSlide(bannerAdapter)
 
-        val pannelAdpater = PannelVpAdapter(this)
-        pannelAdpater.addFragment(PannelFragment(R.drawable.img_first_album_default))
-        pannelAdpater.addFragment(PannelFragment(R.drawable.img_first_album_default))
+        val pannelVPAdapter = PannelVPAdapter(this)
+        pannelVPAdapter.addFragment(PannelFragment(R.drawable.img_first_album_default))
+        pannelVPAdapter.addFragment(PannelFragment(R.drawable.img_first_album_default))
 
-        binding.homePannelBackgroundVp.adapter = pannelAdpater
-        binding.homePannelBackgroundVp.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+        binding.homePannelBackgroundVp.adapter = pannelVPAdapter
+        binding.homeBannerVp.orientation = ViewPager2.ORIENTATION_HORIZONTAL
 
         binding.homePannelIndicator.setViewPager(binding.homePannelBackgroundVp)
-
-        albumRVAdapter.setItemClickListener(object : AlbumRVAdapter.OnItemClickListener {
-            override fun onItemClick(album : Album) {
-                changeAlbumFragment(album)
-            }
-
-            override fun onPlayAlbum(album: Album) {
-                sendData(album)
-            }
-        })
 
         return binding.root
     }
@@ -98,8 +98,8 @@ class HomeFragment : Fragment(), CommunicationInterface {
             .replace(R.id.main_frm, AlbumFragment().apply {
                 arguments = Bundle().apply {
                     val gson = Gson()
-                    val albumToJson = gson.toJson(album)
-                    putString("album", albumToJson)
+                    val albumJson = gson.toJson(album)
+                    putString("album", albumJson)
                 }
             })
             .commitAllowingStateLoss()
@@ -118,5 +118,51 @@ class HomeFragment : Fragment(), CommunicationInterface {
                 }
             }
         }, 3000, 3000)
+    }
+
+    private fun inputDummyAlbums(){
+        val songDB = SongDatabase.getInstance(requireActivity())!!
+        val songs = songDB.albumDao().getAlbums()
+
+        if (songs.isNotEmpty()) return
+
+        songDB.albumDao().insert(
+            Album(
+                1,
+                "IU 5th Album 'LILAC'",
+                "아이유 (IU)",
+                R.drawable.img_album_exp2
+            )
+        )
+
+        songDB.albumDao().insert(
+            Album(
+                2,
+                "Butter",
+                "방탄소년단 (BTS)",
+                R.drawable.img_album_exp
+            )
+        )
+
+        songDB.albumDao().insert(
+            Album(
+                3,
+                "iScreaM Vol.10: Next Level Remixes",
+                "에스파 (AESPA)",
+                R.drawable.img_album_exp3
+            )
+        )
+
+        songDB.albumDao().insert(
+            Album(
+                4,
+                "Great!",
+                "모모랜드 (MOMOLAND)",
+                R.drawable.img_album_exp5
+            )
+        )
+
+        val songDBData = songDB.albumDao().getAlbums()
+        Log.d("DB data", songDBData.toString())
     }
 }

@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("kotlin-kapt")
 }
 
 android {
@@ -39,13 +40,16 @@ android {
         targetCompatibility = JavaVersion.VERSION_1_8
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
 }
 
 dependencies {
-
+    implementation("com.google.android.material:material:1.10.0")
+    implementation("androidx.room:room-migration:2.6.0")
+    implementation("androidx.room:room-runtime:2.6.0")
+    kapt("androidx.room:room-compiler:2.6.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")
     implementation("androidx.core:core-ktx:1.10.1")
     implementation("androidx.fragment:fragment-ktx:1.3.0")

@@ -1,15 +1,16 @@
+
 package com.example.umc_6th
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.example.umc_6th.databinding.FragmentDetailBinding
 
-class DetailFragment : Fragment() {
+class DetailFragment : Fragment(){
 
-    lateinit var binding: FragmentDetailBinding
+    lateinit var binding : FragmentDetailBinding
 
     override fun onCreateView(
         inflater: LayoutInflater,
