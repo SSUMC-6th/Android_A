@@ -26,8 +26,8 @@ class AlbumFragment : Fragment() {
     ): View? {
         binding = inflate(inflater,container,false)
 
-        val albumJson = arguments?.getString("album")
-        val album = gson.fromJson(albumJson, Album::class.java)
+        val albumToJson = arguments?.getString("album")
+        val album = gson.fromJson(albumToJson, Album::class.java)
         isLiked = isLikedAlbum(album.id)
         setInit(album)
         setOnClickListener(album)
@@ -54,30 +54,6 @@ class AlbumFragment : Fragment() {
             tab.text = information[position]
         }.attach()
 
-
-//        binding.songLalacLayout.setOnClickListener{
-//            Toast.makeText(activity,"LILAC",Toast.LENGTH_SHORT).show()
-//        }
-//
-//        binding.songFluLayout.setOnClickListener {
-//            Toast.makeText(activity,"FLU", Toast.LENGTH_SHORT).show()
-//        }
-//
-//        binding.songCoinLayout.setOnClickListener {
-//            Toast.makeText(activity,"Coin", Toast.LENGTH_SHORT).show()
-//        }
-//
-//        binding.songSpringLayout.setOnClickListener {
-//            Toast.makeText(activity,"봄 안녕 봄", Toast.LENGTH_SHORT).show()
-//        }
-//
-//        binding.songCelebrityLayout.setOnClickListener {
-//            Toast.makeText(activity,"Celebrity", Toast.LENGTH_SHORT).show()
-//        }
-//
-//        binding.songSingLayout.setOnClickListener {
-//            Toast.makeText(activity,"돌림노래 (Feat. DEAN)", Toast.LENGTH_SHORT).show()
-//        }
         return binding.root
     }
     private fun setInit(album: Album){

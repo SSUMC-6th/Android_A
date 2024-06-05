@@ -13,7 +13,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 class LockerFragment : Fragment() {
 
     lateinit var binding: FragmentLockerBinding
-    private var information = arrayListOf("저장한곡", "음악파일", "저장앨범")
+    private val information = arrayListOf("저장한곡", "음악파일", "저장앨범")
     val bottomSheetFragment = BottomSheetFragment()
 
 
