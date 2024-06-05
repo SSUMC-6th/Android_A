@@ -12,6 +12,7 @@ class LockerAlbumRVAdapter () : RecyclerView.Adapter<LockerAlbumRVAdapter.ViewHo
 
     private val switchStatus = SparseBooleanArray()
     private val songs = ArrayList<Song>()
+    private var isGrayOverlayEnabled = false
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -30,6 +31,14 @@ class LockerAlbumRVAdapter () : RecyclerView.Adapter<LockerAlbumRVAdapter.ViewHo
             itemClickListener.onRemoveAlbum(songs[position].id)
             removeSong(position) // 화면에서 아이템 제거
         }
+
+        // 항목 배경색 변경
+//        if (isGrayOverlayEnabled) {
+//            holder.binding.root.setBackgroundColor(holder.binding.root.context.getColor(R.color.gray_transparent))
+//        } else {
+//            holder.binding.root.setBackgroundColor(holder.binding.root.context.getColor(R.color.transparent))
+//        }
+
 
         val switch = holder.binding.switchRV
         switch.isChecked = switchStatus[position]
@@ -78,5 +87,4 @@ class LockerAlbumRVAdapter () : RecyclerView.Adapter<LockerAlbumRVAdapter.ViewHo
         songs.removeAt(position)
         notifyDataSetChanged()
     }
-
 }
