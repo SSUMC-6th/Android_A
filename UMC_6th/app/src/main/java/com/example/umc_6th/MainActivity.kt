@@ -222,7 +222,7 @@ class MainActivity : AppCompatActivity() {
                 230,
                 false,
                 "music_boy",
-                R.drawable.img_album_exp,
+                R.drawable.img_album_exp4,
                 false,
                 2
             )
@@ -235,7 +235,7 @@ class MainActivity : AppCompatActivity() {
                 0,
                 240,
                 false,
-                "music_bbom",
+                "music_bboom",
                 R.drawable.img_album_exp5,
                 false,
                 4

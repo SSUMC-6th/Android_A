@@ -5,12 +5,22 @@
       <config />
     </shared>
     <layouts>
+      <layout url="file://$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/activity_login.xml">
+        <config>
+          <theme>@style/Theme.UMC_6th</theme>
+        </config>
+      </layout>
       <layout url="file://$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/activity_main.xml">
         <config>
           <theme>@style/Theme.UMC_6th</theme>
         </config>
       </layout>
       <layout url="file://$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/activity_memo_check.xml">
+        <config>
+          <theme>@style/Theme.UMC_6th</theme>
+        </config>
+      </layout>
+      <layout url="file://$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/activity_sign_up.xml">
         <config>
           <theme>@style/Theme.UMC_6th</theme>
         </config>
@@ -116,30 +126,15 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a0892f6-22ae-44d0-9c68-5f47b708a220" name="Changes" comment="[maro/#33] feat :: SongDao, SongDatabase 추가">
+    <list default="true" id="2a0892f6-22ae-44d0-9c68-5f47b708a220" name="Changes" comment="[maro/#33] feat :: 7주차 구현 완료">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/build.gradle.kts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/Album.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/Album.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/AlbumDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/AlbumDao.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/AlbumFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/AlbumFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/AlbumRVAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/AlbumRVAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/AlbumVPAdpter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/CommunicationInterface.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/DetailFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/DetailFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/HomeFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/LockerAlbumRVAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/LockerAlbumRVAdapter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/LockerFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/LockerFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/LockerVPAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/LockerVPAdapter.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/PannelVPAdapter.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SavedSongFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SavedSongFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SongActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SongActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SongDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SongDao.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SongDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SongDatabase.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SongFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SongFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/song.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_locker.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_locker.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/item_album.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/item_album.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_bottom_sheet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_bottom_sheet.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,13 +171,13 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
-        <option value="Kotlin Data Class" />
         <option value="Kotlin Object" />
-        <option value="Kotlin Interface" />
         <option value="resourceFile" />
         <option value="layoutResourceFile" />
+        <option value="Kotlin Interface" />
+        <option value="Class" />
         <option value="Kotlin Class" />
+        <option value="Kotlin Data Class" />
       </list>
     </option>
   </component>
@@ -202,7 +197,7 @@
     </excluded-from-favorite>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="maro/#28" />
+        <entry key="$PROJECT_DIR$" value="maro/#33" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -234,7 +229,7 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="ProjectErrors" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
@@ -255,7 +250,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
-    "git-widget-placeholder": "maro/#33",
+    "git-widget-placeholder": "maro/#38",
     "last_opened_file_path": "C:/android/MARO_HW1/UMC_6th/app/src/main/java/com/example/umc_6th",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.17",
@@ -276,8 +271,8 @@
       <recent name="C:\android\MARO_HW1\UMC_6th\app\src\main\res\layout" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\android\MARO_HW1\UMC_6th\app\src\main\res\raw" />
       <recent name="C:\android\MARO_HW1\UMC_6th\app\src\main\res\drawable" />
+      <recent name="C:\android\MARO_HW1\UMC_6th\app\src\main\res\raw" />
     </key>
     <key name="CreateKotlinClassDialog.RecentsKey">
       <recent name="com.example.umc_6th" />
@@ -856,7 +851,23 @@
       <option name="project" value="LOCAL" />
       <updated>1716779481277</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="[maro/#33] feat :: 7주차 구현 완료">
+      <option name="closed" value="true" />
+      <created>1716879070628</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1716879070628</updated>
+    </task>
+    <task id="LOCAL-00030" summary="[maro/#33] feat :: 7주차 구현 완료">
+      <option name="closed" value="true" />
+      <created>1716879099419</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1716879099419</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -881,7 +892,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="[maro/#0] setting {Android 초기 파일 생성}" />
     <MESSAGE value="[maro/#1] mission #1{프로젝트 세팅}" />
     <MESSAGE value="[maro/#3] feat : udemy 1주차 구현 -" />
     <MESSAGE value="[maro/#3] feat : udemy 1주차 구현 - fragment_home.xml" />
@@ -906,6 +916,7 @@
     <MESSAGE value="[maro/#28] feat :: 파일 추가" />
     <MESSAGE value="[maro/#28] fix :: onPlayAlbum 에러 수정" />
     <MESSAGE value="[maro/#33] feat :: SongDao, SongDatabase 추가" />
-    <option name="LAST_COMMIT_MESSAGE" value="[maro/#33] feat :: SongDao, SongDatabase 추가" />
+    <MESSAGE value="[maro/#33] feat :: 7주차 구현 완료" />
+    <option name="LAST_COMMIT_MESSAGE" value="[maro/#33] feat :: 7주차 구현 완료" />
   </component>
 </project>
