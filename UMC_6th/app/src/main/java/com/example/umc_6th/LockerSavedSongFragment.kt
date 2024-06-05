@@ -12,8 +12,10 @@ import com.example.umc_6th.databinding.FragmentLockerSavedSongBinding
 import com.google.gson.Gson
 
 class LockerSavedSongFragment : Fragment(){
+
+    private var _binding: FragmentLockerSavedSongBinding? = null
+    private val binding get() = _binding!!
     private var songDatas = ArrayList<Song>()
-    lateinit var binding : FragmentLockerSavedSongBinding
     lateinit var songDB: SongDatabase
     val lockerAlbumRecyclerAdapter = LockerAlbumRecyclerAdapter()
 
@@ -28,7 +30,7 @@ class LockerSavedSongFragment : Fragment(){
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentLockerSavedSongBinding.inflate(inflater, container, false)
+        _binding = FragmentLockerSavedSongBinding.inflate(inflater, container, false)
 /*
         albumDatas.apply {
             add(Album(0, "Love wins all", "아이유 (IU)", R.drawable.img_album_lovewinsall))
@@ -125,6 +127,6 @@ class LockerSavedSongFragment : Fragment(){
 
     override fun onDestroy() {
         super.onDestroy()
-
+        _binding = null
     }
 }

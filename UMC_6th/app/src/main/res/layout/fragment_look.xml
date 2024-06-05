@@ -1,6 +1,217 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/white">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/txLookBigTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="20dp"
+            android:text="둘러보기"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <HorizontalScrollView
+            android:id="@+id/hsLookChipScroll"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="13dp"
+            android:paddingStart="20dp"
+            android:scrollbars="none"
+            app:layout_constraintTop_toBottomOf="@id/txLookBigTitle">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/txLookChipTitle01"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/fragment_look_chip_on_background"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="8dp"
+                    android:text="차트"
+                    android:textColor="#ffffff"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txLookChipTitle02"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/fragment_look_chip_off_background"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="8dp"
+                    android:text="영상"
+                    android:textColor="#7D7D7D"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txLookChipTitle03"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/fragment_look_chip_off_background"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="8dp"
+                    android:text="장르"
+                    android:textColor="#7D7D7D"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txLookChipTitle04"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/fragment_look_chip_off_background"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="8dp"
+                    android:text="상황"
+                    android:textColor="#7D7D7D"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txLookChipTitle05"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/fragment_look_chip_off_background"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="8dp"
+                    android:text="분위기"
+                    android:textColor="#7D7D7D"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:id="@+id/txLookChipTitle06"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/fragment_look_chip_off_background"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="8dp"
+                    android:text="오디오"
+                    android:textColor="#7D7D7D"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+        </HorizontalScrollView>
+
+        <TextView
+            android:id="@+id/txLookSubTitleChart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="18dp"
+            android:layout_marginTop="20dp"
+            android:text="차트"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/hsLookChipScroll" />
+
+        <ImageView
+            android:id="@+id/look_sub_title_arrow_iv"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/btn_arrow_more"
+            android:layout_marginStart="5dp"
+            app:layout_constraintStart_toEndOf="@id/txLookSubTitleChart"
+            app:layout_constraintTop_toTopOf="@id/txLookSubTitleChart"
+            app:layout_constraintBottom_toBottomOf="@id/txLookSubTitleChart"/>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/clLookChartTotal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/fragment_look_chart_background"
+            android:elevation="5dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            app:layout_constraintTop_toBottomOf="@id/txLookSubTitleChart"
+            tools:layout_editor_absoluteX="20dp">
+
+            <TextView
+                android:id="@+id/txLookChartTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="FLO 차트"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txLookChartTitleTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:text="19시 기준"
+                android:textSize="10sp"
+                app:layout_constraintBottom_toBottomOf="@id/txLookChartTitle"
+                app:layout_constraintStart_toEndOf="@id/txLookChartTitle"
+                app:layout_constraintTop_toTopOf="@id/txLookChartTitle" />
+
+            <TextView
+                android:id="@+id/txLookChartSubTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="15dp"
+                android:text="최근 24시간 집계,FLO 최고 인기곡 차트!"
+                android:textSize="10sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txLookChartTitle" />
+
+            <TextView
+                android:id="@+id/TxLookChartListenAll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:text="전체듣기"
+                android:textColor="#000000"
+                android:textSize="11sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imgLookChartListenAll"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginEnd="3dp"
+                android:src="@drawable/ic_browse_arrow_right"
+                app:layout_constraintBottom_toBottomOf="@id/TxLookChartListenAll"
+                app:layout_constraintEnd_toStartOf="@id/TxLookChartListenAll"
+                app:layout_constraintTop_toTopOf="@id/TxLookChartListenAll" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvLookFloChart"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_marginTop="10dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/txLookChartSubTitle" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

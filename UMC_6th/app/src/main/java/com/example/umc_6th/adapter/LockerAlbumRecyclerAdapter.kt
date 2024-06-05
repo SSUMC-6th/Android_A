@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.umc_6th.R
 import com.example.umc_6th.Song
 import com.example.umc_6th.databinding.ItemLockerAlbumBinding
+import com.example.umc_6th.databinding.ItemLockerSongBinding
 
 class LockerAlbumRecyclerAdapter() : RecyclerView.Adapter<LockerAlbumRecyclerAdapter.ViewHolder>() {
 
@@ -18,7 +19,7 @@ class LockerAlbumRecyclerAdapter() : RecyclerView.Adapter<LockerAlbumRecyclerAda
         parent: ViewGroup,
         viewType: Int
     ): LockerAlbumRecyclerAdapter.ViewHolder {
-        val binding: ItemLockerAlbumBinding = ItemLockerAlbumBinding
+        val binding: ItemLockerSongBinding = ItemLockerSongBinding
             .inflate(LayoutInflater.from(parent.context), parent, false)
 
         return ViewHolder(binding)
@@ -41,7 +42,7 @@ class LockerAlbumRecyclerAdapter() : RecyclerView.Adapter<LockerAlbumRecyclerAda
 
     override fun getItemCount(): Int = songs.size
 
-    inner class ViewHolder(val binding: ItemLockerAlbumBinding): RecyclerView.ViewHolder(binding.root){
+    inner class ViewHolder(val binding: ItemLockerSongBinding): RecyclerView.ViewHolder(binding.root){
 
         fun bind(song: Song){
             binding.txItemLockerAlbumTitle.text = song.title
