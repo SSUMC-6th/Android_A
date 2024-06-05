@@ -21,6 +21,9 @@
             android:enabled="true"
             android:exported="true"></service>
 
+        <activity android:name=".SignUpActivity"/>
+        <activity android:name=".LoginActivity"/>
+
         <activity
             android:name=".MainActivity"
             android:exported="true"

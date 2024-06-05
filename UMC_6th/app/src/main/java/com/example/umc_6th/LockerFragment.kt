@@ -1,5 +1,6 @@
 package com.example.umc_6th
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -35,6 +36,10 @@ class LockerFragment : Fragment() {
 
         binding.lockerSelectAllTv.setOnClickListener{
             bottomSheetFragment.show(requireFragmentManager(),"BottomSheetDialog")
+        }
+
+        binding.lockerLoginTv.setOnClickListener {
+            startActivity(Intent(activity, LoginActivity::class.java))
         }
 
         return binding.root

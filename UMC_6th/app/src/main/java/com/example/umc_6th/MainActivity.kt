@@ -45,13 +45,6 @@ class MainActivity : AppCompatActivity() {
             }
 
         binding.mainPlayerCl.setOnClickListener {
-//            val intent = Intent(this, SongActivity::class.java)
-//            intent.putExtra("title", song.title)
-//            intent.putExtra("singer", song.singer)
-//            intent.putExtra("second", song.second)
-//            intent.putExtra("playTime", song.playTime)
-//            intent.putExtra("isPlaying", song.isPlaying)
-//            intent.putExtra("music",song.music)
             val editor = getSharedPreferences("song", MODE_PRIVATE).edit()
             editor.putInt("songId", song.id)
             editor.apply()
@@ -235,7 +228,7 @@ class MainActivity : AppCompatActivity() {
                 0,
                 240,
                 false,
-                "music_bbom",
+                "music_bboom",
                 R.drawable.img_album_exp5,
                 false,
                 4

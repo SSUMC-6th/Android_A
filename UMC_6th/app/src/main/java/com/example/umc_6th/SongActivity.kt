@@ -1,5 +1,6 @@
 package com.example.umc_6th
 
+import android.annotation.SuppressLint
 import android.app.ActivityManager
 import android.content.Context
 import android.content.Intent
@@ -46,9 +47,6 @@ class SongActivity : AppCompatActivity() {
         initSong()
 //        setPlayer(song)
         initClickListener()
-
-        var title : String? = null
-        var singer : String? = null
 
 //        if(intent.hasExtra("title") && intent.hasExtra("singer")){
 //            title = intent.getStringExtra("title")
@@ -176,6 +174,8 @@ class SongActivity : AppCompatActivity() {
     }
 
     private fun moveSong(direct: Int){
+        Log.d("moveSong", "현재 위치: $nowPos, 이동 방향: $direct, 총 곡 수: ${songs.size}")
+
         if(nowPos + direct < 0){
 //            nowPos = songs.size -1
             CustomSnackbar.make(binding.root, "처음 곡입니다.").show()
@@ -215,6 +215,13 @@ class SongActivity : AppCompatActivity() {
         binding.songProgressSb.progress = (song.second * 1000 / song.playTime)
 
         val music = resources.getIdentifier(song.music,"raw",this.packageName)
+
+        Log.d("setPlayer", "음악 리소스 ID: $music")
+        if (music == 0) {
+            Log.e("setPlayer", "음악 리소스 ID를 찾을 수 없습니다: ${song.music}")
+            return
+        }
+
         mediaPlayer = MediaPlayer.create(this,music)
 
         if(song.isLike){
@@ -222,7 +229,6 @@ class SongActivity : AppCompatActivity() {
         } else{
             binding.songLikeIv.setImageResource(R.drawable.ic_my_like_off)
         }
-
         setPlayerStatus(song.isPlaying)
     }
 
