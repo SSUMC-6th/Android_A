@@ -19,7 +19,7 @@ class AlbumRVAdapter(private val albumList:ArrayList<Album>) : RecyclerView.Adap
 
     private lateinit var mItemClickListener : MyItemClickListener
     fun setMyItemClickListener(itemClickListener: MyItemClickListener){
-        mItemClickListener = itemClickListener
+        this.mItemClickListener = itemClickListener
     }
 
     fun addItem(album: Album){

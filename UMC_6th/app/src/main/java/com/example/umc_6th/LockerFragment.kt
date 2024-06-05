@@ -12,6 +12,9 @@ class LockerFragment : Fragment() {
 
     lateinit var binding: FragmentLockerBinding
     private var information = arrayListOf("저장한곡", "음악파일", "저장앨범")
+    val bottomSheetFragment = BottomSheetFragment()
+
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -25,6 +28,14 @@ class LockerFragment : Fragment() {
             tab,position ->
             tab.text = information[position]
         }.attach()
+
+        binding.lockerSelectAllImgIv.setOnClickListener {
+            bottomSheetFragment.show(requireFragmentManager(),"BottomSheetDialog")
+        }
+
+        binding.lockerSelectAllTv.setOnClickListener{
+            bottomSheetFragment.show(requireFragmentManager(),"BottomSheetDialog")
+        }
 
         return binding.root
     }

@@ -3,6 +3,7 @@ package com.example.umc_6th
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -24,6 +25,7 @@ class HomeFragment : Fragment(), AlbumRVAdapter.CommunicationInterface {
     private val timer = Timer()
     private val handler = Handler(Looper.getMainLooper())
     private var albumDatas = ArrayList<Album>()
+    private lateinit var songDB: SongDatabase
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,24 +44,18 @@ class HomeFragment : Fragment(), AlbumRVAdapter.CommunicationInterface {
     ): View? {
         binding = FragmentHomeBinding.inflate(inflater,container,false)
 
-//        binding.homeAlbumImg01Iv1.setOnClickListener{
-//            setFragmentResult("TitleInfo", bundleOf("title" to binding.titleLilac.text.toString()))
-//            setFragmentResult("SingerInfo", bundleOf("singer" to binding.singerIu.text.toString()))
-//            (context as MainActivity).supportFragmentManager.beginTransaction().replace(R.id.main_frm,AlbumFragment()).commitAllowingStateLoss()
-//        }
+        songDB = SongDatabase.getInstance(requireContext())!!
+        albumDatas.addAll(songDB.albumDao().getAlbums())
+        inputDummyAlbums()
 
-        albumDatas.apply{
-            add(Album("Butter","방탄소년단(BTS)",R.drawable.img_album_exp))
-            add(Album("Lilac","아이유(IU)",R.drawable.img_album_exp2))
-            add(Album("Next Level","에스파(AESPA)",R.drawable.img_album_exp3))
-            add(Album("Boy with Luv","방탄소년단(BTS)",R.drawable.img_album_exp4))
-            add(Album("BBoom BBoom","모모랜드(MOMOLAND)",R.drawable.img_album_exp5))
-            add(Album("Weekend","태연(Tae Yeon)",R.drawable.img_album_exp6))
+        Log.d("HomeFragment", "Album Data Size: ${albumDatas.size}")
+        albumDatas.forEach { album ->
+            Log.d("HomeFragment", "Album: ${album.title}")
         }
 
         val albumRVAdapter = AlbumRVAdapter(albumDatas)
         binding.homeTodayMusicAlbumRv.adapter = albumRVAdapter
-        binding.homeTodayMusicAlbumRv.layoutManager = LinearLayoutManager(context,LinearLayoutManager.HORIZONTAL,false)
+        binding.homeTodayMusicAlbumRv.layoutManager = LinearLayoutManager(requireActivity(),LinearLayoutManager.HORIZONTAL,false)
 
         albumRVAdapter.setMyItemClickListener(object : AlbumRVAdapter.MyItemClickListener{
             override fun onItemClick(album: Album) {
@@ -123,4 +119,49 @@ class HomeFragment : Fragment(), AlbumRVAdapter.CommunicationInterface {
         }, 3000, 3000)
     }
 
+    private fun inputDummyAlbums(){
+        val songDB = SongDatabase.getInstance(requireActivity())!!
+        val songs = songDB.albumDao().getAlbums()
+
+        if (songs.isNotEmpty()) return
+
+        songDB.albumDao().insert(
+            Album(
+                1,
+                "IU 5th Album 'LILAC'",
+                "아이유 (IU)",
+                R.drawable.img_album_exp2
+            )
+        )
+
+        songDB.albumDao().insert(
+            Album(
+                2,
+                "Butter",
+                "방탄소년단 (BTS)",
+                R.drawable.img_album_exp
+            )
+        )
+
+        songDB.albumDao().insert(
+            Album(
+                3,
+                "iScreaM Vol.10: Next Level Remixes",
+                "에스파 (AESPA)",
+                R.drawable.img_album_exp3
+            )
+        )
+
+        songDB.albumDao().insert(
+            Album(
+                4,
+                "Great!",
+                "모모랜드 (MOMOLAND)",
+                R.drawable.img_album_exp5
+            )
+        )
+
+        val songDBData = songDB.albumDao().getAlbums()
+        Log.d("DB data", songDBData.toString())
+    }
 }
