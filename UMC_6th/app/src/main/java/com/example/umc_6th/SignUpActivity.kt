@@ -20,10 +20,7 @@ class SignUpActivity : AppCompatActivity(), SignUpView {
         setContentView(binding.root)
 
         binding.signUpSignUpBtn.setOnClickListener {
-            val signUpCompletion = signUp()
-            if(signUpCompletion) {
-                finish()
-            }
+            signUp()
         }
     }
 
@@ -45,7 +42,7 @@ class SignUpActivity : AppCompatActivity(), SignUpView {
             Toast.makeText(this, "비밀번호가 일치하지 않습니다.", Toast.LENGTH_SHORT).show()
             return false
         }
-
+/*
         val userDB = SongDatabase.getInstance(this)!!
         userDB.userDao().insert(getUser())
 
@@ -54,6 +51,8 @@ class SignUpActivity : AppCompatActivity(), SignUpView {
 
         Toast.makeText(this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show()
 
+
+ */
         val authService = AuthService()
         authService.setSignUpView(this) // 객체를 통한 멤버 함수 호출
 
