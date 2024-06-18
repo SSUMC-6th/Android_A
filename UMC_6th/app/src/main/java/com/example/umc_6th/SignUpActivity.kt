@@ -2,13 +2,17 @@ package com.example.umc_6th
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.umc_6th.databinding.ActivityLoginBinding
 import com.example.umc_6th.databinding.ActivitySignupBinding
 import com.example.umc_6th.User
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
-class SignUpActivity : AppCompatActivity() {
+class SignUpActivity : AppCompatActivity(), SignUpView {
     lateinit var binding : ActivitySignupBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -49,7 +53,21 @@ class SignUpActivity : AppCompatActivity() {
         Log.d("sign-up", user.toString())
 
         Toast.makeText(this, "회원가입이 완료되었습니다.", Toast.LENGTH_SHORT).show()
+
+        val authService = AuthService()
+        authService.setSignUpView(this) // 객체를 통한 멤버 함수 호출
+
+
+        authService.signUp(getUser())
         return true
+    }
+    override fun onSignUpSuccess() {
+        finish()
+    }
+
+    override fun onSignUpFailure(message : String) {
+        binding.signUpEmailErrorTv.visibility = View.VISIBLE
+        binding.signUpEmailErrorTv.text = message
     }
 
 }

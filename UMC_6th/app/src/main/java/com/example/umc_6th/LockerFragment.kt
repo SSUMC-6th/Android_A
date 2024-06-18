@@ -96,14 +96,14 @@ class LockerFragment : Fragment() {
     }
 
     // 로그인 또는 로그아웃 기능
-    private fun getJwt() : Int {
+    private fun getJwt() : String? {
         val spf = requireActivity().getSharedPreferences("auth", AppCompatActivity.MODE_PRIVATE)
-        return spf!!.getInt("jwt", 0)
+        return spf!!.getString("jwt", "")
     }
 
     private fun initViews() {
-        val jwt: Int = getJwt()
-        if (jwt == 0) {
+        val jwt: String = getJwt().toString()
+        if (jwt == "") {
             binding.txLogin.text="로그인"
             binding.txLogin.setOnClickListener{
                 startActivity(Intent(requireActivity(), LoginActivity::class.java))

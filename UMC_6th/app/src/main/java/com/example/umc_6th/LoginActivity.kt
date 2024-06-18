@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.umc_6th.databinding.ActivityLoginBinding
 
-class LoginActivity : AppCompatActivity()  {
+class LoginActivity : AppCompatActivity(), LoginView  {
 
     private var _binding : ActivityLoginBinding? = null
     private val binding get() = _binding!!
@@ -48,11 +48,16 @@ class LoginActivity : AppCompatActivity()  {
 
         if (user != null) {
             Log.d("LoginActivity", user.id.toString())
-            saveJwt(user.id)
+            saveJwt(user.id.toString())
             startMainActivity()
         } else {
             Toast.makeText(this, "회원 정보가 존재하지 않습니다", Toast.LENGTH_SHORT).show()
         }
+
+        val authService = AuthService()
+        authService.setLoginView(this)
+
+        authService.login(User(email, pwd, ""))
     }
 
     private fun startMainActivity() {
@@ -60,12 +65,21 @@ class LoginActivity : AppCompatActivity()  {
         startActivity(intent)
     }
 
-    private fun saveJwt(jwt: Int) {
+    private fun saveJwt(jwt: String) {
         val spf = getSharedPreferences("auth" , MODE_PRIVATE)
         val editor = spf.edit()
 
-        editor.putInt("jwt", jwt)
+        editor.putString("jwt", jwt)
         editor.apply()
+    }
+
+    override fun onLoginSuccess(code : Int, result : Result) {
+        saveJwt(result.jwt)
+        startMainActivity()
+    }
+
+    override fun onLoginFailure(message : String) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
     }
 
     override fun onDestroy() {
