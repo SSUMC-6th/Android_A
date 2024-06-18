@@ -20,11 +20,13 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.umc_6th.adapter.AlbumRecyclerAdapter
+import com.example.umc_6th.adapter.SongRecyclerViewAdapter
 import com.google.gson.Gson
 
 
-class HomeFragment : Fragment() {
-    // 여기에 Fragment의 구현 내용을 작성합니다.
+class HomeFragment : Fragment()
+ //, HomeAlbumView
+{
     private lateinit var viewModel: SharedViewModel
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
@@ -32,6 +34,8 @@ class HomeFragment : Fragment() {
     private lateinit var runnable: Runnable
     private var albumDatas = ArrayList<Album>()
     private lateinit var songDB: SongDatabase
+    // 앨범 api 연결
+    private lateinit var todayAlbumAdapter: AlbumRecyclerAdapter
 
 
     override fun onCreateView(
@@ -188,4 +192,34 @@ class HomeFragment : Fragment() {
     class FragmentHomeBanner : Fragment(R.layout.fragment_home_banner1) {
         // 필요한 경우 여기에 로직 추가
     }
+
+/*
+    // album api에서 가져오기
+    private fun loadAlbums() {
+        val albumService = AlbumService()
+        albumService.setHomeAlbumView(this)
+        albumService.getAlbum()
+    }
+
+    override fun onGetAlbumLoading() {
+        binding.lookLoadingPb.visibility = View.VISIBLE
+    }
+
+    private fun initRecyclerView(result: TodayAlbumResult) {
+        todayAlbumAdapter = AlbumRecyclerAdapter(requireContext(), result)
+
+        binding.homeTodayMusicAlbum.adapter = todayAlbumAdapter
+    }
+
+    override fun onGetAlbumSuccess(code: Int, result: TodayAlbumResult) {
+        binding.lookLoadingPb.visibility = View.GONE
+        initRecyclerView(result)
+    }
+
+    override fun onGetAlbumFailure(code: Int, message: String) {
+        binding.lookLoadingPb.visibility = View.GONE
+        Log.d("HOME-FRAG/ALBUM-RESPONSE", message)
+    }
+
+ */
 }

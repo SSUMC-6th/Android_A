@@ -13,5 +13,6 @@ class RetrofitInstance {
         }
         val authApi = retrofit.create(AuthApi::class.java)
         val songApi = retrofit.create(SongApi::class.java)
+        val albumApi = retrofit.create(AlbumApi::class.java)
     }
 }
