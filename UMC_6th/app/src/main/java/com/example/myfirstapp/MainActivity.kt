@@ -71,6 +71,12 @@ class MainActivity : AppCompatActivity() {
         songDB = SongDatabase.getInstance(this)!!
         songs.addAll(songDB.songDao().getSongs())
     }
+
+    private fun getJwt() : String? {
+        val spf = this.getSharedPreferences("auth2", MODE_PRIVATE)
+
+        return spf!!.getString("jwt", "")
+    }
         fun setBottomNavigationView() {
 
             supportFragmentManager.beginTransaction().replace(R.id.main_container, HomeFragment()).commitAllowingStateLoss()
