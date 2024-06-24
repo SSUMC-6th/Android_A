@@ -22,7 +22,7 @@
         <activity android:name=".LoginActivity"/>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -32,7 +32,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SongActivity"
+            android:name=".music.SongActivity"
             android:exported="true" />
     </application>
 
