@@ -131,54 +131,15 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2a0892f6-22ae-44d0-9c68-5f47b708a220" name="Changes" comment="[maro/#43] feat :: 9주차 구현 완료">
+    <list default="true" id="2a0892f6-22ae-44d0-9c68-5f47b708a220" name="Changes" comment="[maro/#47] feat :: 패키지 구조화">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/Album.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/music/Album.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/AlbumDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/database/AlbumDao.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/AlbumFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/music/AlbumFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/AlbumRVAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/adapters/AlbumRVAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/AlbumVPAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/adapters/AlbumVPAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/ApiRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/database/ApiRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/AuthApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/auth/AuthApi.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/AuthService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/auth/AuthService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/BannerFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/ui/BannerFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/BannerVPAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/adapters/BannerVPAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/BottomSheetFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/util/BottomSheetFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/Constant.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/util/Constant.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/CustomSnackbar.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/util/CustomSnackbar.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/DetailFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/ui/DetailFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/ForegroundService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/util/ForegroundService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/HomeFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/ui/HomeFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/LockerAlbumRVAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/adapters/LockerAlbumRVAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/LockerFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/LockerFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/LockerVPAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/adapters/LockerVPAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/LoginActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/auth/LoginActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/LoginView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/auth/LoginView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/LookFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/ui/LookFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/ui/MainActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/MusicFileFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/music/MusicFileFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/PannelVPAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/adapters/PannelVPAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/RetrofitInstance.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/util/RetrofitInstance.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SavedAlbumFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SavedAlbumFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SavedAlbumRVAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/adapters/SavedAlbumRVAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SavedSongFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SavedSongFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SignUpActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/auth/SignUpActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SignUpView.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/auth/SignUpView.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/Song.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/music/Song.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SongActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/music/SongActivity.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SongApi.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/database/SongApi.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SongDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/database/SongDao.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SongDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/database/SongDatabase.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SongFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/music/SongFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SongRVAdapter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/adapters/SongRVAdapter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/SongService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/database/SongService.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/UserDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/database/UserDao.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/VideoFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/ui/VideoFragment.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/activity_main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_bottom_sheet.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_bottom_sheet.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_home.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_home.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_music_file.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/fragment_music_file.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/auth/LoginActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/auth/LoginActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/ui/LockerFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/ui/LockerFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/ui/LookFragment.kt" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/java/com/example/umc_6th/ui/LookFragment.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/app/src/main/res/layout/activity_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/UMC_6th/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/UMC_6th/settings.gradle.kts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -316,6 +277,7 @@
       <recent name="C:\android\MARO_HW1\UMC_6th\app\src\main\res\layout" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\android\MARO_HW1\UMC_6th\app\src\main\java\com\example\umc_6th\models" />
       <recent name="C:\android\MARO_HW1\UMC_6th\app\src\main\res\drawable" />
       <recent name="C:\android\MARO_HW1\UMC_6th\app\src\main\res\raw" />
     </key>
@@ -323,11 +285,11 @@
       <recent name="com.example.umc_6th" />
     </key>
     <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="com.example.umc_6th.auth" />
+      <recent name="com.example.umc_6th.ui" />
+      <recent name="com.example.umc_6th.fragments" />
       <recent name="com.example.umc_6th.adapters" />
       <recent name="com.example.umc_6th.util" />
-      <recent name="com.example.umc_6th.database" />
-      <recent name="com.example.umc_6th.music" />
-      <recent name="com.example.umc_6th.ui" />
     </key>
   </component>
   <component name="RunManager" selected="Android App.app">
@@ -967,7 +929,15 @@
       <option name="project" value="LOCAL" />
       <updated>1719237181690</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="[maro/#47] feat :: 패키지 구조화">
+      <option name="closed" value="true" />
+      <created>1719238543674</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1719238543674</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -992,7 +962,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="[maro/#7] fix : binding 버그 수정" />
     <MESSAGE value="[maro/#13] feat : ViewPager Banner" />
     <MESSAGE value="[maro/#13] feat : ViewPager Background" />
     <MESSAGE value="[maro/#13] feat : ViewPager Indicator, CircleIndicator, Auto Slide" />
@@ -1017,6 +986,7 @@
     <MESSAGE value="[maro/#38] feat :: 저장 앨범 탭, 둘러보기 페이지 제작" />
     <MESSAGE value="[maro/#38] feat :: 8주차 구현 완료" />
     <MESSAGE value="[maro/#43] feat :: 9주차 구현 완료" />
-    <option name="LAST_COMMIT_MESSAGE" value="[maro/#43] feat :: 9주차 구현 완료" />
+    <MESSAGE value="[maro/#47] feat :: 패키지 구조화" />
+    <option name="LAST_COMMIT_MESSAGE" value="[maro/#47] feat :: 패키지 구조화" />
   </component>
 </project>

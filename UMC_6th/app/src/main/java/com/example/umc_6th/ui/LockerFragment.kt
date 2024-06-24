@@ -8,9 +8,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import com.example.umc_6th.adapters.LockerVPAdapter
-import com.example.umc_6th.auth.LoginActivity
 import com.example.umc_6th.databinding.FragmentLockerBinding
 import com.example.umc_6th.util.BottomSheetFragment
+import com.example.yourapp.LoginActivity
 import com.google.android.material.tabs.TabLayoutMediator
 
 class LockerFragment : Fragment() {

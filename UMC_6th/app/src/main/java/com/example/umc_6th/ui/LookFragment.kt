@@ -13,6 +13,7 @@ import com.example.umc_6th.adapters.SongRVAdapter
 import com.example.umc_6th.database.SongService
 import com.example.umc_6th.databinding.FragmentLookBinding
 
+
 class LookFragment : Fragment(), LookView {
 
     lateinit var binding: FragmentLookBinding
