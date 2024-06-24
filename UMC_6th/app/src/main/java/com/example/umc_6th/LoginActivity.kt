@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.umc_6th.databinding.ActivityLoginBinding
 
-class LoginActivity:AppCompatActivity() {
+class LoginActivity:AppCompatActivity(), LoginView {
 
     lateinit var binding : ActivityLoginBinding
 
@@ -38,16 +38,10 @@ class LoginActivity:AppCompatActivity() {
         val email : String = binding.loginIdEt.text.toString() + "@" + binding.loginDirectInputEt.text.toString()
         val pwd : String = binding.loginPasswordEt.text.toString()
 
-        val songDB = SongDatabase.getInstance(this)!!
-        val user = songDB.userDao().getUser(email, pwd)
+        val authService = AuthService()
+        authService.setLoginView(this)
 
-        if (user != null) {
-            Log.d("LoginActivity", user.id.toString())
-            saveJwt(user.id)
-            startMainActivity()
-        } else {
-            Toast.makeText(this, "회원 정보가 존재하지 않습니다", Toast.LENGTH_SHORT).show()
-        }
+        authService.login(User(email, pwd, ""))
     }
 
     private fun startMainActivity() {
@@ -60,6 +54,22 @@ class LoginActivity:AppCompatActivity() {
 
         editor.putInt("jwt", jwt)
         editor.apply()
+    }
+
+    private fun saveJwtFromServer(jwt : String) {
+        val spf = getSharedPreferences("auth2", MODE_PRIVATE)
+        val editor = spf.edit()
+
+        editor.putString("jwt", jwt)
+        editor.apply()
+    }
+
+    override fun onLoginSuccess(code: Int, result: Result) {
+        saveJwtFromServer(result.jwt)
+        startMainActivity()
+    }
+    override fun onLoginFailure(message: String) {
+
     }
 
 }

@@ -54,6 +54,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
             activityResultLauncher.launch(intent)
         }
+        Log.d("MainActivity",getJwt().toString())
+    }
+
+    private fun getJwt(): String? {
+        val spf = this.getSharedPreferences("auth2", MODE_PRIVATE)
+
+        return spf!!.getString("jwt","")
     }
 
     override fun onResume() {

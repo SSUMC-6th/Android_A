@@ -10,7 +10,7 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class SignUpActivity : AppCompatActivity(){
+class SignUpActivity : AppCompatActivity(), SignUpView{
 
     lateinit var binding : ActivitySignupBinding
 
@@ -47,26 +47,19 @@ class SignUpActivity : AppCompatActivity(){
             return false
         }
 
-        RetrofitInstance.authApi.signUp(getUser()).enqueue(object: Callback<BaseResponse> {
-            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
-                Log.d("SignUp-Success", response.toString())
-                val response : BaseResponse = response.body()!!
-                when(response.code) {
-                    1000 -> finish() // 성공
-                    2016, 2018 -> {
-                        binding.signUpEmailErrorTv.visibility = View.VISIBLE
-                        binding.signUpEmailErrorTv.text = response.message
-                    }
-                }
+        val authService = AuthService()
+        authService.setSignUpView(this) // 객체를 통한 멤버 함수 호출
 
-            }
-
-            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
-                Log.d("SignUp-Failure", t.message.toString())
-            }
-        })
-        Log.d("SignUpActivity", "All Finished")
-
+        authService.signUp(getUser())
         return true
+    }
+
+    override fun onSignUpSuccess() {
+        finish()
+    }
+
+    override fun onSignUpFailure(message: String) {
+        binding.signUpEmailErrorTv.visibility = View.VISIBLE
+        binding.signUpEmailErrorTv.text = message
     }
 }
