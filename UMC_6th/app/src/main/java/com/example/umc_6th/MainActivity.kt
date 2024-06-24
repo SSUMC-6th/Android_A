@@ -85,7 +85,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        Log.d("MainActivity", getJwt().toString())
+    }
 
+    private fun getJwt() : String? {
+        val spf = this.getSharedPreferences("auth", MODE_PRIVATE)
+
+        return spf!!.getString("jwt", "")
     }
 //문제없음..
     override fun onStart() {
