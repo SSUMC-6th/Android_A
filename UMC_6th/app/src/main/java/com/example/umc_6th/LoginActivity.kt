@@ -1,4 +1,5 @@
 package com.chrome.umcflo
+import com.example.umc_6th.Result
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

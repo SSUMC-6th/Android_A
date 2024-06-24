@@ -16,31 +16,7 @@ class LookFragment : Fragment(), LookView {
 
     lateinit var binding: FragmentLookBinding
     private lateinit var songDB: SongDatabase
-
-    private lateinit var chartBtn : Button
-    private lateinit var videoBtn : Button
-    private lateinit var genreBtn : Button
-    private lateinit var situationBtn : Button
-    private lateinit var audioBtn : Button
-    private lateinit var atmosphereBtn : Button
-
-    private lateinit var buttonList: List<Button>
-
-    private lateinit var chartTv : TextView
-    private lateinit var videoTv : TextView
-    private lateinit var genreTv : TextView
-    private lateinit var situationTv : TextView
-    private lateinit var audioTv : TextView
-    private lateinit var atmosphereTv : TextView
-
-    private lateinit var textList: List<TextView>
-
-    lateinit var scrollView : ScrollView
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
+    private lateinit var floCharAdapter: SongRVAdapter
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
