@@ -92,4 +92,7 @@ dependencies {
     //Glide
     implementation("com.github.bumptech.glide:glide:4.11.0")
     annotationProcessor("com.github.bumptech.glide:compiler:4.11.0")
+
+    //카카오
+    implementation ("com.kakao.sdk:v2-user:2.20.1")
 }

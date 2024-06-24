@@ -1,5 +1,6 @@
 package com.example.umc_6th.ui.main
 
+import android.content.ContentValues.TAG
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -19,6 +20,7 @@ import com.example.umc_6th.data.local.SongDatabase
 import com.example.umc_6th.data.entities.Song
 import com.example.umc_6th.databinding.ActivityMainBinding
 import com.google.gson.Gson
+import com.kakao.sdk.common.util.Utility
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -90,6 +92,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         Log.d("MainActivity", getJwt().toString())
+        Log.d(TAG, "keyhash : ${Utility.getKeyHash(this)}")
     }
 
     private fun getJwt() : String? {
