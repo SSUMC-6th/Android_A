@@ -38,6 +38,12 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+//    repositories {
+//        google()
+//        mavenCentral()
+//        maven { url = uri("https://devrepo.kakao.com/nexus/content/groups/public/") }
+//    }
+
 }
 
 dependencies {
@@ -56,6 +62,23 @@ dependencies {
     implementation("androidx.room:room-runtime:2.6.0")
     kapt("androidx.room:room-compiler:2.6.0")
 
+    // Retrofit
+    implementation("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.5.2")
+    implementation("com.squareup.retrofit2:adapter-rxjava2:2.9.0")
+
+    // okHttp
+    implementation("com.squareup.okhttp3:okhttp:4.9.0")
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
+
+    // Glide
+    implementation("com.github.bumptech.glide:glide:4.12.0")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.12.0")
+
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    //kakao login
+    implementation("com.kakao.sdk:v2-user:2.10.0")
 }

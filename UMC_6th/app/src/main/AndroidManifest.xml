@@ -15,17 +15,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.UMC_6th"
-        tools:targetApi="31">
+        tools:targetApi="31"
+        android:name=".GlobalApplication">
+
         <service
-            android:name=".ForegroundService"
+            android:name=".service.ForegroundService"
             android:enabled="true"
             android:exported="true"></service>
 
-        <activity android:name=".SignUpActivity"/>
-        <activity android:name=".LoginActivity"/>
+        <activity android:name=".activity.SignUpActivity"/>
+        <activity android:name=".activity.LoginActivity"/>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".activity.MainActivity"
             android:exported="true"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -34,8 +36,23 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--카카오 로그인 구현-->
         <activity
-            android:name=".SongActivity"
+            android:name="com.kakao.sdk.auth.AuthCodeHandlerActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <data
+                    android:host="oauth"
+                    android:scheme="kakaodb0a6ee868ee324207d083d8d5de7fcd" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activity.SongActivity"
             android:exported="true" />
     </application>
 
