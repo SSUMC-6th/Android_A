@@ -4,6 +4,8 @@ plugins {
     id("kotlin-kapt")
 }
 
+
+
 android {
     namespace = "com.example.umc_6th"
     compileSdk = 34
@@ -15,6 +17,7 @@ android {
     buildFeatures {
         dataBinding = true
     }
+
 
     defaultConfig {
         applicationId = "com.example.umc_6th"
@@ -43,9 +46,11 @@ android {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
     }
 
+
 }
 
 dependencies {
+    implementation("com.kakao.sdk:v2-user:2.12.1")
     implementation("com.google.android.material:material:1.10.0")
     implementation("androidx.room:room-migration:2.6.0")
     implementation("androidx.room:room-runtime:2.6.0")

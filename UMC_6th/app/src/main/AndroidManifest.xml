@@ -8,6 +8,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".GlobalApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -17,12 +18,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.UMC_6th"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.kakao.sdk.AppKey"
+            android:value="9869def2f21ef97ba7f905ec34960cbb"/>
 
-        <activity android:name=".SignUpActivity" />
-        <activity android:name=".LoginActivity"/>
+        <activity android:name=".auth.SignUpActivity" />
+        <activity android:name=".auth.LoginActivity"/>
+        <activity android:name=".GlobalApplication"/>
 
         <activity
-            android:name=".MainActivity"
+            android:name=".ui.MainActivity"
             android:exported="true"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -32,7 +37,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SongActivity"
+            android:name=".music.SongActivity"
             android:exported="true" />
     </application>
 

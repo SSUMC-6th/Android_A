@@ -10,9 +10,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven { url = uri("https://devrepo.kakao.com/nexus/content/groups/public/")
     }
 }
 
 rootProject.name = "UMC_6th"
-include(":app")
+include(":app")}
  
