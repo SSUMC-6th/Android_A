@@ -38,6 +38,12 @@ android {
     kotlinOptions {
         jvmTarget = "1.8"
     }
+//    repositories {
+//        google()
+//        mavenCentral()
+//        maven { url = uri("https://devrepo.kakao.com/nexus/content/groups/public/") }
+//    }
+
 }
 
 dependencies {
@@ -72,4 +78,7 @@ dependencies {
 
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
+
+    //kakao login
+    implementation("com.kakao.sdk:v2-user:2.10.0")
 }
